@@ -1,8 +1,3 @@
-TEXT_INIT = chr(2)
-TEXT_END = chr(3)
-
-print(TEXT_END)
-print(TEXT_INIT)
 # from serial.tools import list_ports
 # import serial
 # import time
