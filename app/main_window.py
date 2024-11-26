@@ -1,7 +1,11 @@
 import os
+
+import serial.tools.list_ports
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget
 from PyQt5.QtGui import QIcon
-from main_window_dialogs import StartMeasurementWindow
+from conn import SerialClient, get_available_ports
+
+serial_client = SerialClient()
 
 
 class MainWindow(QMainWindow):
@@ -16,9 +20,18 @@ class MainWindow(QMainWindow):
         mid_layout = QHBoxLayout()
 
         # Top Layout
-        start_button = QPushButton("Start")
-        start_button.clicked.connect(self.start_measurement)  # Connect button to the dialog function
-        top_layout.addWidget(start_button)
+        connect_button = QPushButton("Connect")
+        connect_button.clicked.connect(lambda: serial_client.connect('COM6'))
+        top_layout.addWidget(connect_button)
+
+        disconnect_button = QPushButton("Disconnect")
+        disconnect_button.clicked.connect(serial_client.disconnect)
+        top_layout.addWidget(disconnect_button)
+
+        show_ports_button = QPushButton("Show ports")
+        show_ports_button.clicked.connect(get_available_ports)
+        top_layout.addWidget(show_ports_button)
+
         for i in range(0, 4):
             # TODO iterate array of already configured buttons
 
@@ -43,10 +56,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Pocket Analyzer")
 
         self.showMaximized()
-
-    def start_measurement(self):
-        popup = StartMeasurementWindow(self)
-        popup.exec_()
 
     def load_files_from_directory(self, directory):
         # Limpiar el QListWidget antes de agregar nuevos archivos
