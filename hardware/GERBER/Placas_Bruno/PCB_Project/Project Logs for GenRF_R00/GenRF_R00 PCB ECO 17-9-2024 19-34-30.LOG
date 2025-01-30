@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=3V3 Pin=J2-1
+Removed Pin From Net: NetName=GND Pin=J2-3
+Removed Pin From Net: NetName=LD Pin=J2-5
+Removed Pin From Net: NetName=MUX Pin=J2-8
+Add Pin To Net: Unknown Pin: Pin J2-2
+Add Pin To Net: Unknown Pin: Pin J2-4
+Add Pin To Net: Unknown Pin: Pin J2-6
+Add Pin To Net: Unknown Pin: Pin J2-7
+Added Pin To Net: NetName=NetJ2_1 Pin=R10-1
+Added Net: Name=NetJ2_1
+Added Pin To Net: NetName=NetJ2_3 Pin=R11-1
+Added Net: Name=NetJ2_3
+Added Pin To Net: NetName=NetJ2_5 Pin=R12-1
+Added Net: Name=NetJ2_5
+Added Pin To Net: NetName=NetJ2_8 Pin=U2-26
+Added Net: Name=NetJ2_8
+Added Pin To Net: NetName=NetJ2_9 Pin=U2-4
+Added Net: Name=NetJ2_9
+Added Member To Class: ClassName=GenRF_R00 Member=Component R4 Resistor

@@ -1,0 +1,3 @@
+Change Component Footprint: Designator=J2 Old Footprint=Header_M_2x5_0.1" New Footprint=Header_M_2x6_0.1"
+Change Component Comment : Designator=J2 Old Comment=Tira de pines de 10 New Comment=Tira de pines de 12
+Added Member To Class: ClassName=GenRF_R00 Member=Component C13 Capacitor

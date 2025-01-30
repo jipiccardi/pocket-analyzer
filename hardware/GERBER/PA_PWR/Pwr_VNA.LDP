@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\adrie\Documents\00_Adriel\00_Proyectos\deFacultad\pocket-analyzer\hardware\PCB\PA_PWR_R00\Pwr_VNA\Pwr_VNA\Pwr_VNA.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=pwr_vna.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Rect_Holes|DrillFile=pwr_vna-rectholes.txt|DrillLayers=gtl,gbl

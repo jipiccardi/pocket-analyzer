@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=1A_OUT Pin=C2-2
+Removed Pin From Net: NetName=2A_OUT Pin=C4-2
+Removed Pin From Net: NetName=3A_OUT Pin=C6-2
+Removed Pin From Net: NetName=4A_OUT Pin=C8-2
+Added Pin To Net: NetName=3A_OUT Pin=C2-2
+Added Pin To Net: NetName=4A_OUT Pin=C4-2
+Added Pin To Net: NetName=1A_OUT Pin=C6-2
+Added Pin To Net: NetName=2A_OUT Pin=C8-2

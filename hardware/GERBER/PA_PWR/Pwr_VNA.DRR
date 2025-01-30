@@ -1,0 +1,21 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Pwr_VNA.PcbDoc   10/20/2024  3:47:02 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Pwr_VNA.TXT
+ASCII RectHoles File : Pwr_VNA-RectHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      18mil (0.457mm)                                           Round             61        PTH        12.41inch (315.34mm)
+T2      26mil (0.66mm)                                            Round             4         PTH        3.17inch (80.54mm)
+T3      28mil (0.711mm)                                           Round             49        PTH        15.92inch (404.46mm)
+T4      39mil (1mm)                                               Rectangle         3         PTH        1.15inch (29.18mm)
+T5      40mil (1.016mm)                                           Round             36        PTH        6.80inch (172.77mm)
+T6      42mil (1.07mm)                                            Round             58        PTH        8.32inch (211.43mm)
+T7      126mil (3.2mm)                                            Round             4         PTH        9.06inch (230.24mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              215
+
+Total Processing Time (hh:mm:ss) : 00:00:00

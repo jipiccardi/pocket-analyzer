@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=HP_CTRL Pin=CN2-2
+Removed Pin From Net: NetName=LP_CTRL Pin=CN2-3
+Removed Pin From Net: NetName=HP_RFC Pin=U5-3
+Removed Pin From Net: NetName=LP_RFC Pin=U5-13
+Added Pin To Net: NetName=LP_CTRL Pin=CN2-2
+Added Pin To Net: NetName=HP_CTRL Pin=CN2-3
+Added Pin To Net: NetName=LP_RFC Pin=U5-3
+Added Pin To Net: NetName=HP_RFC Pin=U5-13
+Change Net Name : Old Net Name=HP_CTRL New Net Name=LP_CTRL
+Change Net Name : Old Net Name=LP_CTRL New Net Name=HP_CTRL

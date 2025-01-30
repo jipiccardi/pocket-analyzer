@@ -1,0 +1,10 @@
+Added Component: Designator=CN3(Header_M_2x5_0.1")
+Added Pin To Net: NetName=+5V Pin=CN3-1
+Added Pin To Net: NetName=NetC17_1 Pin=CN3-2
+Added Pin To Net: NetName=NetC19_1 Pin=CN3-3
+Added Pin To Net: NetName=CTRL2_CPLOUT Pin=CN3-4
+Added Pin To Net: NetName=CTRL1_CPLOUT Pin=CN3-5
+Added Pin To Net: NetName=CTRL2_MSR Pin=CN3-6
+Added Pin To Net: NetName=CTRL1_MSR Pin=CN3-7
+Added Pin To Net: NetName=GND Pin=CN3-8
+Added Member To Class: ClassName=Switch Board A Member=Component CN3 CONN_08P

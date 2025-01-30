@@ -1,0 +1,562 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\adrie\Documents\00_Adriel\00_Proyectos\deFacultad\pocket-analyzer\hardware\GERBER\Placas_Bruno\PCB_Project\GenRF_R00.PcbDoc
+Date     : 10/20/2024
+Time     : 5:40:15 PM
+
+ERROR : More than 500 violations detected, DRC was stopped
+
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1610.574mil,682.511mil) on Top Layer And Track (1507.874mil,708.662mil)(1546.149mil,746.936mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1634.252mil,771.736mil) on Top Layer And Track (1665.354mil,661.417mil)(1704.963mil,701.026mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1634.252mil,771.736mil) on Top Layer And Track (1734.252mil,771.736mil)(1734.252mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1700.86mil,787.387mil) on Top Layer And Track (1714.567mil,787.387mil)(1714.567mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1881.132mil,688.219mil) on Top Layer And Arc (1939.272mil,732.551mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1881.132mil,688.219mil) on Top Layer And Arc (1940.96mil,733.568mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1881.132mil,688.219mil) on Top Layer And Track (1944.825mil,748.088mil)(1950.12mil,742.793mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1939.272mil,732.551mil) on Top Layer And Arc (1940.96mil,733.568mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1939.272mil,732.551mil) on Top Layer And Track (1944.825mil,748.088mil)(1950.12mil,742.793mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Arc (1940.96mil,733.568mil) on Top Layer And Track (1944.825mil,748.088mil)(1950.12mil,742.793mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad B1-1(342.52mil,1271.26mil) on Multi-Layer And Track (342.52mil,1271.26mil)(342.52mil,1348.032mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad B1-4(242.52mil,1171.26mil) on Multi-Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad B1-9(342.52mil,871.26mil) on Multi-Layer And Track (342.52mil,868.11mil)(342.52mil,871.26mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad B1-9(342.52mil,871.26mil) on Multi-Layer And Track (342.52mil,868.11mil)(622.047mil,868.11mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C1-1(1509.842mil,515.748mil) on Top Layer And Track (1509.842mil,515.748mil)(1509.842mil,708.662mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C11-2(895.669mil,719.045mil) on Top Layer And Track (895.669mil,719.045mil)(964.567mil,719.045mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C1-2(1509.842mil,456.693mil) on Top Layer And Track (1509.842mil,125.984mil)(1509.842mil,456.693mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C13-2(893.701mil,809.055mil) on Top Layer And Track (893.701mil,812.992mil)(914.291mil,833.583mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C13-2(893.701mil,809.055mil) on Top Layer And Track (897.638mil,805.118mil)(966.535mil,805.118mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C14-2(436.066mil,283.465mil) on Top Layer And Track (436.066mil,283.465mil)(436.066mil,419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C15-2(2145.669mil,1345.374mil) on Top Layer And Track (1960.63mil,1344.488mil)(2145.669mil,1344.488mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C18-2(904.57mil,253.937mil) on Top Layer And Track (904.57mil,250mil)(904.57mil,253.937mil) on Top Layer 
+   Violation between Clearance Constraint: (3.748mil < 6mil) Between Pad C19-1(2570.866mil,437.008mil) on Top Layer And Via (2612.205mil,433.071mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C2-1(891.732mil,1092.52mil) on Top Layer And Track (891.732mil,1001.427mil)(891.732mil,1092.52mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C23-1(1687.008mil,1334.646mil) on Top Layer And Track (1633.858mil,1334.646mil)(1687.008mil,1334.646mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C24-1(1980.315mil,501.969mil) on Top Layer And Track (1980.315mil,501.969mil)(1980.315mil,714.41mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C24-2(1980.315mil,442.913mil) on Top Layer And Track (1980.315mil,127.953mil)(1980.315mil,442.913mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C26-1(1822.835mil,661.417mil) on Top Layer And Via (1822.835mil,661.417mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C4-2(2145.669mil,1149.606mil) on Top Layer And Track (2035.433mil,1155.512mil)(2145.669mil,1155.512mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C6-1(2342.52mil,537.402mil) on Top Layer And Track (2342.52mil,537.402mil)(2411.417mil,537.402mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C7-1(1665.354mil,661.417mil) on Top Layer And Track (1665.354mil,661.417mil)(1704.963mil,701.026mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C7-1(1665.354mil,661.417mil) on Top Layer And Via (1665.354mil,661.417mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad C8-1(2496.063mil,535.433mil) on Top Layer And Track (2411.417mil,537.402mil)(2496.063mil,537.402mil) on Top Layer 
+   Violation between Clearance Constraint: (3.748mil < 6mil) Between Pad C8-2(2570.866mil,535.433mil) on Top Layer And Via (2612.205mil,525.591mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad FB1-1(921.26mil,440.945mil) on Top Layer And Track (921.26mil,435.039mil)(921.26mil,440.945mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad FB1-2(966.621mil,440.945mil) on Top Layer And Track (966.621mil,444.882mil)(1019.685mil,444.882mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Hole of Pad Free-2(208.661mil,200.787mil) on Multi-Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Hole of Pad Free-2(2507.874mil,1576.772mil) on Multi-Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Hole of Pad Free-2(2517.716mil,204.724mil) on Multi-Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R11-1(816.929mil,1488.189mil) on Top Layer And Track (460.371mil,1488.189mil)(816.929mil,1488.189mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R1-2(1980.315mil,710.63mil) on Top Layer And Track (1973.125mil,714.41mil)(1980.315mil,714.41mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R1-2(1980.315mil,710.63mil) on Top Layer And Track (1980.315mil,501.969mil)(1980.315mil,714.41mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R2-2(818.898mil,1185.039mil) on Top Layer And Track (816.929mil,1185.039mil)(816.929mil,1185.039mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R3-2(891.732mil,1001.427mil) on Top Layer And Track (891.732mil,1001.427mil)(891.732mil,1092.52mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R4-1(1442.913mil,702.756mil) on Top Layer And Track (1344.488mil,702.756mil)(1442.913mil,702.756mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R4-2(1501.969mil,702.756mil) on Top Layer And Track (1507.874mil,708.662mil)(1509.842mil,708.662mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R4-2(1501.969mil,702.756mil) on Top Layer And Track (1507.874mil,708.662mil)(1546.149mil,746.936mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R4-2(1501.969mil,702.756mil) on Top Layer And Track (1509.842mil,515.748mil)(1509.842mil,708.662mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R5-1(1822.835mil,661.417mil) on Bottom Layer And Via (1822.835mil,661.417mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (4.311mil < 6mil) Between Pad R5-2(1822.835mil,602.362mil) on Bottom Layer And Track (1856.299mil,602.362mil)(2015.748mil,761.811mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R7-1(891.732mil,1277.559mil) on Top Layer And Track (891.732mil,1277.559mil)(891.732mil,1287.402mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R8-1(1665.315mil,603.425mil) on Bottom Layer And Track (1659.409mil,603.425mil)(1665.315mil,603.425mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad R8-2(1665.315mil,662.48mil) on Bottom Layer And Via (1665.354mil,661.417mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Bottom Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Bottom Layer And Via (1859.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Bottom Layer And Via (1920.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Bottom Layer And Via (1920.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Top Layer And Via (1859.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Top Layer And Via (1920.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(1880.315mil,127.953mil) on Top Layer And Via (1920.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Bottom Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Bottom Layer And Via (2040.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Bottom Layer And Via (2040.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Bottom Layer And Via (2040.315mil,77.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Bottom Layer And Via (2109.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Top Layer And Via (2040.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Top Layer And Via (2040.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Top Layer And Via (2040.315mil,77.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF1-2(2080.315mil,127.953mil) on Top Layer And Via (2109.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (1.819mil < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Via (1359.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Via (1409.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Via (1449.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Via (1449.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Bottom Layer And Via (1449.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (1.819mil < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Top Layer And Via (1359.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Top Layer And Via (1409.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Top Layer And Via (1449.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Top Layer And Via (1449.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1407.874mil,125.984mil) on Top Layer And Via (1449.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Bottom Layer And Polygon Region (15 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Bottom Layer And Via (1569.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Bottom Layer And Via (1569.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Bottom Layer And Via (1569.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Bottom Layer And Via (1654.842mil,60.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Top Layer And Via (1569.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Top Layer And Via (1569.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Top Layer And Via (1569.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad RF2-2(1607.874mil,125.984mil) on Top Layer And Via (1654.842mil,60.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U1-3(1767.717mil,1419.291mil) on Top Layer And Track (1767.717mil,1419.291mil)(1830.709mil,1419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U1-4(1681.102mil,1419.291mil) on Top Layer And Track (1675.197mil,1413.386mil)(1681.102mil,1419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-10(1675.197mil,840.453mil) on Top Layer And Track (1675.197mil,840.453mil)(1675.424mil,840.226mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-10(1675.197mil,840.453mil) on Top Layer And Track (1675.424mil,818.219mil)(1675.424mil,840.226mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-10(1675.197mil,840.453mil) on Top Layer And Track (1675.424mil,818.219mil)(1685.039mil,808.603mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-11(1694.882mil,840.453mil) on Top Layer And Track (1694.882mil,840.453mil)(1694.882mil,885.827mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-12(1714.567mil,840.453mil) on Top Layer And Track (1714.567mil,787.387mil)(1714.567mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-13(1734.252mil,840.453mil) on Top Layer And Track (1734.252mil,771.736mil)(1734.252mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-16(1793.307mil,840.453mil) on Top Layer And Track (1793.307mil,840.453mil)(1816.229mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-25(1793.307mil,1033.465mil) on Top Layer And Track (1793.307mil,1033.465mil)(1793.307mil,1122.047mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-26(1773.622mil,1033.465mil) on Top Layer And Track (1773.622mil,1033.465mil)(1773.622mil,1208.661mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-27(1753.937mil,1033.465mil) on Top Layer And Track (1753.937mil,1010.951mil)(1753.937mil,1033.465mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-28(1734.252mil,1033.465mil) on Top Layer And Track (1734.252mil,1033.465mil)(1734.252mil,1163.386mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-29(1714.567mil,1033.465mil) on Top Layer And Track (1714.567mil,1033.465mil)(1714.567mil,1124.649mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-3(1627.904mil,966.486mil) on Top Layer And Track (1131.89mil,966.486mil)(1627.904mil,966.486mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-30(1694.882mil,1033.465mil) on Top Layer And Track (1694.882mil,1033.465mil)(1694.882mil,1106.299mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-32(1655.512mil,1033.465mil) on Top Layer And Track (1655.512mil,1033.465mil)(1655.512mil,1079.959mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Track (1694.882mil,840.453mil)(1694.882mil,885.827mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1674.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1674.094mil,935.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1724.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1724.094mil,935.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1724.094mil,980.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1774.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-33(1724.409mil,936.959mil) on Top Layer And Via (1774.094mil,980.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-6(1627.904mil,907.431mil) on Top Layer And Track (1535.433mil,907.431mil)(1627.904mil,907.431mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Pad U2-9(1655.512mil,840.453mil) on Top Layer And Track (1655.512mil,826.15mil)(1655.512mil,840.453mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1009.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1009.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1059.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1059.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1060.315mil,252.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (109.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (109.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1109.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1109.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1159.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1159.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1209.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1209.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1259.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1259.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1265.315mil,1572.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1270.315mil,1417.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1309.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1309.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1359.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1359.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1409.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1409.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1449.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1449.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1449.842mil,225.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1449.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1459.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1459.842mil,475.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1459.842mil,525.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1467.874mil,425.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1469.842mil,275.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1471.842mil,325.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1471.842mil,375.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1474.842mil,575.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1474.842mil,625.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1509.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1535.433mil,783.465mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1544.842mil,575.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1544.842mil,625.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1544.842mil,675.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1547.842mil,325.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1547.842mil,375.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1549.842mil,275.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1549.842mil,425.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1559.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1559.842mil,475.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1559.842mil,525.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1569.842mil,125.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1569.842mil,175.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1569.842mil,225.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1569.842mil,75.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1579.842mil,805.118mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1580.709mil,730.315mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (159.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (159.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1609.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1609.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1627.953mil,740.158mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1629.921mil,811.024mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1654.842mil,60.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1659.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1674.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1674.094mil,935.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1674.094mil,980.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1683.071mil,744.095mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1709.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1709.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1724.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1724.094mil,935.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1724.094mil,980.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,140.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,190.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,240.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,290.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,340.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,390.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,440.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,490.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,540.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,590.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,640.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,690.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1744.094mil,90.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1759.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1759.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1774.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1774.094mil,935.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1774.094mil,980.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1790.315mil,747.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1809.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1809.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1830.315mil,807.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1840.315mil,1492.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1840.315mil,1587.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1840.315mil,742.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1859.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1859.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1880.315mil,807.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1890.315mil,742.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1909.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1920.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1920.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1920.315mil,227.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1920.315mil,77.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1928.347mil,477.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1930.315mil,527.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1930.315mil,717.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1930.315mil,797.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1940.315mil,277.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1940.315mil,427.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1945.315mil,327.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1945.315mil,377.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1945.315mil,577.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1945.315mil,627.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1959.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (1970.315mil,772.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2009.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2015.315mil,327.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2015.315mil,377.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2015.315mil,577.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2015.315mil,627.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2020.315mil,277.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2020.315mil,427.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2030.315mil,477.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2030.315mil,527.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2040.315mil,127.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2040.315mil,177.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2040.315mil,227.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2040.315mil,77.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2059.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (209.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (209.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2109.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2109.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2159.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2159.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2198.819mil,336.614mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2198.819mil,437.008mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2198.819mil,535.433mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2198.819mil,633.858mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2209.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2209.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2259.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2259.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,1052.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,1147.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,1252.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,1342.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,1437.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2280.315mil,942.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2309.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2309.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2359.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2359.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2409.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2409.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2459.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2459.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2509.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2509.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2559.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2559.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (259.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (259.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2609.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2609.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2612.205mil,433.071mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2612.205mil,525.591mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2612.205mil,635.827mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1009.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1059.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,109.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1109.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1159.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1209.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1259.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1309.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1359.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1409.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1459.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1509.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1559.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,159.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1609.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1659.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,209.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,259.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,309.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,359.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,409.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,459.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,509.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,559.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,609.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,659.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,759.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,809.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,859.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,909.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (2659.055mil,959.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (309.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (309.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (359.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (359.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (409.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (409.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (440.315mil,152.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (459.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (459.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (509.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (509.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (559.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (559.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1009.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1059.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,109.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1109.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1159.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1209.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1259.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1309.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1359.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1409.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1459.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1509.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1559.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,159.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1609.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1659.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,209.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,259.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,309.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,359.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,409.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,459.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,509.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,559.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,609.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,659.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,759.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,809.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,859.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,909.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (59.055mil,959.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (609.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (609.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (659.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (659.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (709.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (709.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (730.315mil,627.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (730.315mil,717.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (730.315mil,802.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (730.315mil,907.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (755.315mil,1272.953mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (759.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (759.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (809.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (809.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (859.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (859.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (909.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (909.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (959.055mil,1709.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Polygon Region (15 hole(s)) Bottom Layer And Via (959.055mil,59.055mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1013.779mil,845.237mil)(1013.779mil,913.386mil) on Bottom Layer And Track (1013.779mil,845.237mil)(1018.466mil,840.551mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1013.779mil,845.237mil)(1018.466mil,840.551mil) on Bottom Layer And Track (1018.466mil,840.551mil)(1437.008mil,840.551mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1018.466mil,840.551mil)(1437.008mil,840.551mil) on Bottom Layer And Via (1438.976mil,842.52mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1068.898mil,901.575mil)(1068.898mil,948.819mil) on Bottom Layer And Track (622.047mil,948.819mil)(1068.898mil,948.819mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1094.488mil,856.299mil)(1094.488mil,1185.039mil) on Top Layer And Track (1094.488mil,856.299mil)(1253.188mil,856.299mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1094.488mil,856.299mil)(1253.188mil,856.299mil) on Top Layer And Track (1253.188mil,856.299mil)(1257.874mil,860.986mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1122.047mil,346.457mil)(1122.047mil,702.756mil) on Top Layer And Track (1122.047mil,702.756mil)(1344.488mil,702.756mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1122.047mil,702.756mil)(1344.488mil,702.756mil) on Top Layer And Track (1344.488mil,702.756mil)(1442.913mil,702.756mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1122.047mil,702.756mil)(1344.488mil,702.756mil) on Top Layer And Via (1344.488mil,702.756mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1131.89mil,966.486mil)(1131.89mil,1397.638mil) on Top Layer And Track (1131.89mil,966.486mil)(1627.904mil,966.486mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1155.512mil,901.575mil)(1155.512mil,946.801mil) on Top Layer And Track (1155.512mil,946.801mil)(1627.904mil,946.801mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1155.512mil,901.575mil)(1155.512mil,946.801mil) on Top Layer And Via (1155.512mil,901.575mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1242.126mil,1005.856mil)(1242.126mil,1580.709mil) on Top Layer And Track (1242.126mil,1005.856mil)(1627.904mil,1005.856mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1253.188mil,856.299mil)(1257.874mil,860.986mil) on Top Layer And Track (1257.874mil,860.986mil)(1257.874mil,927.116mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1257.874mil,860.986mil)(1257.874mil,927.116mil) on Top Layer And Track (1257.874mil,927.116mil)(1627.904mil,927.116mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1309.055mil,872.047mil)(1309.055mil,907.431mil) on Top Layer And Track (1309.055mil,907.431mil)(1535.433mil,907.431mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1309.055mil,872.047mil)(1309.055mil,907.431mil) on Top Layer And Via (1309.055mil,872.047mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1309.055mil,907.431mil)(1535.433mil,907.431mil) on Top Layer And Track (1535.433mil,875.984mil)(1535.433mil,907.431mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1309.055mil,907.431mil)(1535.433mil,907.431mil) on Top Layer And Track (1535.433mil,907.431mil)(1627.904mil,907.431mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (131.89mil,1271.26mil)(131.89mil,1639.062mil) on Top Layer And Track (131.89mil,419.291mil)(131.89mil,1271.26mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (131.89mil,419.291mil)(436.066mil,419.291mil) on Top Layer And Track (436.066mil,283.465mil)(436.066mil,419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1344.488mil,702.756mil)(1442.913mil,702.756mil) on Top Layer And Via (1344.488mil,702.756mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1403.543mil,761.811mil)(1507.874mil,761.811mil) on Bottom Layer And Track (1507.874mil,761.811mil)(1507.874mil,1076.772mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1407.48mil,1122.047mil)(1407.48mil,1163.386mil) on Bottom Layer And Track (242.52mil,1122.047mil)(1407.48mil,1122.047mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (142.434mil,1649.606mil)(1488.291mil,1649.606mil) on Top Layer And Track (1488.291mil,1649.606mil)(1498.836mil,1639.062mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1438.976mil,842.52mil)(1561.024mil,842.52mil) on Top Layer And Track (1561.024mil,842.52mil)(1561.024mil,887.746mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1438.976mil,842.52mil)(1561.024mil,842.52mil) on Top Layer And Via (1438.976mil,842.52mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1488.291mil,1649.606mil)(1498.836mil,1639.062mil) on Top Layer And Track (1498.836mil,1582.677mil)(1498.836mil,1639.062mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1498.836mil,1095.19mil)(1498.836mil,1419.291mil) on Top Layer And Track (1509.38mil,1084.646mil)(1545.276mil,1084.646mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1498.836mil,1095.19mil)(1498.836mil,1419.291mil) on Top Layer And Via (1498.836mil,1257.241mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1498.836mil,1095.19mil)(1509.38mil,1084.646mil) on Top Layer And Track (1509.38mil,1084.646mil)(1545.276mil,1084.646mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1507.874mil,708.662mil)(1509.842mil,708.662mil) on Top Layer And Track (1507.874mil,708.662mil)(1546.149mil,746.936mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1507.874mil,708.662mil)(1509.842mil,708.662mil) on Top Layer And Track (1509.842mil,515.748mil)(1509.842mil,708.662mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1507.874mil,708.662mil)(1546.149mil,746.936mil) on Top Layer And Track (1509.842mil,515.748mil)(1509.842mil,708.662mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1507.874mil,754.961mil)(1507.874mil,761.811mil) on Bottom Layer And Track (1507.874mil,761.811mil)(1507.874mil,1076.772mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1507.874mil,754.961mil)(1659.409mil,603.425mil) on Bottom Layer And Track (1507.874mil,761.811mil)(1507.874mil,1076.772mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1535.433mil,875.984mil)(1535.433mil,907.431mil) on Top Layer And Track (1535.433mil,907.431mil)(1627.904mil,907.431mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1535.433mil,875.984mil)(1535.433mil,907.431mil) on Top Layer And Via (1535.433mil,875.984mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1545.276mil,1084.646mil)(1650.826mil,1084.646mil) on Top Layer And Track (1655.512mil,1033.465mil)(1655.512mil,1079.959mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1573.819mil,1215.551mil)(1576.772mil,1212.598mil) on Bottom Layer And Track (567.913mil,1215.551mil)(1573.819mil,1215.551mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1573.819mil,1215.551mil)(1576.772mil,1212.598mil) on Bottom Layer And Via (1576.772mil,1212.598mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1576.772mil,1124.016mil)(1576.772mil,1212.598mil) on Top Layer And Track (1576.772mil,1124.016mil)(1594.488mil,1106.299mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1576.772mil,1124.016mil)(1576.772mil,1212.598mil) on Top Layer And Via (1576.772mil,1212.598mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1594.488mil,1106.299mil)(1694.882mil,1106.299mil) on Top Layer And Track (1694.882mil,1033.465mil)(1694.882mil,1106.299mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1633.858mil,1129.921mil)(1633.858mil,1334.646mil) on Top Layer And Track (1633.858mil,1334.646mil)(1687.008mil,1334.646mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1650.826mil,1084.646mil)(1655.512mil,1079.959mil) on Top Layer And Track (1655.512mil,1033.465mil)(1655.512mil,1079.959mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1665.354mil,661.417mil)(1704.963mil,701.026mil) on Top Layer And Via (1665.354mil,661.417mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1675.197mil,840.453mil)(1675.424mil,840.226mil) on Top Layer And Track (1675.424mil,818.219mil)(1675.424mil,840.226mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1675.424mil,818.219mil)(1675.424mil,840.226mil) on Top Layer And Track (1675.424mil,818.219mil)(1685.039mil,808.603mil) on Top Layer 
+   Violation between Clearance Constraint: (3.598mil < 6mil) Between Track (1675.424mil,818.219mil)(1675.424mil,840.226mil) on Top Layer And Track (1685.039mil,804.815mil)(1685.039mil,808.603mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1675.424mil,818.219mil)(1675.424mil,840.226mil) on Top Layer And Via (1685.039mil,804.815mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1675.424mil,818.219mil)(1685.039mil,808.603mil) on Top Layer And Track (1685.039mil,804.815mil)(1685.039mil,808.603mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1675.424mil,818.219mil)(1685.039mil,808.603mil) on Top Layer And Via (1685.039mil,804.815mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (4.318mil < 6mil) Between Track (1694.882mil,840.453mil)(1694.882mil,885.827mil) on Top Layer And Via (1674.094mil,890.551mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1734.252mil,1033.465mil)(1734.252mil,1163.386mil) on Top Layer And Track (1734.252mil,1163.386mil)(1734.252mil,1255.906mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1753.937mil,1010.951mil)(1753.937mil,1033.465mil) on Top Layer And Track (1753.937mil,1033.465mil)(1753.937mil,1033.465mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1767.717mil,1419.291mil)(1769.685mil,1417.323mil) on Top Layer And Track (1767.717mil,1419.291mil)(1830.709mil,1419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1767.717mil,1419.291mil)(1830.709mil,1419.291mil) on Top Layer And Track (1830.709mil,1334.646mil)(1830.709mil,1419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1773.622mil,1033.465mil)(1773.622mil,1208.661mil) on Top Layer And Track (1773.622mil,1208.661mil)(1860.236mil,1208.661mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1773.622mil,1208.661mil)(1860.236mil,1208.661mil) on Top Layer And Via (1860.236mil,1208.661mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1793.307mil,1033.465mil)(1793.307mil,1122.047mil) on Top Layer And Track (1793.307mil,1122.047mil)(1868.11mil,1122.047mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1793.307mil,840.453mil)(1816.229mil,840.453mil) on Top Layer And Track (1816.229mil,840.453mil)(1820.915mil,845.139mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1820.915mil,966.486mil)(1991.377mil,966.486mil) on Top Layer And Track (1996.063mil,971.173mil)(1996.063mil,1252.647mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1856.299mil,602.362mil)(2015.748mil,761.811mil) on Bottom Layer And Track (2015.748mil,761.811mil)(2173.228mil,761.811mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1944.825mil,748.088mil)(1950.12mil,742.793mil) on Top Layer And Track (1950.197mil,742.715mil)(1950.75mil,742.163mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1973.125mil,714.41mil)(1980.315mil,714.41mil) on Top Layer And Track (1980.315mil,501.969mil)(1980.315mil,714.41mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1991.377mil,966.486mil)(1996.063mil,971.173mil) on Top Layer And Track (1996.063mil,971.173mil)(1996.063mil,1252.647mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1996.063mil,1252.647mil)(2000.749mil,1257.333mil) on Top Layer And Track (1996.063mil,971.173mil)(1996.063mil,1252.647mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (1996.063mil,971.173mil)(1996.063mil,1252.647mil) on Top Layer And Track (2000.749mil,1257.333mil)(2145.669mil,1257.333mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2015.748mil,761.811mil)(2015.748mil,868.061mil) on Bottom Layer And Track (2015.748mil,868.061mil)(2015.748mil,1076.772mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2015.748mil,761.811mil)(2173.228mil,761.811mil) on Bottom Layer And Via (2173.228mil,761.811mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2015.748mil,868.061mil)(2015.748mil,1076.772mil) on Bottom Layer And Via (2013.78mil,868.061mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2035.433mil,1155.512mil)(2035.433mil,1216.535mil) on Top Layer And Track (2035.433mil,1155.512mil)(2145.669mil,1155.512mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2035.433mil,1155.512mil)(2035.433mil,1216.535mil) on Top Layer And Via (2035.433mil,1216.535mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2175.197mil,710.63mil)(2175.197mil,761.811mil) on Top Layer And Via (2173.228mil,761.811mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2342.52mil,537.402mil)(2411.417mil,537.402mil) on Top Layer And Track (2411.417mil,438.976mil)(2411.417mil,537.402mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (2342.52mil,537.402mil)(2411.417mil,537.402mil) on Top Layer And Track (2411.417mil,537.402mil)(2496.063mil,537.402mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (342.52mil,1171.26mil)(445.141mil,1171.26mil) on Top Layer And Track (452.756mil,1178.875mil)(452.756mil,1480.574mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (342.52mil,1271.26mil)(342.52mil,1348.032mil) on Top Layer And Track (342.52mil,1348.032mil)(419.291mil,1348.032mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (342.52mil,868.11mil)(342.52mil,871.26mil) on Top Layer And Track (342.52mil,868.11mil)(622.047mil,868.11mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (342.52mil,972.441mil)(555.751mil,972.441mil) on Top Layer And Track (555.751mil,972.441mil)(564.961mil,981.65mil) on Top Layer 
+   Violation between Clearance Constraint: (3.024mil < 6mil) Between Track (342.52mil,972.441mil)(555.751mil,972.441mil) on Top Layer And Track (564.961mil,981.65mil)(564.961mil,1218.504mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (419.291mil,1348.032mil)(419.291mil,1573.093mil) on Top Layer And Track (419.291mil,1573.093mil)(426.907mil,1580.709mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (419.291mil,1573.093mil)(426.907mil,1580.709mil) on Top Layer And Track (426.907mil,1580.709mil)(815.54mil,1580.709mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (436.066mil,283.465mil)(436.066mil,419.291mil) on Top Layer And Track (436.066mil,419.291mil)(557.087mil,419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (445.141mil,1171.26mil)(452.756mil,1178.875mil) on Top Layer And Track (452.756mil,1178.875mil)(452.756mil,1480.574mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (452.756mil,1178.875mil)(452.756mil,1480.574mil) on Top Layer And Track (452.756mil,1480.574mil)(460.371mil,1488.189mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (452.756mil,1178.875mil)(452.756mil,1480.574mil) on Top Layer And Track (460.371mil,1488.189mil)(816.929mil,1488.189mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (452.756mil,1480.574mil)(460.371mil,1488.189mil) on Top Layer And Track (460.371mil,1488.189mil)(816.929mil,1488.189mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (555.751mil,972.441mil)(564.961mil,981.65mil) on Top Layer And Track (564.961mil,981.65mil)(564.961mil,1218.504mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (557.087mil,208.661mil)(557.087mil,283.465mil) on Top Layer And Track (557.087mil,283.465mil)(557.087mil,419.291mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (557.087mil,283.465mil)(557.087mil,419.291mil) on Top Layer And Track (557.087mil,283.465mil)(640.791mil,283.465mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (564.961mil,981.65mil)(564.961mil,1218.504mil) on Top Layer And Via (564.961mil,1218.504mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (622.047mil,948.819mil)(1068.898mil,948.819mil) on Bottom Layer And Track (622.047mil,948.819mil)(622.047mil,950.787mil) on Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (622.047mil,948.819mil)(1068.898mil,948.819mil) on Bottom Layer And Via (622.047mil,948.819mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (810.082mil,250mil)(904.57mil,250mil) on Top Layer And Track (904.57mil,250mil)(904.57mil,253.937mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (810.082mil,435.039mil)(921.26mil,435.039mil) on Top Layer And Track (921.26mil,435.039mil)(921.26mil,440.945mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (816.929mil,1092.52mil)(816.929mil,1185.039mil) on Top Layer And Track (816.929mil,1185.039mil)(816.929mil,1185.039mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (891.732mil,1001.427mil)(891.732mil,1092.52mil) on Top Layer And Track (891.732mil,913.386mil)(891.732mil,1001.427mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (891.732mil,1277.559mil)(891.732mil,1287.402mil) on Top Layer And Track (891.732mil,1287.402mil)(1094.488mil,1287.402mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (893.701mil,809.055mil)(897.638mil,805.118mil) on Top Layer And Track (893.701mil,812.992mil)(914.291mil,833.583mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (893.701mil,812.992mil)(914.291mil,833.583mil) on Top Layer And Track (897.638mil,805.118mil)(966.535mil,805.118mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (895.669mil,719.045mil)(964.567mil,719.045mil) on Top Layer And Via (964.567mil,719.045mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (897.638mil,805.118mil)(966.535mil,805.118mil) on Top Layer And Via (966.535mil,805.118mil) from Top Layer to Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 6mil) Between Track (966.621mil,444.882mil)(1019.685mil,444.882mil) on Top Layer And Via (1019.685mil,444.882mil) from Top Layer to Bottom Layer 
+Rule Violations :493
+
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=12mil) ((HasFootprint('SMA_Connector') AND  Not InNet('GND'))),(All)
+   Violation between Clearance Constraint: (Collision < 12mil) Between Pad RF1-1(1980.315mil,127.953mil) on Top Layer And Track (1980.315mil,127.953mil)(1980.315mil,442.913mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 12mil) Between Pad RF2-1(1507.874mil,125.984mil) on Top Layer And Track (1507.874mil,125.984mil)(1509.842mil,125.984mil) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 12mil) Between Pad RF2-1(1507.874mil,125.984mil) on Top Layer And Track (1509.842mil,125.984mil)(1509.842mil,456.693mil) on Top Layer 
+Rule Violations :3
+
+Processing Rule : Short-Circuit Constraint (Allowed=Yes) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=6mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+   Violation between Hole Size Constraint: (125.984mil > 100mil) Pad Free-2(208.661mil,200.787mil) on Multi-Layer Actual Hole Size = 125.984mil
+   Violation between Hole Size Constraint: (125.984mil > 100mil) Pad Free-2(2507.874mil,1576.772mil) on Multi-Layer Actual Hole Size = 125.984mil
+   Violation between Hole Size Constraint: (125.984mil > 100mil) Pad Free-2(2517.716mil,204.724mil) on Multi-Layer Actual Hole Size = 125.984mil
+   Violation between Hole Size Constraint: (125.984mil > 100mil) Pad Free-2(267.716mil,1509.842mil) on Multi-Layer Actual Hole Size = 125.984mil
+Rule Violations :4
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 500
+Waived Violations : 0
+Time Elapsed        : 00:00:02

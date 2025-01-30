@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [PA_CPLBridge_R01.PrjPcb]
+   Generated File[PA_CPLBridgre_R01.TXT]
+   Generated File[PA_CPLBridgre_R01.LDP]
+   Generated File[PA_CPLBridgre_R01.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 9:29:07 AM On 11/27/2024

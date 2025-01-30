@@ -1,0 +1,16 @@
+Phase Shift
+
+4 niveles
+
+1-> LP
+	f: 30Mhz : 100Mhz
+	Ph: -20° : -70°
+2-> HP
+	f: 100Mhz : 335MHz
+	Ph: +70° : +20°
+3-> LP
+	f: 335Mhz : 1.1Ghz
+	Ph: -20.4° : -70.025°
+4-> HP	
+	f: 1.1Ghz : 3Ghz
+	Ph: +70° : +24.6°

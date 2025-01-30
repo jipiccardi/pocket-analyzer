@@ -1,0 +1,23 @@
+Change Component Footprint: Designator=C1 Old Footprint=C_0805 New Footprint=C_0603
+Change Component Footprint: Designator=C7 Old Footprint=C_0805 New Footprint=C_0603
+Change Component Footprint: Designator=C24 Old Footprint=C_0805 New Footprint=C_0603
+Change Component Footprint: Designator=C26 Old Footprint=C_0805 New Footprint=C_0603
+Change component parameters: Designator = "C1" ("C1"); Footprint = "C_0805"; UniqueID = "\IRHTFAUM" ("\IRHTFAUM")
+Change component parameters (AddParameter): Name = "CPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RLSHUNT"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SimulationGenericComponent"; Value = "True"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TEMP"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100pF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C24" ("C24"); Footprint = "C_0805"; UniqueID = "\LRTVDBON" ("\LRTVDBON")
+Change component parameters (AddParameter): Name = "CPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RLSHUNT"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SimulationGenericComponent"; Value = "True"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TEMP"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100pF"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=GenRF_R00 Member=Component R4 Resistor

@@ -1,0 +1,6 @@
+Remove Pin=U2-5 From Net=SW
+Remove Pin=U2-7 From Net=CP_OUT
+Remove Pin=U2-12 From Net=RFOUTA_P
+Remove Pin=U2-13 From Net=RFOUTA_N
+Remove Pin=U2-20 From Net=TUNE
+Remove Pin=U2-29 From Net=REF_IN

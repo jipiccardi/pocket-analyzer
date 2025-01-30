@@ -1,0 +1,7 @@
+Added Component: Designator=CN2(Header_M_1x6_0.1")
+Added Pin To Net: NetName=GND Pin=CN2-2
+Added Pin To Net: NetName=CTRL1 Pin=CN2-3
+Added Pin To Net: NetName=CTRL2 Pin=CN2-4
+Added Pin To Net: NetName=CTRL3 Pin=CN2-5
+Added Pin To Net: NetName=CTRL4 Pin=CN2-6
+Added Member To Class: ClassName=FiltrosRF_R00 Member=Component CN2 CONN_06P

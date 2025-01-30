@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=SIGNAL_1 Pin=CN4-1
+Removed Pin From Net: NetName=SIGNAL_2 Pin=CN4-2
+Removed Pin From Net: NetName=SIGNAL_3 Pin=CN4-3
+Removed Pin From Net: NetName=SIGNAL_4 Pin=CN4-4
+Removed Pin From Net: NetName=GND Pin=U1-
+Removed Pin From Net: NetName=GND Pin=U2-
+Removed Pin From Net: NetName=GND Pin=U3-
+Removed Pin From Net: NetName=GND Pin=U4-
+Added Pin To Net: NetName=SIGNAL_1A Pin=CN4-1
+Added Net: Name=SIGNAL_1A
+Added Pin To Net: NetName=SIGNAL_2A Pin=CN4-2
+Added Net: Name=SIGNAL_2A
+Added Pin To Net: NetName=SIGNAL_3A Pin=CN4-3
+Added Net: Name=SIGNAL_3A
+Added Pin To Net: NetName=SIGNAL_4A Pin=CN4-4
+Added Net: Name=SIGNAL_4A
+Added Rule: Name=Schematic Routing Via Style
+Added Rule: Name=MaxMinWidth_1

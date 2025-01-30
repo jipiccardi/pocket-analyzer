@@ -1,0 +1,6 @@
+Added Component: Designator=JT(LMR100A)
+Added Pin To Net: NetName=NetC23_1 Pin=JT-1
+Added Pin To Net: NetName=GND Pin=JT-2
+Added Pin To Net: NetName=GND Pin=JT-2
+Added Pin To Net: NetName=GND Pin=JT-2
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R00 Member=Component JT SMA_Connector

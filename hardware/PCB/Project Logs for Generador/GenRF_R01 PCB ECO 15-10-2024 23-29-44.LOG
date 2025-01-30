@@ -1,0 +1,22 @@
+Added Component: Designator=AT1(Attenuator 0603)
+Added Component: Designator=AT2(Attenuator 0603)
+Added Component: Designator=AT3(Attenuator 0603)
+Added Pin To Net: NetName=GND Pin=AT1-3
+Added Pin To Net: NetName=GND Pin=AT2-3
+Added Pin To Net: NetName=GND Pin=AT3-3
+Added Pin To Net: NetName=NetAT1_2 Pin=AT1-2
+Added Pin To Net: NetName=NetAT1_2 Pin=AT2-1
+Added Net: Name=NetAT1_2
+Added Pin To Net: NetName=NetAT2_2 Pin=AT2-2
+Added Pin To Net: NetName=NetAT2_2 Pin=AT3-1
+Added Net: Name=NetAT2_2
+Added Pin To Net: NetName=NetAT3_2 Pin=AT3-2
+Added Pin To Net: NetName=NetAT3_2 Pin=RF2-1
+Added Net: Name=NetAT3_2
+Added Pin To Net: NetName=RF2 Pin=AT1-1
+Added Pin To Net: NetName=RF2 Pin=C1-2
+Added Net: Name=RF2
+Added Member To Class: ClassName=GenRF_R00 Member=Component AT1 Atenuador
+Added Member To Class: ClassName=GenRF_R00 Member=Component AT2 Atenuador
+Added Member To Class: ClassName=GenRF_R00 Member=Component AT3 Atenuador
+Added Rule: Name=Schematic Supply Nets
