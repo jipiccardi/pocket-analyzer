@@ -1,0 +1,8 @@
+Added Component: Designator=CN4(Header_M_2x3_0.1")
+Added Pin To Net: NetName=SIGNAL_1 Pin=CN4-1
+Added Pin To Net: NetName=SIGNAL_2 Pin=CN4-2
+Added Pin To Net: NetName=SIGNAL_3 Pin=CN4-3
+Added Pin To Net: NetName=SIGNAL_4 Pin=CN4-4
+Added Pin To Net: NetName=GND Pin=CN4-5
+Added Pin To Net: NetName=GND Pin=CN4-6
+Added Member To Class: ClassName=PA_PShifter_R01 Member=Component CN4 CONN_06P

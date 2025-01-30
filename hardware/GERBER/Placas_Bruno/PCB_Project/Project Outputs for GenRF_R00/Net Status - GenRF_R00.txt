@@ -1,0 +1,41 @@
+Net Status Report
+Filename     : C:\Users\santi\Downloads\Components - 05.09.24 - 20.28\GenRF_R00.PcbDoc
+Date         : 26/9/2024
+Time         : 00:15:43
+Time Elapsed : 00:00:00
+
+Nets, Layer, Length
+    3V3, Signal Layers Only, 5627.76mils
+    CP_OUT, Signal Layers Only, 1058.729mils
+    GND, Signal Layers Only, 0mils
+    LD, Signal Layers Only, 1954.543mils
+    MUX, Signal Layers Only, 1793.414mils
+    NetC15_2, Signal Layers Only, 686.467mils
+    NetC16_2, Signal Layers Only, 368.11mils
+    NetC17_2, Signal Layers Only, 756.25mils
+    NetC18_2, Signal Layers Only, 586.529mils
+    NetC1_2, Signal Layers Only, 332.677mils
+    NetC23_1, Signal Layers Only, 431.951mils
+    NetC24_2, Signal Layers Only, 314.961mils
+    NetC26_2, Signal Layers Only, 98.425mils
+    NetC2_2, Signal Layers Only, 92.52mils
+    NetC7_2, Signal Layers Only, 88.583mils
+    NetJ2_1, Signal Layers Only, 778.009mils
+    NetJ2_3, Signal Layers Only, 782.417mils
+    NetJ2_5, Signal Layers Only, 800.787mils
+    NetJ2_9, Signal Layers Only, 1491.681mils
+    NetR10_2, Signal Layers Only, 1338.583mils
+    NetR11_2, Signal Layers Only, 1238.638mils
+    NetR12_2, Signal Layers Only, 1164.578mils
+    NetR14_2, Signal Layers Only, 610.11mils
+    REF_EN, Signal Layers Only, 2030.929mils
+    REF_IN, Signal Layers Only, 219.319mils
+    RFOUTA_N, Signal Layers Only, 217.271mils
+    RFOUTA_P, Signal Layers Only, 480.409mils
+    RFOUTB_N, Signal Layers Only, 494.633mils
+    RFOUTB_P, Signal Layers Only, 217.271mils
+    SW, Signal Layers Only, 1451.104mils
+    TUNE, Signal Layers Only, 2560.037mils
+    VCC_PLL, Signal Layers Only, 2155.389mils
+    VCC_RF, Signal Layers Only, 4479.671mils
+count : 33

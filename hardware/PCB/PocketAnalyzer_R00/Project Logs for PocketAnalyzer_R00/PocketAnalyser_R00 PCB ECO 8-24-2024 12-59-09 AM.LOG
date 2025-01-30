@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=CTRL2_MSR Pin=C9-1
+Removed Pin From Net: NetName=CTRL2_MSR Pin=C10-1
+Removed Pin From Net: NetName=CTRL2_CPLOUT Pin=C14-1
+Removed Pin From Net: NetName=CTRL2_CPLOUT Pin=C15-1
+Removed Pin From Net: NetName=CTRL2_MSR Pin=U2-16
+Removed Pin From Net: NetName=CTRL2_CPLOUT Pin=U3-17
+Added Pin To Net: NetName=CTRL2_MSR Pin=C7-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=C8-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=U2-17
+Change Net Name : Old Net Name=CTRL2_MSR New Net Name=CTRL1_MSR
+Added Pin To Net: NetName=CTRL2_MSR Pin=C9-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=C10-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=C14-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=C15-1
+Added Pin To Net: NetName=CTRL2_MSR Pin=CN3-8
+Added Pin To Net: NetName=CTRL2_MSR Pin=U2-16
+Added Pin To Net: NetName=CTRL2_MSR Pin=U3-17
+Added Net: Name=CTRL2_MSR

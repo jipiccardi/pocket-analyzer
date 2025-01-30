@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=SIGNAL_2 Pin=U3-2
+Removed Pin From Net: NetName=SIGNAL_1 Pin=U3-4
+Removed Pin From Net: NetName=SIGNAL_3 Pin=U3-7
+Removed Pin From Net: NetName=SIGNAL_4 Pin=U3-9
+Added Pin To Net: NetName=SIGNAL_2A Pin=U3-2
+Added Pin To Net: NetName=SIGNAL_1A Pin=U3-4
+Added Pin To Net: NetName=SIGNAL_3A Pin=U3-7
+Added Pin To Net: NetName=SIGNAL_4A Pin=U3-9

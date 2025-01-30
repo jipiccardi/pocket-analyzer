@@ -1,0 +1,47 @@
+Removed Pin From Net: NetName=GND Pin=T1-1
+Removed Pin From Net: NetName=GND Pin=T1-2
+Removed Pin From Net: NetName=NetC23_2 Pin=T1-3
+Removed Pin From Net: NetName=NetC24_2 Pin=T2-1
+Removed Pin From Net: NetName=GND Pin=T2-2
+Removed Pin From Net: NetName=GND Pin=T2-3
+Change Component Comment : Designator=C21 Old Comment=100nF - RF New Comment=1nF - RF
+Change Component Comment : Designator=C22 Old Comment=100nF - RF New Comment=1nF - RF
+Change Component Comment : Designator=C23 Old Comment=100nF - RF New Comment=1nF - RF
+Change Component Comment : Designator=C24 Old Comment=100nF - RF New Comment=1nF - RF
+Change Component Designator: OldDesignator=T1 NewDesignator=T3
+Change Component Designator: OldDesignator=T2 NewDesignator=T1
+Added Component: Designator=T2(MABA-007159-000000_1)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://cdn.macom.com/datasheets/MABA-007159-000000.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "MACOM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "MABA-007159-000000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "937-MABA007159000000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/MACOM/MABA-007159-000000?qs=3Wmz%2FrCSAaFBkdkj62uXUA%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=T4(MABA-007159-000000_1)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://cdn.macom.com/datasheets/MABA-007159-000000.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "MACOM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "MABA-007159-000000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "937-MABA007159000000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/MACOM/MABA-007159-000000?qs=3Wmz%2FrCSAaFBkdkj62uXUA%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC24_2 Pin=T2-1
+Added Pin To Net: NetName=GND Pin=T2-3
+Added Pin To Net: NetName=GND Pin=T4-1
+Added Pin To Net: NetName=NetC23_2 Pin=T4-3
+Added Pin To Net: NetName=NetT1_1 Pin=T1-1
+Added Pin To Net: NetName=NetT1_1 Pin=T2-5
+Added Net: Name=NetT1_1
+Added Pin To Net: NetName=NetT1_3 Pin=T1-3
+Added Pin To Net: NetName=NetT1_3 Pin=T2-4
+Added Net: Name=NetT1_3
+Added Pin To Net: NetName=NetT3_1 Pin=T3-1
+Added Pin To Net: NetName=NetT3_1 Pin=T4-5
+Added Net: Name=NetT3_1
+Added Pin To Net: NetName=NetT3_3 Pin=T3-3
+Added Pin To Net: NetName=NetT3_3 Pin=T4-4
+Added Net: Name=NetT3_3
+Change Class Name : Old Net Name=PocketAnalyser_CPLBridge_R00 New Net Name=PocketAnalyser_CPLBridge_R01
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R01 Member=Component T3 MABA-007159-000000
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R01 Member=Component T4 MABA-007159-000000

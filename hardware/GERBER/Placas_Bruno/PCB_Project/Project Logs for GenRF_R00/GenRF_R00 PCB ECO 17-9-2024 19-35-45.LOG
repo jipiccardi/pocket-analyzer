@@ -1,0 +1,11 @@
+Added Component: Designator=J2(Header_M_2x5_0.1")
+Added Pin To Net: NetName=NetJ2_1 Pin=J2-1
+Added Pin To Net: NetName=3V3 Pin=J2-2
+Added Pin To Net: NetName=NetJ2_3 Pin=J2-3
+Added Pin To Net: NetName=GND Pin=J2-4
+Added Pin To Net: NetName=NetJ2_5 Pin=J2-5
+Added Pin To Net: NetName=LD Pin=J2-6
+Added Pin To Net: NetName=MUX Pin=J2-7
+Added Pin To Net: NetName=NetJ2_8 Pin=J2-8
+Added Pin To Net: NetName=NetJ2_9 Pin=J2-9
+Added Member To Class: ClassName=GenRF_R00 Member=Component J2 Tira de pines de 10

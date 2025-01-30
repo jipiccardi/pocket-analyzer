@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=PocketAnalyzer_BLK_R00.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=PocketAnalyzer_BLK_R00.SchDoc|Designator=Coupler Board|SchDesignator=Coupler Board|FileName=PocketAnalyzer_SwtBoardA_R00.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=PocketAnalyzer_SwtBoardA_R00.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=PocketAnalyzer_BLK_R00.SchDoc|Designator=Switch Board B|SchDesignator=Switch Board B|FileName=PocketAnalyzer_SwtBoardB_R00.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=PocketAnalyzer_SwtBoardB_R00.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

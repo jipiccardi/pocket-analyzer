@@ -1,0 +1,23 @@
+Signal 3 
+ 43Mhz a 181Mhz
+ fo = 112M db = -2.5db -111.6°
+ fM = 181M -3.2db -179°
+ fm = 50M -2.6db -48°
+
+Signal 4 Desconfiar porque no esta calibrado en este punto
+ 43Mhz a 181Mhz
+ fo = 26M db -2.6db -41.86°
+ fM = 43M -3.5db -109.4°
+ fm = 10M -2.2db +13.84°
+
+Signal 2 a 4V con 3v3 cae
+ 181Mhz a 768Mhz
+ fo = 475M db -4.5db +102°
+ fM = 768M -4.8db -65°
+ fm = 181M -4.3db -97°
+
+Signal 1 a 4v
+ 768Mhz a 3000Mhz
+ fo = 1900M db -6.4db -168.9°
+ fM = 768M -8db +17.4°
+ fm = 181M -5.6db +136.5°

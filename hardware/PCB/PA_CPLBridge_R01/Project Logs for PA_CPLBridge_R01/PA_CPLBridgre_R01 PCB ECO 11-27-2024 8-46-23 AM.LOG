@@ -1,0 +1,12 @@
+Added Pin To Net: NetName=NetC24_1 Pin=C24-1
+Added Pin To Net: NetName=NetC24_2 Pin=C24-2
+Added Pin To Net: NetName=NetC24_1 Pin=J16-1
+Added Pin To Net: NetName=GND Pin=J16-2
+Added Pin To Net: NetName=GND Pin=J16-2
+Added Pin To Net: NetName=GND Pin=J16-2
+Added Pin To Net: NetName=GND Pin=J16-2
+Added Pin To Net: NetName=NetC24_2 Pin=T2-1
+Added Pin To Net: NetName=GND Pin=T2-3
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R01 Member=Component C24 1nF - RF
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R01 Member=Component J16 SMA_Connector
+Added Member To Class: ClassName=PocketAnalyser_CPLBridge_R01 Member=Component T2 MABA-007159-000000

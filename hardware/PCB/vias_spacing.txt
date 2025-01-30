@@ -1,0 +1,19 @@
+RF_Vias:
+holesize=12
+ringsize=24
+distance2trace=35
+spacing = 65
+
+
+Trace = 27
+gap   = 6
+via_hole = 12
+Ringsize = 24
+via2trace_gap = 10
+
+Trace = 11
+gap   = 6
+via_hole = 12
+Ringsize = 24
+via2trace_gap = 10
+d2center = 27.5

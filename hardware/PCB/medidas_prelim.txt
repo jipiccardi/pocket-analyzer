@@ -1,0 +1,18 @@
+Moudulos
+Total = 210 * 130 
+
+Generador -> 100x70mm
+Alimentacion -> por unidad 50mm x 30 mm = 100 x 50 mm
+Receptores -> por unidad 50mm x 35 mmm = 50 x 70 mm
+uControlador -> 25mm x 60mm 
+
+Restante
+50x60mm y 70 x15mm 
+Acopladores
+Phaseshifter
+
+Switch RF
+	IC = 4mmX4mm x 4u
+	CN6 = 5.75mmX17.4mm
+	CN2 = 7.4mmX5.75mm
+	SMA = 7.3mmX4.4mm x 10u

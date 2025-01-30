@@ -1,0 +1,16 @@
+Change Component Designator: OldDesignator=J1 NewDesignator=RF2
+Change Component Designator: OldDesignator=J2 NewDesignator=B1
+Change Component Designator: OldDesignator=J3 NewDesignator=RF1
+Change component parameters: Designator = "C22" ("C22"); Footprint = "C_0805"; UniqueID = "\QCIUJWNX" ("\QCIUJWNX")
+Change component parameters (AddParameter): Name = "CPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RLSHUNT"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RPAR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RSER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SimulationGenericComponent"; Value = "True"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TEMP"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "150pF"; VariantName = "[No Variations]"
+Change Net Name : Old Net Name=NetJ2_1 New Net Name=NetB1_1
+Change Net Name : Old Net Name=NetJ2_3 New Net Name=NetB1_3
+Change Net Name : Old Net Name=NetJ2_5 New Net Name=NetB1_5
+Change Net Name : Old Net Name=NetJ2_9 New Net Name=NetB1_9

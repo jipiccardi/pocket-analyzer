@@ -1,0 +1,16 @@
+Change Net Name : Old Net Name=NetC9_1 New Net Name=4B_IN
+Change Net Name : Old Net Name=NetC11_1 New Net Name=3B_IN
+Change Net Name : Old Net Name=NetC13_1 New Net Name=2B_IN
+Change Net Name : Old Net Name=NetC15_1 New Net Name=1B_IN
+Added Pin To Net: NetName=1B_OUT Pin=C14-2
+Added Pin To Net: NetName=1B_OUT Pin=U7-5
+Added Net: Name=1B_OUT
+Added Pin To Net: NetName=2B_OUT Pin=C16-2
+Added Pin To Net: NetName=2B_OUT Pin=U7-1
+Added Net: Name=2B_OUT
+Added Pin To Net: NetName=3B_OUT Pin=C10-2
+Added Pin To Net: NetName=3B_OUT Pin=U7-6
+Added Net: Name=3B_OUT
+Added Pin To Net: NetName=4B_OUT Pin=C12-2
+Added Pin To Net: NetName=4B_OUT Pin=U7-10
+Added Net: Name=4B_OUT

@@ -1,0 +1,24 @@
+Added Component: Designator=CN1(Header_M_2x3_0.1")
+Added Pin To Net: NetName=SIGNAL_1 Pin=CN1-1
+Added Pin To Net: NetName=SIGNAL_2 Pin=CN1-2
+Added Pin To Net: NetName=SIGNAL_3 Pin=CN1-3
+Added Pin To Net: NetName=SIGNAL_4 Pin=CN1-4
+Added Pin To Net: NetName=GND Pin=CN1-5
+Added Pin To Net: NetName=GND Pin=CN1-6
+Add Pin To Net: Unknown Pin: Pin U1-V1
+Add Pin To Net: Unknown Pin: Pin U1-V2
+Add Pin To Net: Unknown Pin: Pin U1-V3
+Add Pin To Net: Unknown Pin: Pin U1-V4
+Add Pin To Net: Unknown Pin: Pin U2-V1
+Add Pin To Net: Unknown Pin: Pin U2-V2
+Add Pin To Net: Unknown Pin: Pin U2-V3
+Add Pin To Net: Unknown Pin: Pin U2-V4
+Add Pin To Net: Unknown Pin: Pin U3-V1
+Add Pin To Net: Unknown Pin: Pin U3-V2
+Add Pin To Net: Unknown Pin: Pin U3-V3
+Add Pin To Net: Unknown Pin: Pin U3-V4
+Add Pin To Net: Unknown Pin: Pin U4-V1
+Add Pin To Net: Unknown Pin: Pin U4-V2
+Add Pin To Net: Unknown Pin: Pin U4-V3
+Add Pin To Net: Unknown Pin: Pin U4-V4
+Added Member To Class: ClassName=PA_PShifter_R00 Member=Component CN1 CONN_06P

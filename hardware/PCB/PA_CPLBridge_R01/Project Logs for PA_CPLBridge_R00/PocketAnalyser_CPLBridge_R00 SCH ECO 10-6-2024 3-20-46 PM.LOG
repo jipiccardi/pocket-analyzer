@@ -1,0 +1,5 @@
+Removed Rule: Name=MaxMinWidth_1
+Added Rule: Name=PolygonConnectStyle_1
+Added Rule: Name=RoutingViaStyle_1
+Added Rule: Name=MaxMinWidth_1
+Modified Rule: Name=Schematic Polygon Connect Style

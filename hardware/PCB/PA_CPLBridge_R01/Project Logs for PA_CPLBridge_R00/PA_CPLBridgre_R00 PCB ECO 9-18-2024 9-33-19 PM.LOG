@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=NetC23_1 Pin=JT-1
+Removed Pin From Net: NetName=GND Pin=JT-2
+Removed Pin From Net: NetName=GND Pin=JT-2
+Removed Pin From Net: NetName=GND Pin=JT-2
+Removed Member From Class: ClassName=PocketAnalyser_CPLBridge_R00 Member=JT

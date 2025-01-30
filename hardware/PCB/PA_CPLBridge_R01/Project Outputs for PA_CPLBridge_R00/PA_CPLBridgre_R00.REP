@@ -1,0 +1,196 @@
+*************************************************************
+FileName = PA_CPLBridgre_R00.GBR
+AutoAperture = True
+*************************************************************
+Generating : Mechanical 1
+      File : PA_CPLBridgre_R00.GM1
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : PA_CPLBridgre_R00.GPB
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D24
+    D30
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : PA_CPLBridgre_R00.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D21
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : PA_CPLBridgre_R00.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : PA_CPLBridgre_R00.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D24
+    D30
+    D31
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : PA_CPLBridgre_R00.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : PA_CPLBridgre_R00.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D11
+    D33
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : PA_CPLBridgre_R00.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D14
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : PA_CPLBridgre_R00.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : PA_CPLBridgre_R00.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : PA_CPLBridgre_R00.GD1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D11
+    D34
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : PA_CPLBridgre_R00.GG1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Profile
+      File : PA_CPLBridgre_R00.GM
+
+
+Used DCodes :
+    D35
+*************************************************************
+

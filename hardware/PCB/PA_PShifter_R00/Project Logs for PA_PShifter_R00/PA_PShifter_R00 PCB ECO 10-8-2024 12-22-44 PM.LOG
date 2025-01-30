@@ -1,0 +1,26 @@
+Change Net Name : Old Net Name=NetC4_2 New Net Name=HP_S4
+Change Net Name : Old Net Name=NetC12_1 New Net Name=LP_S4
+Added Pin To Net: NetName=HP_S1 Pin=C1-2
+Added Pin To Net: NetName=HP_S1 Pin=L2-2
+Added Pin To Net: NetName=HP_S1 Pin=U2-10
+Added Net: Name=HP_S1
+Added Pin To Net: NetName=HP_S2 Pin=C2-2
+Added Pin To Net: NetName=HP_S2 Pin=L4-1
+Added Pin To Net: NetName=HP_S2 Pin=U2-1
+Added Net: Name=HP_S2
+Added Pin To Net: NetName=HP_S3 Pin=C3-2
+Added Pin To Net: NetName=HP_S3 Pin=L5-2
+Added Pin To Net: NetName=HP_S3 Pin=U2-5
+Added Net: Name=HP_S3
+Added Pin To Net: NetName=LP_S1 Pin=C6-2
+Added Pin To Net: NetName=LP_S1 Pin=L9-1
+Added Pin To Net: NetName=LP_S1 Pin=U4-10
+Added Net: Name=LP_S1
+Added Pin To Net: NetName=LP_S2 Pin=C8-1
+Added Pin To Net: NetName=LP_S2 Pin=L10-1
+Added Pin To Net: NetName=LP_S2 Pin=U4-1
+Added Net: Name=LP_S2
+Added Pin To Net: NetName=LP_S3 Pin=C10-2
+Added Pin To Net: NetName=LP_S3 Pin=L11-1
+Added Pin To Net: NetName=LP_S3 Pin=U4-5
+Added Net: Name=LP_S3

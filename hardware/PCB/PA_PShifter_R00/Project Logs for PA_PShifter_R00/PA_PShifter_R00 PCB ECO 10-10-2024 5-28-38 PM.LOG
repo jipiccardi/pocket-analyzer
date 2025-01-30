@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=HP_S4 Pin=C7-1
+Removed Pin From Net: NetName=HP_S4 Pin=L7-2
+Removed Pin From Net: NetName=HP_S4 Pin=U2-6
+Added Pin To Net: NetName=NetC7_1 Pin=C7-1
+Added Pin To Net: NetName=NetC7_1 Pin=L7-2
+Added Pin To Net: NetName=NetC7_1 Pin=U2-6
+Added Net: Name=NetC7_1
+Added Member To Class: ClassName=PA_PShifter_R00 Member=Component C25 13pF N0P RF
+Added Member To Class: ClassName=PA_PShifter_R00 Member=Component C28 3.6pF N0P RF

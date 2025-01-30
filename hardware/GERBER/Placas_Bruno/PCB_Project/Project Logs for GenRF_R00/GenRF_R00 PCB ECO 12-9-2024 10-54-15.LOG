@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=NetJ2_10 Pin=U2-26
+Removed Member From Class: ClassName=GenRF_R00 Member=R13
+Added Pin To Net: NetName=NetJ2_10 Pin=U2-4
+Added Pin To Net: NetName=LD Pin=J2-5
+Added Pin To Net: NetName=LD Pin=U2-25
+Added Net: Name=LD
+Added Pin To Net: NetName=MUX Pin=J2-8
+Added Pin To Net: NetName=MUX Pin=U2-30
+Added Net: Name=MUX
+Added Pin To Net: NetName=NetJ2_7 Pin=J2-7
+Added Pin To Net: NetName=NetJ2_7 Pin=U2-26
+Added Net: Name=NetJ2_7

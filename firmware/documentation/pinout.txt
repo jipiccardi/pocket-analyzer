@@ -1,0 +1,2 @@
+GPIO 8  -> RGB Led
+UART 	-> TX and RX

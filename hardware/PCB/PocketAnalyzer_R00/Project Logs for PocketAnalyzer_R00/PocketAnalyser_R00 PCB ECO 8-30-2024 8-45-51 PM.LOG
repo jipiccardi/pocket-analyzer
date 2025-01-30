@@ -1,0 +1,26 @@
+Removed Pin From Net: NetName=NetC17_1 Pin=CN3-1
+Removed Pin From Net: NetName=NetC19_1 Pin=CN3-3
+Removed Pin From Net: NetName=+5V Pin=CN3-4
+Removed Pin From Net: NetName=CTRL1_CPLOUT Pin=CN3-5
+Removed Pin From Net: NetName=CTRL1_MSR Pin=CN3-6
+Removed Pin From Net: NetName=CTRL2_CPLOUT Pin=CN3-7
+Removed Pin From Net: NetName=CTRL2_MSR Pin=CN3-8
+Removed Pin From Net: NetName=GND Pin=CN3-10
+Removed Pin From Net: NetName=GND Pin=U1-21
+Removed Pin From Net: NetName=GND Pin=U2-21
+Removed Pin From Net: NetName=GND Pin=U3-21
+Removed Pin From Net: NetName=GND Pin=U4-21
+Change Component Footprint: Designator=CN3 Old Footprint=Header_M_2x5_0.1" New Footprint=Header_M_2x4_0.1"
+Added Component: Designator=CN1(Header_M_2x2_0.1")
+Added Pin To Net: NetName=GND Pin=CN1-1
+Added Pin To Net: NetName=+5V Pin=CN1-2
+Added Pin To Net: NetName=NetC19_1 Pin=CN1-3
+Added Pin To Net: NetName=NetC17_1 Pin=CN1-4
+Added Pin To Net: NetName=+5V Pin=CN3-1
+Added Pin To Net: NetName=CTRL1_CPLOUT Pin=CN3-3
+Added Pin To Net: NetName=CTRL1_MSR Pin=CN3-4
+Added Pin To Net: NetName=CTRL2_CPLOUT Pin=CN3-5
+Added Pin To Net: NetName=CTRL2_MSR Pin=CN3-6
+Added Pin To Net: NetName=GND Pin=CN3-7
+Added Pin To Net: NetName=GND Pin=CN3-8
+Added Member To Class: ClassName=Switch Board A Member=Component CN1 CONN_04P

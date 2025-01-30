@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=GND Pin=U4-21
+Add Pin To Net: Unknown Pin: Pin CN1-1
+Add Pin To Net: Unknown Pin: Pin CN1-2
+Add Pin To Net: Unknown Pin: Pin CN1-3
+Add Pin To Net: Unknown Pin: Pin CN1-4
+Add Pin To Net: Unknown Pin: Pin CN1-5
+Add Pin To Net: Unknown Pin: Pin CN1-6
+Add Pin To Net: Unknown Pin: Pin CN1-7
+Add Pin To Net: Unknown Pin: Pin CN1-8
+Add Class Member: Failed to add class member : Component CN1 CONN_08P

@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=HP_S3 Pin=U2-5
+Removed Pin From Net: NetName=HP_S4 Pin=U2-6
+Removed Pin From Net: NetName=HP_S1 Pin=U2-10
+Removed Pin From Net: NetName=LP_S3 Pin=U4-5
+Removed Pin From Net: NetName=LP_S4 Pin=U4-6
+Removed Pin From Net: NetName=LP_S1 Pin=U4-10
+Added Pin To Net: NetName=HP_S1 Pin=U2-5
+Added Pin To Net: NetName=HP_S3 Pin=U2-6
+Added Pin To Net: NetName=HP_S4 Pin=U2-10
+Added Pin To Net: NetName=LP_S1 Pin=U4-5
+Added Pin To Net: NetName=LP_S3 Pin=U4-6
+Added Pin To Net: NetName=LP_S4 Pin=U4-10

@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=CTRL1 Pin=U2-10
+Removed Pin From Net: NetName=CTRL4 Pin=U3-10
+Removed Pin From Net: NetName=CTRL1 Pin=U7-10
+Removed Pin From Net: NetName=CTRL4 Pin=U8-10
+Added Pin To Net: NetName=CTRL1 Pin=U2-9
+Added Pin To Net: NetName=4A_OUT Pin=U2-10
+Added Pin To Net: NetName=CTRL4 Pin=U3-9
+Added Pin To Net: NetName=4A_IN Pin=U3-10
+Added Pin To Net: NetName=CTRL1 Pin=U7-9
+Added Pin To Net: NetName=NetC16_2 Pin=U7-10
+Added Pin To Net: NetName=CTRL4 Pin=U8-9
+Added Pin To Net: NetName=NetC9_1 Pin=U8-10
