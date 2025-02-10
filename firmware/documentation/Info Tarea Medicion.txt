@@ -1,0 +1,22 @@
+Hacer por maquina de estado. 
+Por cada parametro 1 estado
+Otro estado donde seteo la F
+
+Por cada frecuencia 
+ 4 parametros S
+ Switch 1 -> A
+ 	Mido S11 poniendo el Switch 2 en A
+		Leo ADC1 (potencia)
+		Leo ADC2 (fase)
+	Mido S21 poniendo el Switch 2 en B
+		Leo ADC1 (potencia)
+		Leo ADC2 (fase)
+ Switch 1 -> B
+ 	Mido S22 poniendo el Switch 2 en B
+		Leo ADC1 (potencia)
+		Leo ADC2 (fase)
+	Mido S12 poniendo el Switch 2 en A
+		Leo ADC1 (potencia)
+		Leo ADC2 (fase)
+
+Todas las mediciones las guardamos en un buffer global
