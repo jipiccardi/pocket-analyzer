@@ -81,6 +81,7 @@ task waits for this semaphore to be given before queueing a transmission.
 #define REG3_CMD 0x03
 #define REG4_CMD 0x04
 #define REG5_CMD 0x05
+#define REG6_CMD 0x06
 
 #define GPIO_MASK 0xFFFE
 
@@ -195,7 +196,7 @@ static void XRA1403_write_register(uint8_t reg, uint8_t data){
 
     t.cmd = WRITE_CMD;
     t.addr= reg;
-    t.length = 16;
+    t.length = 8;
     my_buff[0] = data;
     t.tx_buffer=my_buff;
     spi_device_transmit(XRA1403_handle, &t);
@@ -211,7 +212,7 @@ static uint8_t XRA1403_read_register(uint8_t reg){
 
     t.cmd = READ_CMD;
     t.addr= reg;
-    t.length = 8;
+    t.length = 8; //si no anda probar length 16
     t.rxlength = 8;
     t.flags = SPI_TRANS_USE_RXDATA;
     spi_device_transmit(XRA1403_handle, &t);
@@ -272,7 +273,7 @@ static void MAX2870_write_register(uint8_t reg, uint32_t data){
 }
 
 //Lee un registro del generador
-static uint32_t MAX28710_read_register(uint8_t reg){
+static uint32_t MAX2870_read_register(uint8_t reg){
     spi_transaction_t t;
     uint32_t out_data=2;
 
@@ -329,21 +330,19 @@ void app_main(void)
     //XRA1403_write_register(GCR1_CMD,0x00);
     XRA1403_init();
 
-    vTaskDelay(5000/portTICK_PERIOD_MS);
-
     MAX2870_init(); //init basico del generador
-    vTaskDelay(5000/portTICK_PERIOD_MS);
+    vTaskDelay(1000/portTICK_PERIOD_MS);
 
     //Leo un registro del generador
-    data_reg_gen = MAX28710_read_register(REG5_CMD);
-    printf("%d",data_reg_gen);
+    data_reg_gen = MAX2870_read_register(REG5_CMD);
+    printf("%lu",data_reg_gen);
 
+    vTaskDelay(800/portTICK_PERIOD_MS);
+    
     XRA1403_set_gpio(0,HIGH);
+    XRA1403_set_gpio(1,HIGH);
+    XRA1403_set_gpio(2,HIGH);
     XRA1403_set_gpio(13,HIGH);
-
-    vTaskDelay(8000/portTICK_PERIOD_MS);
-    XRA1403_set_gpio(0,LOW);
-    XRA1403_set_gpio(13,LOW);
     
     //Never reached.
     ret = spi_bus_remove_device(XRA1403_handle);
