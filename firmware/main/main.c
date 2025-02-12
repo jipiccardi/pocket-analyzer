@@ -158,14 +158,16 @@ static void spi_init(){
      //Agregamos el dispositivo al bus SPI, en este caso el Generador
     spi_device_interface_config_t devcfg_MAX2870 = {
         .command_bits = 0,
-        .address_bits = 3,
+        .address_bits = 0,
         .dummy_bits = 0,
         .clock_speed_hz = 20000000,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS2,
+        .cs_ena_pretrans = 3,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
         .cs_ena_posttrans = 3,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
         .queue_size = 3,
+        .flags = SPI_DEVICE_HALFDUPLEX,
     };
 
     //GPIO config for the RESET. Pin que indica el RESET
@@ -263,10 +265,10 @@ static void MAX2870_write_register(uint8_t reg, uint32_t data){
 
     memset(&t, 0, sizeof(t));
 
-    //t.cmd = WRITE_CMD;
-    t.addr= reg;
+    t.cmd = 0;
+    t.addr= 0;
     t.length = 32;
-    my_buff[0] = data;
+    my_buff[0] = data<<3|reg;
     t.tx_buffer=my_buff;
     spi_device_transmit(MAX2870_handle, &t);
     printf("\n Write Register Ok");
@@ -277,10 +279,12 @@ static uint32_t MAX2870_read_register(uint8_t reg){
     spi_transaction_t t;
     uint32_t out_data=2;
 
+    //MAX2870_write_register(REG2_CMD,); //MUX = 1100
+
     memset(&t, 0, sizeof(t));
 
-    t.cmd = READ_CMD;
-    t.addr= reg;
+    t.cmd = 0;
+    t.addr= 0;
     t.length = 32;
     t.rxlength = 32;
     t.flags = SPI_TRANS_USE_RXDATA;
@@ -288,20 +292,38 @@ static uint32_t MAX2870_read_register(uint8_t reg){
     out_data=t.rx_data[0];
     printf("\n output:%d",(int)out_data);
 
+    //MAX2870_write_register(REG2_CMD,); //MUX = 0000
+
     return out_data;
 }
 
 static void MAX2870_init(void){
     MAX2870_write_register(REG5_CMD,0x4000005); //Valor por defecto
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG5_CMD,0x6180B21C); //Deshabilitamos ambas salidas 
-    //Primero reg5
-    //Despues reg4 bits 4 y 8 en 0 para mantener RFOUT
-    //Despues reg3
-    //Despues reg2
-    //Despues reg1
-    //Despues reg0
+    MAX2870_write_register(REG4_CMD,0x6180B21C); //Deshabilitamos ambas salidas
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG3_CMD,0x0000000B); //Deshabilitamos ambas salidas  
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG2_CMD,0x00004042); //Deshabilitamos ambas salidas 
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG1_CMD,0x2000FFF9); //Deshabilitamos ambas salidas 
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG0_CMD,0x007D0000); //Deshabilitamos ambas salidas 
     
+    vTaskDelay(20/portTICK_PERIOD_MS);
+
+    MAX2870_write_register(REG5_CMD,0x4000005); //Valor por defecto
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG4_CMD,0x6180B21C); //Deshabilitamos ambas salidas
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG3_CMD,0x0000000B); //Deshabilitamos ambas salidas  
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG2_CMD,0x04004042); //Pongo el MUX como VDD 
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG1_CMD,0x2000FFF9); //Deshabilitamos ambas salidas 
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG0_CMD,0x007D0000); //Deshabilitamos ambas salidas 
+
     //Habilitiar la salida con reg4
 
 }
@@ -331,13 +353,10 @@ void app_main(void)
     XRA1403_init();
 
     MAX2870_init(); //init basico del generador
-    vTaskDelay(1000/portTICK_PERIOD_MS);
+    vTaskDelay(3000/portTICK_PERIOD_MS);
 
-    //Leo un registro del generador
-    data_reg_gen = MAX2870_read_register(REG5_CMD);
-    printf("%lu",data_reg_gen);
-
-    vTaskDelay(800/portTICK_PERIOD_MS);
+    MAX2870_write_register(REG2_CMD,0x08004042); //Pongo el MUX como GND 
+    vTaskDelay(20/portTICK_PERIOD_MS);
     
     XRA1403_set_gpio(0,HIGH);
     XRA1403_set_gpio(1,HIGH);
