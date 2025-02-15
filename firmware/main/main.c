@@ -83,6 +83,10 @@ task waits for this semaphore to be given before queueing a transmission.
 #define REG5_CMD 0x05
 #define REG6_CMD 0x06
 
+#define RFOUT_EN_PIN 0
+#define LD_PIN       1
+#define CE_PIN       2
+
 #define GPIO_MASK 0xFFFE
 
 #define portTICK_PERIOD_MS              ((TickType_t) (1000 / configTICK_RATE_HZ))
@@ -327,6 +331,47 @@ static void MAX2870_init(void){
     //Habilitiar la salida con reg4
 
 }
+
+static void configure_MAX2870_20MHz(void){
+        // Configuración básica del MAX2870 para generar 23 MHz con una referencia de 19.2 MHz
+    
+        // Registro 5: Configuración básica
+        MAX2870_write_register(REG5_CMD, 0x00400005); // Reset por seguridad
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Registro 4: Configuración del divisor de salida y potencia de salida
+        // DIVA = 128 (0x7), RFOUTA habilitado, potencia de salida máxima
+        MAX2870_write_register(REG4_CMD, 0x61F0B3FC); // DIVA = 128, RFOUTA habilitado
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Registro 3: Configuración del VCO y autoselección
+        MAX2870_write_register(REG3_CMD, 0x0000000B); // Configuración básica del VCO
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Registro 2: Configuración del divisor de referencia (R) y otros parámetros
+        // R = 1, DBR = 0, RDIV2 = 0, MUXOUT = R divider output
+        MAX2870_write_register(REG2_CMD, 0x00004042); // R = 1, MUXOUT = R divider output
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Registro 1: Configuración del valor de M (modulus)
+        // M = 4095 (0xFFF)
+        MAX2870_write_register(REG1_CMD, 0x2000FFF9); // M = 4095
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Registro 0: Configuración del valor de N y F
+        // N = 16, F = 0 (para 23 MHz)
+        MAX2870_write_register(REG0_CMD, 0x00100000); // N = 16, F = 0
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Habilitar la salida
+        MAX2870_write_register(REG4_CMD, 0x61F0B3FC); // Habilitar RFOUTA con divisor 128
+        vTaskDelay(20/portTICK_PERIOD_MS);
+    
+        // Habilitar el Charge Pump
+        XRA1403_set_gpio(CE_PIN, HIGH); // Habilitar el Charge Pump
+
+}
+
 //Main application
 void app_main(void)
 {
@@ -353,15 +398,9 @@ void app_main(void)
     XRA1403_init();
 
     MAX2870_init(); //init basico del generador
-    vTaskDelay(3000/portTICK_PERIOD_MS);
+    vTaskDelay(100/portTICK_PERIOD_MS);
 
-    MAX2870_write_register(REG2_CMD,0x08004042); //Pongo el MUX como GND 
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    
-    XRA1403_set_gpio(0,HIGH);
-    XRA1403_set_gpio(1,HIGH);
-    XRA1403_set_gpio(2,HIGH);
-    XRA1403_set_gpio(13,HIGH);
+    configure_MAX2870_20MHz();
     
     //Never reached.
     ret = spi_bus_remove_device(XRA1403_handle);
