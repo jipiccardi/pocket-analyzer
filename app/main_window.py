@@ -1,11 +1,9 @@
 import os
 
-import serial.tools.list_ports
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget
-from PyQt5.QtGui import QIcon
-from conn import SerialClient, get_available_ports
-
-serial_client = SerialClient()
+from globals import serial_client
+from conn import get_available_ports
+from debug_window import show_debug_window
 
 
 class MainWindow(QMainWindow):
@@ -21,7 +19,7 @@ class MainWindow(QMainWindow):
 
         # Top Layout
         connect_button = QPushButton("Connect")
-        connect_button.clicked.connect(lambda: serial_client.connect('COM6'))
+        connect_button.clicked.connect(lambda: serial_client.connect('COM1'))
         top_layout.addWidget(connect_button)
 
         disconnect_button = QPushButton("Disconnect")
@@ -32,11 +30,12 @@ class MainWindow(QMainWindow):
         show_ports_button.clicked.connect(get_available_ports)
         top_layout.addWidget(show_ports_button)
 
-        for i in range(0, 4):
-            # TODO iterate array of already configured buttons
+        manage_gpio_button = QPushButton("Debug")
+        manage_gpio_button.clicked.connect(show_debug_window)
+        top_layout.addWidget(manage_gpio_button)
 
-            buttons = QPushButton("...")
-            top_layout.addWidget(buttons)
+        # for i in range(0, 4):
+        # TODO iterate array of already configured buttons
         top_layout.addStretch()
 
         # Mid Layout
@@ -69,6 +68,3 @@ class MainWindow(QMainWindow):
                 self.file_list_widget.addItem(file)
         except FileNotFoundError:
             self.file_list_widget.addItem("Directory not found")
-
-
-

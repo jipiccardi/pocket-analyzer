@@ -1,8 +1,8 @@
 import sys
 
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication
 
-from conn import SerialClient
 from main_window import MainWindow
 import logging
 
@@ -10,6 +10,11 @@ import logging
 def main():
     logging.getLogger().setLevel(logging.DEBUG)
     app = QApplication(sys.argv)
+
+    font = QFont()
+    font.setPointSize(12)
+    app.setFont(font)
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
