@@ -1,7 +1,6 @@
 import serial
 import logging
 
-
 class SerialClient:
     def __init__(self):
         self.conn = None
@@ -34,6 +33,16 @@ class SerialClient:
             logging.debug('Disconnect successfully')
         except Exception as e:
             logging.error(f'Error trying to disconnect: {e}')
+
+    def send_cmd(self, cmd: str):
+        try:
+            logging.debug(f'STX{cmd}ETX'.encode())
+            self.conn.write(f'STX{cmd}ETX'.encode())
+        except Exception as e:
+            logging.error(f'Error trying to send {cmd}: {e}')
+            self.conn.flush()
+
+        # TODO handle response
 
 
 def get_available_ports():
