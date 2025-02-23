@@ -46,7 +46,7 @@ task waits for this semaphore to be given before queueing a transmission.
 #define HIGH 1
 #define LOW 0
 
-// Commands par la expansion GPIO
+// Commands par la expansion  GPIO
 #define GSR1_CMD    0x00
 #define GSR2_CMD    0x01
 #define OCR1_CMD    0x02

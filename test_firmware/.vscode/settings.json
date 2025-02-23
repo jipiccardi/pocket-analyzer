@@ -14,5 +14,8 @@
     "idf.portWin": "COM4",
     "idf.pythonBinPathWin": "c:\\Users\\santi\\python_env\\idf5.3_py3.11_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "c:\\Users\\santi",
-    "idf.flashType": "JTAG"
+    "idf.flashType": "JTAG",
+    "files.associations": {
+        "semphr.h": "c"
+    }
 }
