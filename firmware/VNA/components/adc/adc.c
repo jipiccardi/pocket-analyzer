@@ -34,6 +34,7 @@ void adc_init(void){
  */
 bool adc_calibration_init(adc_channel_t channel)
 {
+    
     adc_cali_handle_t handle = NULL;
     esp_err_t ret = ESP_FAIL;
     bool calibrated = false;
