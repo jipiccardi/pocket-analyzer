@@ -30,7 +30,6 @@ void spi_init(void);
 void spi_deinit(void);
 void XRA1403_write_register(uint8_t, uint8_t);
 uint8_t XRA1403_read_register(uint8_t);
-void MAX2870_write_register(uint8_t, uint32_t);
 #endif
 
 

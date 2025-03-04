@@ -8,6 +8,7 @@ import serial.tools.list_ports
 STX = "\u0002"
 ETX = "\u0003"    
 
+
 class SerialClient:
     def __init__(self):
         self.conn = None
