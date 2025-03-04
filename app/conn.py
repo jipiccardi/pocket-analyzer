@@ -1,6 +1,9 @@
 import serial
 import logging
 
+import serial.tools
+import serial.tools.list_ports
+
 class SerialClient:
     def __init__(self):
         self.conn = None

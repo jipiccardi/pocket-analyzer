@@ -7,7 +7,9 @@
             "includePath": [
                 "${config:idf.espIdfPath}/components/**",
                 "${config:idf.espIdfPathWin}/components/**",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/Users/adrie/Documents/ESP"
+
             ],
             "browse": {
                 "path": [

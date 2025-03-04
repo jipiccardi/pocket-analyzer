@@ -14,6 +14,8 @@
     },
     "files.associations": {
         "spi.h": "c",
-        "esp_timer.h": "c"
+        "esp_timer.h": "c",
+        "max2870.h": "c",
+        "pr_max2870.h": "c"
     }
 }

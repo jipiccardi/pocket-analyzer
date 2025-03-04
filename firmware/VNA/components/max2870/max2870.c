@@ -1,4 +1,4 @@
-#include <stdio.h>
+
 #include "max2870.h"
 
 static uint32_t reg_str[6] = {0,0,0,0,0,0}; 
@@ -40,38 +40,38 @@ static void MAX2870_init(void){
 
     //Default values two times as datasheet indicates
     
-    MAX2870_write_register(REG5_CMD,0x4000005); 
+    MAX2870_write_register(0x4000005); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG4_CMD,0x6180B21C); 
+    MAX2870_write_register(0x6180B21C); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG3_CMD,0x0000000B);  
+    MAX2870_write_register(0x0000000B);  
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG2_CMD,0x00004042); 
+    MAX2870_write_register(0x00004042); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG1_CMD,0x2000FFF9);  
+    MAX2870_write_register(0x2000FFF9);  
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG0_CMD,0x007D0000); 
+    MAX2870_write_register(0x007D0000); 
     
     vTaskDelay(20/portTICK_PERIOD_MS);
 
-    MAX2870_write_register(REG5_CMD,0x4000005); 
+    MAX2870_write_register(0x4000005); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG4_CMD,0x6180B21C); 
+    MAX2870_write_register(0x6180B21C); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG3_CMD,0x0000000B); 
+    MAX2870_write_register(0x0000000B); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG2_CMD,0x04004042); 
+    MAX2870_write_register(0x04004042); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG1_CMD,0x2000FFF9); 
+    MAX2870_write_register(0x2000FFF9); 
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(REG0_CMD,0x007D0000); 
+    MAX2870_write_register(0x007D0000); 
 }
 
 
 void sweep_MAX2870(const uint16_t* sweep, uint8_t sz, uint16_t delay){
     uint8_t out_div = 0;
 
-    for (int i = 0, i < sz, i++){
+    for (int i = 0; i < sz; i++){
         //OUTPUT Divider Selection
         if(sweep[i]<469)            out_div = 7;
         else if (sweep[i]<938)      out_div = 6;
@@ -82,8 +82,8 @@ void sweep_MAX2870(const uint16_t* sweep, uint8_t sz, uint16_t delay){
         else if (sweep[i]<30000)    out_div = 1;
         else                        out_div = 0;
 
-        MAX2870_write_register(REG4_CMD, (0x61F801FC & 0xFF8FFFFF) | (uint32_t)out_div << 20); //Output divider 
-        MAX2870_write_register(REG0_CMD, (0x804E8000 & 0X80007FFF) | (uint32_t)sweep[i] << 15); //N-Divider
+        MAX2870_write_register( (0x61F801FC & 0xFF8FFFFF) | (uint32_t)out_div << 20); //Output divider 
+        MAX2870_write_register( (0x804E8000 & 0X80007FFF) | (uint32_t)sweep[i] << 15); //N-Divider
         vTaskDelay(delay/portTICK_PERIOD_MS);
     }
 }
