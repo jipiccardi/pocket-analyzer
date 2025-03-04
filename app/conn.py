@@ -1,14 +1,21 @@
 import serial
 import logging
 
+import serial.tools
+import serial.tools.list_ports
+
+#Definicion ascii de los caracteres de inicio y fin de texto
+STX = "\u0002"
+ETX = "\u0003"    
+
 class SerialClient:
     def __init__(self):
         self.conn = None
         self.is_connected = False
         self.port = None
         self.baud_rate = None
-
-    def connect(self, port: str, baud_rate: int = 115200, timeout: int = 1):
+    #baud original = 115200
+    def connect(self, port: str, baud_rate: int = 9600, timeout: int = 1):
         if self.is_connected:
             logging.warning('Device already connected')
             return
@@ -36,8 +43,10 @@ class SerialClient:
 
     def send_cmd(self, cmd: str):
         try:
-            logging.debug(f'STX{cmd}ETX'.encode())
-            self.conn.write(f'STX{cmd}ETX'.encode())
+            logging.debug(f'{STX}{cmd}{ETX}'.encode())
+            aux = len(f'{STX}{cmd}{ETX}')
+            logging.debug(f'Longitud del string enviado = {aux}')
+            self.conn.write(f'{STX}{cmd}{ETX}'.encode())
         except Exception as e:
             logging.error(f'Error trying to send {cmd}: {e}')
             self.conn.flush()
