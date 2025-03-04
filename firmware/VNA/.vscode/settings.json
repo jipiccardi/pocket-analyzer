@@ -1,11 +1,11 @@
 {
     "C_Cpp.intelliSenseEngine": "default",
-    "idf.espIdfPathWin": "C:/Espressif/frameworks/esp-idf-v5.3.1/",
-    "idf.pythonInstallPath": "C:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.espIdfPathWin": "C:\\Users\\santi\\esp\\v5.3.1\\esp-idf",
+    "idf.pythonInstallPath": "c:\\Users\\santi\\tools\\idf-python\\3.11.2\\python.exe",
     "idf.openOcdConfigs": [
         "board/esp32c6-builtin.cfg"
     ],
-    "idf.toolsPathWin": "C:\\Espressif",
+    "idf.toolsPathWin": "c:\\Users\\santi",
     "idf.customExtraVars": {
         "OPENOCD_SCRIPTS": "c:\\Users\\santi\\tools\\openocd-esp32\\v0.12.0-esp32-20240318/openocd-esp32/share/openocd/scripts",
         "IDF_CCACHE_ENABLE": "1",
@@ -15,7 +15,15 @@
     "files.associations": {
         "spi.h": "c",
         "esp_timer.h": "c",
+
         "max2870.h": "c",
         "pr_max2870.h": "c"
     }
+
+        "adc.h": "c",
+        "adc_oneshot.h": "c",
+    },
+    "idf.portWin": "COM3",
+    "idf.flashType": "JTAG"
+
 }

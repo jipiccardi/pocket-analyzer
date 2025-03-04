@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
 
         # Top Layout
         connect_button = QPushButton("Connect")
-        connect_button.clicked.connect(lambda: serial_client.connect('COM1'))
+        connect_button.clicked.connect(lambda: serial_client.connect('COM5'))
         top_layout.addWidget(connect_button)
 
         disconnect_button = QPushButton("Disconnect")
