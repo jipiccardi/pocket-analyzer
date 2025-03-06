@@ -53,6 +53,10 @@ void app_main(void)
     // Configure a temporary buffer for the incoming data
     //uint8_t *data = (uint8_t *) malloc(BUFF_SIZE);
      //probamos el adc
+
+     //Prueba del Generador a 23Mhz
+    configure_MAX2870_20MHz(void);
+    
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
         //
