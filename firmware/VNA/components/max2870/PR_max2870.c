@@ -129,9 +129,9 @@ void configure_MAX2870_20MHz(void){
     MAX2870_write_register(0x804E8000); // N = 157, F = 0
 
 
-    XRA1403_set_gpio(LD_PIN, LOW);
-    XRA1403_set_gpio(CE_PIN, HIGH); // Habilitar el Charge Pump
-    XRA1403_set_gpio(RF_EN_PIN, HIGH);
+    XRA1403_set_gpio_level(LD_PIN, LOW);
+    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
+    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
     vTaskDelay(10000/portTICK_PERIOD_MS);
 
     // Registro 0: Configuración del valor de N y F

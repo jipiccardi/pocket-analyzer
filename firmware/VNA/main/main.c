@@ -5,6 +5,7 @@
 #include "gpio.h"
 #include "adc.h"
 #include "serial.h"
+#include "PR_max2870.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #define portTICK_PERIOD_MS              ((TickType_t) (1000 / configTICK_RATE_HZ))
@@ -55,7 +56,7 @@ void app_main(void)
      //probamos el adc
 
      //Prueba del Generador a 23Mhz
-    configure_MAX2870_20MHz(void);
+    configure_MAX2870_20MHz();
     
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);

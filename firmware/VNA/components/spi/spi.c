@@ -110,17 +110,3 @@ uint8_t XRA1403_read_register(uint8_t reg){
     return out_data;
 }
 
-void MAX2870_write_register(uint8_t reg, uint32_t data){
-    spi_transaction_t t;
-    uint32_t my_buff[1] = {0};
-
-    memset(&t, 0, sizeof(t));
-
-    t.cmd = 0;
-    t.addr= 0;
-    t.length = 32;
-    my_buff[0] = data<<3|reg;
-    t.tx_buffer=my_buff;
-    spi_device_transmit(MAX2870_handle, &t);
-    printf("\n Write Register Ok");
-}
