@@ -4,7 +4,8 @@ from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxL
 from globals import serial_client
 from conn import get_available_ports
 from debug_window import show_debug_window
-
+from connect_window import show_connect_window
+from calibrate_window import show_calibrate_window
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -27,12 +28,17 @@ class MainWindow(QMainWindow):
         top_layout.addWidget(disconnect_button)
 
         show_ports_button = QPushButton("Show ports")
-        show_ports_button.clicked.connect(get_available_ports)
+        #show_ports_button.clicked.connect(get_available_ports)
+        show_ports_button.clicked.connect(show_connect_window)
         top_layout.addWidget(show_ports_button)
 
         manage_gpio_button = QPushButton("Debug")
         manage_gpio_button.clicked.connect(show_debug_window)
         top_layout.addWidget(manage_gpio_button)
+
+        calibrate_button = QPushButton("Calibrate")
+        calibrate_button.clicked.connect(show_calibrate_window)
+        top_layout.addWidget(calibrate_button)
 
         # for i in range(0, 4):
         # TODO iterate array of already configured buttons
