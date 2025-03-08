@@ -1,3 +1,5 @@
+import time
+
 import serial
 import logging
 
@@ -49,11 +51,15 @@ class SerialClient:
             aux = len(f'{STX}{cmd}{ETX}')
             logging.debug(f'Longitud del string enviado = {aux}')
             self.conn.write(f'{STX}{cmd}{ETX}'.encode())
+            self.conn.flush() # TODO validate
         except Exception as e:
             logging.error(f'Error trying to send {cmd}: {e}')
             self.conn.flush()
 
         # TODO handle response
+
+    def receive_value(self):
+        return self.conn.read(26)
 
 
 def get_available_ports():

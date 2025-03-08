@@ -1,10 +1,11 @@
 import time
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QProgressDialog
 from PyQt5.QtCore import Qt, QTimer
+from conn import STX,ETX
 
 from debug_window import DebugWindow
 from globals import serial_client
-
+from models import MeasuredValue
 
 def show_calibrate_window():
     window = CalibrateWindow()
@@ -55,9 +56,18 @@ class CalibrateWindow(QDialog):
         progress_dialog.setAutoReset(True)
         progress_dialog.show()
 
-        for i in range(101):
-            print('hola')
-            time.sleep(0.05)  # Simulate a task taking time
-            progress_dialog.setValue(i)
-            if progress_dialog.wasCanceled():
-                break
+        data = []
+        eot = False
+        while not eot:
+            time.sleep(0.005)
+            v = serial_client.receive_value()
+
+            #if len(v) > 0 and v[0] == STX and v[-1] == ETX:
+            if v.startswith(b'\x02') and v.endswith(b'\x03'):
+                print(v)
+                data.append(MeasuredValue(v[4:25]))
+            if 'Termine'.encode('UTF-8') in v:
+                eot = True
+
+        for d in data:
+            d.print_value()
