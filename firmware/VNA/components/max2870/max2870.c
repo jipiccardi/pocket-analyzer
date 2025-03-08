@@ -36,7 +36,7 @@ uint32_t MAX2870_get_register(uint8_t reg){
 }
 
 
-static void MAX2870_init(void){
+void MAX2870_init(void){
 
     //Default values two times as datasheet indicates
     

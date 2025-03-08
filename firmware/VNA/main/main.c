@@ -56,8 +56,17 @@ void app_main(void)
      //probamos el adc
 
      //Prueba del Generador a 23Mhz
-    configure_MAX2870_20MHz();
+    //MAX2870_init();
+    //configure_MAX2870_20MHz();
+    init_FRQ_gen();
+    XRA1403_set_gpio_level(LD_PIN, LOW);
+    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
+    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+    en_output(RF_B,HIGH);
+    vTaskDelay(10000/portTICK_PERIOD_MS);
     
+    configure_MAX2870_20MHz();
+
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
         //

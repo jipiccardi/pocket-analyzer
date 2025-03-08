@@ -13,9 +13,9 @@
 #define RF_HIGH     1
 #define RF_LOW      0
 
-#define LD_PIN      7
-#define CE_PIN      8
-#define RF_EN_PIN   9
+#define LD_PIN      0
+#define CE_PIN      1
+#define RF_EN_PIN   2
 
 void set_FRQ(uint32_t freq);
 
