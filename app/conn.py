@@ -1,3 +1,5 @@
+import time
+
 import serial
 import logging
 
@@ -15,8 +17,9 @@ class SerialClient:
         self.is_connected = False
         self.port = None
         self.baud_rate = None
-    #baud original = 115200
+
     def connect(self, port: str, baud_rate: int = 9600, timeout: int = 1):
+        logging.info("Connecting to port: " + port)
         if self.is_connected:
             logging.warning('Device already connected')
             return
@@ -48,11 +51,15 @@ class SerialClient:
             aux = len(f'{STX}{cmd}{ETX}')
             logging.debug(f'Longitud del string enviado = {aux}')
             self.conn.write(f'{STX}{cmd}{ETX}'.encode())
+            self.conn.flush() # TODO validate
         except Exception as e:
             logging.error(f'Error trying to send {cmd}: {e}')
             self.conn.flush()
 
         # TODO handle response
+
+    def receive_value(self):
+        return self.conn.read(26)
 
 
 def get_available_ports():
