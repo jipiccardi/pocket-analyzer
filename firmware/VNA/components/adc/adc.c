@@ -107,12 +107,12 @@ int adc_read_channel_cali(adc_channel_t channel, bool do_calibration_chan){
         cali_handle = adc_cali_chan1_handle;
 
     //Leo el valor en cuentas
-    ESP_ERROR_CHECK(adc_oneshot_read(adc_handle, channel, &adc_raw[0][0]));
-    ESP_LOGI(TAG, "ADC%d Channel[%d] Raw Data: %d", ADC_UNIT_1 + 1, channel, adc_raw[0][0]);
+    //ESP_ERROR_CHECK(adc_oneshot_read(adc_handle, channel, &adc_raw[0][0]));
+    //ESP_LOGI(TAG, "ADC%d Channel[%d] Raw Data: %d", ADC_UNIT_1 + 1, channel, adc_raw[0][0]);
         if (do_calibration_chan) {
             //Leo el valor en voltaje con la calibracion
-            ESP_ERROR_CHECK(adc_cali_raw_to_voltage(cali_handle, adc_raw[0][0], &voltage[0][0]));
-            ESP_LOGI(TAG, "ADC%d Channel[%d] Cali Voltage: %d mV", ADC_UNIT_1 + 1, channel, voltage[0][0]);
+            //ESP_ERROR_CHECK(adc_cali_raw_to_voltage(cali_handle, adc_raw[0][0], &voltage[0][0]));
+            //ESP_LOGI(TAG, "ADC%d Channel[%d] Cali Voltage: %d mV", ADC_UNIT_1 + 1, channel, voltage[0][0]);
 
             return voltage[0][0]; //En caso de estar calibrado retorna el valor correspondiente
         }

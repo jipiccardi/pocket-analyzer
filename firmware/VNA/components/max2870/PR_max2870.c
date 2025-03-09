@@ -98,11 +98,11 @@ void init_FRQ_gen(void){
     *   RFA y RFB dissable
     */
     MAX2870_write_register(0x01400005); // REG5
-    MAX2870_write_register(0x60F1D0F4); // REG4
+    MAX2870_write_register(0x61F801FC); // REG4
     MAX2870_write_register(0x0000000B); // REG3
-    MAX2870_write_register(0x10034FD2); // REG2
+    MAX2870_write_register(0x10004FD2); // REG2
     MAX2870_write_register(0x80008011); // REG1
-    MAX2870_write_register(0x83FE8000); // REG0 -> 23.5MHZ
+    MAX2870_write_register(0x804E8000); // REG0 -> 23.5MHZ
 }
 
 void configure_MAX2870_20MHz(void){
