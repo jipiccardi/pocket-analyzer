@@ -29,6 +29,20 @@ void set_FRQ(uint32_t freq){
     MAX2870_write_register((reg0 & 0X80007FFF) | (uint32_t) n_div << 15); //N-Divider
 }
 
+uint32_t get_FRQ(void){
+    uint16_t r_div, n_div, diva, f_OUT, f_VCO, f_PFD;
+
+    r_div = get_Rdiv();
+    n_div = (uint16_t) ((MAX2870_get_register(REG0_CMD) & 0x7FFF8000) >> 15); //N_Divider
+    diva = (uint16_t) ((MAX2870_get_register(REG4_CMD) & 0x700000) >> 20); //DIVA_Divider
+
+    f_PFD = CRYSTAL_FRQ / r_div;
+    f_VCO = n_div * f_PFD; 
+    f_OUT = f_VCO / diva;    
+
+    return f_OUT;
+}
+
 void set_PWR(uint8_t pwr, uint8_t RF_out){
 
 }
@@ -104,6 +118,8 @@ void init_FRQ_gen(void){
     MAX2870_write_register(0x80008011); // REG1
     MAX2870_write_register(0x804E8000); // REG0 -> 23.5MHZ
 }
+
+
 
 void configure_MAX2870_20MHz(void){
     // Configuración básica del MAX2870 para generar 23 MHz con una referencia de 19.2 MHz
