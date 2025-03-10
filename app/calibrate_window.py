@@ -65,7 +65,7 @@ class CalibrateWindow(QDialog):
 
     def calib_button_clicked(self, cmd: str):
         self.progress_dialog = ProgressDialog(self)
-        task = CalibThread()
+        task = CalibThread(cmd)
         self.progress_dialog.set_worker_thread(task)
         task.finished_signal.connect(self.task_completed)
         task.start()
@@ -113,20 +113,26 @@ class ProgressDialog(QDialog):
 class CalibThread(QThread):
     finished_signal = pyqtSignal(list)
 
+    def __init__(self, cmd: str, parent=None):
+        super(QThread, self).__init__()
+        self.cmd = cmd
+
     def run(self):
+        serial_client.send_cmd(self.cmd)
+
         data = []
-        # eot = False
-        # while not eot:
-        for _ in range(1000):
+        eot = False
+        while not eot:
+        #for _ in range(1000):
             if self.isInterruptionRequested():
                 return
             time.sleep(0.00005)
-            #v = serial_client.receive_value()
-            v = b'\x02fffff2222333344445555\x03'
+            v = serial_client.receive_value()
+            #v = b'\x02fffff2222333344445555\x03'
             if v.startswith(b'\x02') and v.endswith(b'\x03'):
                 print(v)
                 data.append(MeasuredValue(v[1:25]))
-            #if 'Termine'.encode('UTF-8') in v:
-            #    eot = True
+            if 'Termine'.encode('UTF-8') in v:
+                eot = True
 
         self.finished_signal.emit(data)
