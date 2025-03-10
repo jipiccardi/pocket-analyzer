@@ -5,11 +5,6 @@ from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QCheckBox
 from globals import serial_client
 import logging
 
-def show_debug_window():
-    window = DebugWindow()
-    window.exec_()
-
-
 def send_frequency(value: float):
     
     aux = str(f'{value}')
