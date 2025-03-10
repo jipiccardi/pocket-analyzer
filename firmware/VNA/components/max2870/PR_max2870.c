@@ -29,7 +29,7 @@ void set_FRQ(uint32_t freq){
     MAX2870_write_register((reg0 & 0X80007FFF) | (uint32_t) n_div << 15); //N-Divider
 }
 
-uint32_t get_FRQ(void){
+uint16_t get_FRQ(void){
     uint16_t r_div, n_div, diva, f_OUT, f_VCO, f_PFD;
 
     r_div = get_Rdiv();

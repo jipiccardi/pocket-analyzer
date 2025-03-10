@@ -36,10 +36,11 @@ bool cali_ch1;
 static void state_machine_process_data(void){
     uint8_t gpio_pin;
     uint8_t state;
-    int mag_value=0;
-    char mag_value_str[5];
-    char test_str[27] = "\x02VAL00200aaaabbbbcccc";
+    int mag_value_S11=0, pha_value_S11, frq_value;
+    char mag_value_S11_str[5], pha_value_S11_str[5], frq_value_str[6];
+    char test_str[27];
     char end_str[] = "Termine\n";
+
 
     if (flag_main == 1){
         if (data_uart[0] == 'G' && data_uart[1] == 'I' && data_uart[2] == 'O'){
@@ -64,11 +65,22 @@ static void state_machine_process_data(void){
             uart_flush(UART_NUM);
             
             for(int i=0;i<1000;i++){
-                mag_value = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-                strcpy(test_str, "\x02VAL00200aaaabbbbcccc");
-                sprintf(mag_value_str, "%04d", mag_value);
-                strcat(test_str,mag_value_str);
+                VNA_path(S11_PATH);
+                mag_value_S11 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
+                pha_value_S11 = adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
+                frq_value = get_FRQ();
+
+                strcpy(test_str, "\x02VAL");
+                sprintf(mag_value_S11_str, "%04d", mag_value_S11);
+                sprintf(pha_value_S11_str, "%04d", pha_value_S11);
+                sprintf(frq_value_str, "%05d", frq_value);
+
+                strcat(test_str,frq_value_str);
+                strcat(test_str,mag_value_S11_str);
+                strcat(test_str,pha_value_S11_str);
+                strcat(test_str,"ccccdddd");
                 strcat(test_str,"\x03");
+
                 uart_write_bytes(UART_NUM, test_str, strlen(test_str));
                 //vTaskDelay(50/portTICK_PERIOD_MS);
             }

@@ -19,7 +19,7 @@
 
 void set_FRQ(uint32_t freq);
 
-uint32_t get_FRQ(void);
+uint16_t get_FRQ(void);
 
 void set_PWR(uint8_t pwr, uint8_t RF_out);
 
