@@ -1,0 +1,26 @@
+MEDICION A 1 PUERTO
+    OPEN
+    MATCH
+    SHORT
+RESULTADO: S11  S22
+    S11 o S22 tienen solo dos parametros (mag y phase)
+    Como es el mismo procedimiento se puede manejar con un comando.
+
+MEDICION A 2 PUERTOS
+    THRU
+RESULTADO: S11, S21, S22, S21
+    Cada parametro S tiene mag y phase, por lo tanto son 8 valores.
+    COMANDO para medir a dos puertos tanto en thru como en medicion normal.
+
+COMANDOS:
+
+SM1 -> INICIA MEDICION A 1 PUERTO EN PUERTO1
+SM2 -> INICIA MEDICION A 1 PUERTO EN PUERTO2
+SM3 -> INCIA MEDICION A 2 PUERTOS.
+
+SETTINGS:
+F inicial
+F final
+puntos
+
+Al iniciar cualquier medicion enviar los 3 comandos de settings que configuran Fh Fl y puntos

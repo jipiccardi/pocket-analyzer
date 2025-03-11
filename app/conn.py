@@ -18,7 +18,7 @@ class SerialClient:
         self.port = None
         self.baud_rate = None
 
-    def connect(self, port: str, baud_rate: int = 9600, timeout: int = 1):
+    def connect(self, port: str, baud_rate: int = 921600, timeout: int = 1):
         logging.info("Connecting to port: " + port)
         if self.is_connected:
             logging.warning('Device already connected')

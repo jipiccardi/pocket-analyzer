@@ -1,11 +1,8 @@
-import logging
-import time
-from itertools import count
-from multiprocessing.pool import worker
 
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QGridLayout, QPushButton, QProgressDialog, QProgressBar, QMessageBox
+import time
+
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QGridLayout, QPushButton, QProgressBar, QMessageBox
 from PyQt5.QtCore import Qt,QThread,pyqtSignal
-from PyQt5.sip import array
 
 from globals import serial_client
 from typing import List
@@ -131,7 +128,7 @@ class CalibThread(QThread):
             #v = b'\x02fffff2222333344445555\x03'
             if v.startswith(b'\x02') and v.endswith(b'\x03'):
                 print(v)
-                data.append(MeasuredValue(v[1:25]))
+                data.append(MeasuredValue(v[4:25]))
             if 'Termine'.encode('UTF-8') in v:
                 eot = True
 
