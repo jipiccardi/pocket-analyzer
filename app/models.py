@@ -34,7 +34,6 @@ class Settings:
     def get_values(self):
         return self.settings
 
-
 class MeasuredValue:
     def __init__(self, cmd: str):
         if isinstance(cmd, bytes):
@@ -48,6 +47,12 @@ class MeasuredValue:
 
     def print_value(self):
         print(f"freq: {self.freq} mag_1: {self.mag_1} ph1: {self.ph1} mag_2: {self.mag_2} ph2: {self.ph2}")
+
+    def values_from_voltage(self):
+        self.mag_1 = ((-1/30)*float(self.mag_1)) + 30
+        #self.mag_2 = ((-1/30)*float(self.mag_2)) + 30
+        self.ph1 = (-1/10)*float(self.ph1) + 180
+        #self.ph2 = (-1 /10) * float(self.ph2) + 180
 
 
 def save_measured_values_to_csv(name: str, values: List["MeasuredValue"]):
