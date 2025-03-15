@@ -47,7 +47,7 @@ class CalibrateWindow(QDialog):
         short_2_btn = QPushButton("Short 2")
         short_2_btn.clicked.connect(lambda: self.calib_button_clicked('SH2','SM1000000'))
 
-        through_btn = QPushButton("Through")
+        through_btn = QPushButton("Thru")
         through_btn.clicked.connect(lambda: self.calib_button_clicked('THR','SM1000000'))
 
         buttons_layout.addWidget(match_1_btn, 0, 0)
