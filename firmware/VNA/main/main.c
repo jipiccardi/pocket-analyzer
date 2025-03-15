@@ -30,6 +30,8 @@ void VNA_path(uint8_t path);
 #define S22_PATH    2
 #define S12_PATH    3
 
+#define LINEAR      0
+
 #define END         0
 #define ONEPORT     1
 #define TWOPORT     2
@@ -96,6 +98,7 @@ void get_measure(uint16_t* data){
     *(data) = mag_value;
     *(data+1) = pha_value;
 }
+/*
 void send_data (uint8_t mode, uint16_t* data){
 
     strcpy(, "\x02VAL");
@@ -109,6 +112,7 @@ void send_data (uint8_t mode, uint16_t* data){
     strcat(test_str,);
     strcat(test_str,"\x03");
 }
+*/
 void start_2p_meas(uint16_t f_low, uint16_t f_high, uint8_t mode, uint16_t npoints){
     uint16_t f_out = 0;
     uint16_t data[9];
@@ -124,7 +128,7 @@ void start_2p_meas(uint16_t f_low, uint16_t f_high, uint8_t mode, uint16_t npoin
         set_VNA_path(S12_PATH);
         get_measure(&data[6]);
         data[9] = get_FRQ;
-        send_data(TWOPORT, data);
+        //send_data(TWOPORT, data);
     }
     send_data (END, NULL);
 }
