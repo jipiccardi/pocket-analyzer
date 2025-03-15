@@ -3,6 +3,7 @@ from globals import serial_client
 from debug_window import DebugWindow
 from connect_window import ConnectWindow
 from calibrate_window import CalibrateWindow
+from settings_window import SettingsWindow
 
 
 class MainWindow(QMainWindow):
@@ -25,6 +26,10 @@ class MainWindow(QMainWindow):
         self.disconnect_button.clicked.connect(self.disconnect_button_clicked)
         top_layout.addWidget(self.disconnect_button)
 
+        self.settings_button = QPushButton("Settings")
+        self.settings_button.clicked.connect(self.show_settings_window)
+        top_layout.addWidget(self.settings_button)
+
         self.debug_button = QPushButton("Debug")
         self.debug_button.clicked.connect(self.show_debug_window)
         top_layout.addWidget(self.debug_button)
@@ -38,6 +43,7 @@ class MainWindow(QMainWindow):
         # Mid Layout
         self.file_list_widget = QListWidget()
         plot = QTextEdit("Plot View")
+        plot.setEnabled(False)
         mid_layout.addWidget(self.file_list_widget, 1)
         mid_layout.addWidget(plot, 8)
 
@@ -64,6 +70,10 @@ class MainWindow(QMainWindow):
     def show_calibrate_window(self):
         calib_window = CalibrateWindow(self)
         calib_window.exec_()
+
+    def show_settings_window(self):
+        settings_window = SettingsWindow(self)
+        settings_window.exec_()
 
     def set_buttons_initial_status(self):
         self.connect_button.setEnabled(True)
