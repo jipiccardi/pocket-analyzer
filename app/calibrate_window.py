@@ -162,17 +162,18 @@ class CalibThread(QThread):
         data = []
         eot = False
         while not eot:
-        #for _ in range(1000):
             if self.isInterruptionRequested():
                 return
             time.sleep(0.00005)
-            v = serial_client.receive_value()
-            #v = b'\x02fffff2222333344445555\x03'
+            if self.cmd == 'SM1' or self.cmd == 'SM2':
+                v = serial_client.receive_value(18)
+            if self.cmd == 'SM3':
+                v = serial_client.receive_value(42)
             print(v)
             if v.startswith(b'\x02') and v.endswith(b'\x03'):
                 print(v)
                 data.append(MeasuredValue(v[4:25]))
-            if 'Termine'.encode('UTF-8') in v:
+            if 'END'.encode('UTF-8') in v:
                 eot = True
 
         self.finished_signal.emit(self.calib_mode, data)
