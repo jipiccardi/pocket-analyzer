@@ -16,7 +16,7 @@ class SettingsWindow(QDialog):
 
 
         aux_layout = QHBoxLayout()
-        f_start_label = QLabel('Frequency Start:')
+        f_start_label = QLabel('Frequency Start [MHz]')
         self.f_start_text = QLineEdit()
         self.f_start_text.setValidator(QIntValidator(bottom=0, top=100000))
         self.f_start_text.setText(settings.get_values()['f_init'])
@@ -26,7 +26,7 @@ class SettingsWindow(QDialog):
         input_layout.addLayout(aux_layout)
 
         aux_layout = QHBoxLayout()
-        f_end_label = QLabel('Frequency End:')
+        f_end_label = QLabel('Frequency End [MHz]')
         self.f_end_text = QLineEdit()
         self.f_end_text.setValidator(QIntValidator(bottom=0, top=100000))
         self.f_end_text.setText(settings.get_values()['f_end'])
@@ -36,7 +36,7 @@ class SettingsWindow(QDialog):
         input_layout.addLayout(aux_layout)
 
         aux_layout = QHBoxLayout()
-        n_steps_label = QLabel('Number of steps:')
+        n_steps_label = QLabel('Number of steps')
         self.n_steps_text = QLineEdit()
         self.n_steps_text.setValidator(QIntValidator(bottom=0, top=100000))
         self.n_steps_text.setText(settings.get_values()['n_step'])

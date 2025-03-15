@@ -14,9 +14,9 @@ class Settings:
                 self.settings = json.load(f)
         except FileNotFoundError:
             self.settings = {
-                'f_init': '',
-                'f_end': '',
-                'n_step': ''
+                'f_init': '23.5',
+                'f_end': '3000',
+                'n_step': '100'
             }
 
         with open(filename, "w") as json_file:
