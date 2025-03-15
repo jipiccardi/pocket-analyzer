@@ -4,7 +4,7 @@ import time
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QGridLayout, QPushButton, QProgressBar, QMessageBox, QHBoxLayout
 from PyQt5.QtCore import Qt,QThread,pyqtSignal
 
-from globals import serial_client
+from globals import serial_client, settings
 from typing import List
 from models import MeasuredValue,save_measured_values_to_csv
 
@@ -47,7 +47,7 @@ class CalibrateWindow(QDialog):
         short_2_btn = QPushButton("Short 2")
         short_2_btn.clicked.connect(lambda: self.calib_button_clicked('SH2','SM1000000'))
 
-        through_btn = QPushButton("Through")
+        through_btn = QPushButton("Thru")
         through_btn.clicked.connect(lambda: self.calib_button_clicked('THR','SM1000000'))
 
         buttons_layout.addWidget(match_1_btn, 0, 0)
@@ -158,21 +158,19 @@ class CalibThread(QThread):
 
     def run(self):
         serial_client.send_cmd(self.cmd)
-
         data = []
         eot = False
         while not eot:
             if self.isInterruptionRequested():
                 return
             time.sleep(0.00005)
-            if self.cmd == 'SM1' or self.cmd == 'SM2':
+
+            if self.cmd == 'SM1000000' or self.cmd == 'SM2000000':
                 v = serial_client.receive_value(18)
-            if self.cmd == 'SM3':
-                v = serial_client.receive_value(42)
-            print(v)
-            if v.startswith(b'\x02') and v.endswith(b'\x03'):
-                print(v)
-                data.append(MeasuredValue(v[4:25]))
+                if v.startswith(b'\x02') and v.endswith(b'\x03'):
+                    data.append(MeasuredValue(v[4:17]))
+            #if self.cmd == 'SM3000000':
+            #    v = serial_client.receive_value(42)
             if 'END'.encode('UTF-8') in v:
                 eot = True
 
