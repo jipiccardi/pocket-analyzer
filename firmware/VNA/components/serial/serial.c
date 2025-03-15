@@ -3,7 +3,7 @@
 void uart_init(void)
 {
     uart_config_t uart_config = {
-        .baud_rate = 9600,
+        .baud_rate = 921600,
         .data_bits = UART_DATA_8_BITS,
         .parity = UART_PARITY_DISABLE,
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,

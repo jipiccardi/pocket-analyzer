@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include "stdint.h"
 #include "esp_timer.h"
 #include "esp_mac.h"
@@ -25,6 +26,110 @@ void VNA_path(uint8_t path);
 #define SWT_C_2     8
 
 #define S11_PATH    0
+#define S21_PATH    1
+#define S22_PATH    2
+#define S12_PATH    3
+
+#define END         0
+#define ONEPORT     1
+#define TWOPORT     2
+
+
+void set_VNA_path(uint8_t path){
+    switch (path){
+        case S11_PATH:
+            XRA1403_set_gpio_level(SWT_A_2, LOW);
+            XRA1403_set_gpio_level(SWT_A_1, HIGH);
+            XRA1403_set_gpio_level(SWT_B_2, LOW);
+            XRA1403_set_gpio_level(SWT_B_1, HIGH);
+            break;
+
+        case S21_PATH:
+            XRA1403_set_gpio_level(SWT_A_2, LOW);
+            XRA1403_set_gpio_level(SWT_A_1, HIGH);
+            XRA1403_set_gpio_level(SWT_B_1, LOW);
+            XRA1403_set_gpio_level(SWT_B_2, HIGH);
+            break;
+        
+        case S22_PATH:
+            XRA1403_set_gpio_level(SWT_A_1, LOW);
+            XRA1403_set_gpio_level(SWT_A_2, HIGH);
+            XRA1403_set_gpio_level(SWT_B_1, LOW);
+            XRA1403_set_gpio_level(SWT_B_2, HIGH);
+            break;
+
+        case S12_PATH:
+            XRA1403_set_gpio_level(SWT_A_1, LOW);  
+            XRA1403_set_gpio_level(SWT_A_2, HIGH);
+            XRA1403_set_gpio_level(SWT_B_2, LOW);
+            XRA1403_set_gpio_level(SWT_B_1, HIGH);
+            break;
+    }
+}
+
+uint16_t get_sweep_step(uint16_t f_low, uint16_t f_high, uint8_t mode, uint16_t npoints, uint16_t nstep){
+    uint16_t f_range = 0, f_step, f_out;
+    switch (mode){
+        case LINEAR:
+            f_range = f_low - f_high;
+            f_step = f_range / (npoints - 1);
+            f_out = f_low + f_step * npoints;
+            break;
+        //case OCTAVE:
+    }
+return f_out;
+}
+
+void get_measure(uint16_t* data){
+    uint16_t mag_value = 0, pha_value = 0;
+
+    //Muestreo durante 10 mS que es el ciclo de ruido que mido en el osciloscopio
+    for (int i = 0; i < 128; i++){
+        mag_value += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
+        usleep(39);
+        pha_value += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
+        usleep(39);
+    }
+    mag_value >>=  7;
+    pha_value >>=  7;
+
+    *(data) = mag_value;
+    *(data+1) = pha_value;
+}
+void send_data (uint8_t mode, uint16_t* data){
+
+    strcpy(, "\x02VAL");
+    sprintf(, "%04d", (uint16_t) );
+    sprintf(, "%04d", (uint16_t) );
+    sprintf(, "%05d", frq_value);
+
+    strcat(test_str,frq_value_str);
+    strcat(test_str,mag_value_S11_str);
+    strcat(test_str,pha_value_S11_str);
+    strcat(test_str,);
+    strcat(test_str,"\x03");
+}
+void start_2p_meas(uint16_t f_low, uint16_t f_high, uint8_t mode, uint16_t npoints){
+    uint16_t f_out = 0;
+    uint16_t data[9];
+    for (int i = 1; i < npoints; i++){
+        f_out = get_sweep_step(f_low, f_high, mode, npoints, i);   
+        set_FRQ(f_out);
+        set_VNA_path(S11_PATH);
+        get_measure(&data[0]);
+        set_VNA_path(S21_PATH);
+        get_measure(&data[2]);
+        set_VNA_path(S22_PATH);
+        get_measure(&data[4]);
+        set_VNA_path(S12_PATH);
+        get_measure(&data[6]);
+        data[9] = get_FRQ;
+        send_data(TWOPORT, data);
+    }
+    send_data (END, NULL);
+}
+
+
 /*FIN*/
 
 static const char *TAG_MAIN = "MAIN";
@@ -37,16 +142,27 @@ static void state_machine_process_data(void){
     uint8_t gpio_pin;
     uint8_t state;
     int mag_value_S11=0, pha_value_S11, frq_value;
-    char mag_value_S11_str[5], pha_value_S11_str[5], frq_value_str[6];
+    char mag_value_S11_str[8], pha_value_S11_str[8], frq_value_str[6];
     char test_str[27];
     char end_str[] = "Termine\n";
+    uint32_t frq = 235;
 
 
     if (flag_main == 1){
         if (data_uart[0] == 'G' && data_uart[1] == 'I' && data_uart[2] == 'O'){
             gpio_pin = data_uart[8] - 48;
             state = data_uart[7] - 48;
-            XRA1403_set_gpio_level(gpio_pin,state);
+            if (gpio_pin != 9)
+                XRA1403_set_gpio_level(gpio_pin,state);
+                
+            else {
+                XRA1403_set_gpio_level(CE_PIN, LOW); // Habilitar el Charge Pump
+                XRA1403_set_gpio_level(RF_EN_PIN, LOW);
+                MAX2870_init();
+                configure_MAX2870_20MHz();   
+                XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
+                XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+            }
             ESP_LOGI(TAG_MAIN, "Activando GPIO %d en estado %d",gpio_pin,state);
             flag_main = 0;
         }
@@ -63,16 +179,27 @@ static void state_machine_process_data(void){
             int n = 1;
             // Write data to UART.
             uart_flush(UART_NUM);
-            
-            for(int i=0;i<1000;i++){
-                VNA_path(S11_PATH);
-                mag_value_S11 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-                pha_value_S11 = adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
+            VNA_path(S11_PATH);
+            for(int k=0;k<100;k++){
+                configure_MAX2870_20MHz();   
+                usleep(2000);
+                set_FRQ(frq);
+                frq += 300;
+                
                 frq_value = get_FRQ();
-
+                mag_value_S11 = 0;
+                pha_value_S11 = 0;
+                for (int i=0; i<128; i++){
+                    mag_value_S11 += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
+                    usleep(21);
+                    pha_value_S11 += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
+                    usleep(21);
+                }
+                mag_value_S11 >>=  8;
+                pha_value_S11 >>=  8;
                 strcpy(test_str, "\x02VAL");
-                sprintf(mag_value_S11_str, "%04d", mag_value_S11);
-                sprintf(pha_value_S11_str, "%04d", pha_value_S11);
+                sprintf(mag_value_S11_str, "%04d", (uint16_t) mag_value_S11);
+                sprintf(pha_value_S11_str, "%04d", (uint16_t) pha_value_S11);
                 sprintf(frq_value_str, "%05d", frq_value);
 
                 strcat(test_str,frq_value_str);
@@ -80,10 +207,9 @@ static void state_machine_process_data(void){
                 strcat(test_str,pha_value_S11_str);
                 strcat(test_str,"ccccdddd");
                 strcat(test_str,"\x03");
-
+            
                 uart_write_bytes(UART_NUM, test_str, strlen(test_str));
-                //vTaskDelay(50/portTICK_PERIOD_MS);
-            }
+        }
             uart_write_bytes(UART_NUM, end_str, strlen(end_str));
             //uart_flush(UART_NUM);
             //uart_write_bytes(UART_NUM, test_str, strlen(test_str));
@@ -98,18 +224,7 @@ static void state_machine_process_data(void){
     }
 }
 
-void VNA_path(uint8_t path){
-    switch (path){
-        case S11_PATH:
-            XRA1403_set_gpio_level(SWT_A_2, LOW);
-            XRA1403_set_gpio_level(SWT_A_1, HIGH);
-            XRA1403_set_gpio_level(SWT_B_2, LOW);
-            XRA1403_set_gpio_level(SWT_B_1, HIGH);
-            XRA1403_set_gpio_level(SWT_C_2, LOW);
-            XRA1403_set_gpio_level(SWT_C_1, HIGH);
-            break;
-    }
-}
+
 
 
 void app_main(void)
@@ -138,18 +253,25 @@ void app_main(void)
      //Prueba del Generador a 23Mhz
     //MAX2870_init();
     //configure_MAX2870_20MHz();
-    init_FRQ_gen();
+    //init_FRQ_gen();
+    MAX2870_init();
     XRA1403_set_gpio_level(LD_PIN, LOW);
     XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
     XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+    vTaskDelay(20/portTICK_PERIOD_MS);
     en_output(RF_B,HIGH);
+    vTaskDelay(20/portTICK_PERIOD_MS);
     en_output(RF_A,HIGH);
     VNA_path(S11_PATH);
+    configure_MAX2870_20MHz();
+    
 
     //vTaskDelay(1000/portTICK_PERIOD_MS);
     gpio_reset_pin(LED_VERDE);
     gpio_set_direction(LED_VERDE,GPIO_MODE_OUTPUT);
     gpio_set_level(LED_VERDE,1);
+    XRA1403_set_gpio_level(SWT_C_2, LOW);
+    XRA1403_set_gpio_level(SWT_C_1, HIGH);
 
     //configure_MAX2870_20MHz();
     uart_flush(UART_NUM);
@@ -173,7 +295,7 @@ void app_main(void)
     
         //ESP_LOGI(TAG_MAIN, "ERROR Recv str");
     
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 
     //spi_deinit();
