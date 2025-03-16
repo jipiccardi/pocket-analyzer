@@ -143,11 +143,11 @@ void configure_MAX2870_20MHz(void){
     MAX2870_write_register(0x61F801FC); // DIVA = 128, RFOUTA habilitado
     
     // Registro 3: Configuración del VCO y autoselección
-    MAX2870_write_register(0x0000000B); // Configuración básica del VCO
+    MAX2870_write_register(0x0100000B); // Configuración básica del VCO
   
     // Registro 2: Configuración del divisor de referencia (R) y otros parámetros
     // R = 1, DBR = 0, RDIV2 = 0, MUXOUT = R divider output
-    MAX2870_write_register(0x10005FD2); // R = 1, MUXOUT = R divider output
+    MAX2870_write_register(0x10004FD2); // R = 1, MUXOUT = R divider output
   
     // Registro 1: Configuración del valor de M (modulus)
     MAX2870_write_register(0x80008011);
@@ -167,4 +167,30 @@ void configure_MAX2870_20MHz(void){
     // N = 16, F = 0 (para 23 MHz)
    // MAX2870_write_register(0x804E8000);
     
+}
+
+
+void configure_MAX2870_FRAC(void){
+    // Configuración básica del MAX2870 para generar 23 MHz con una referencia de 19.2 MHz
+    
+    // Registro 5: Configuración básica
+    MAX2870_write_register(0x00400005); // Reset por seguridad
+    
+    // Registro 4 
+    MAX2870_write_register(0x61F801FC); // DIVA = 128, RFOUTA habilitado
+    
+    // Registro 3: Configuración del VCO y autoselección
+    MAX2870_write_register(0x0100000B); // Configuración básica del VCO
+  
+    // Registro 2: Configuración del divisor de referencia (R) y otros parámetros
+    // R = 1, DBR = 0, RDIV2 = 0, MUXOUT = R divider output
+    MAX2870_write_register(0x10004FD2); // R = 1, MUXOUT = R divider output
+  
+    // Registro 1: Configuración del valor de M (modulus)
+    MAX2870_write_register(0x80008099);
+   
+    // Registro 0: Configuración del valor de N y F
+    // N = 157, F = 0 (para 23 MHz)
+    MAX2870_write_register(0x804E8000); // N = 157, F = 0
+
 }

@@ -35,4 +35,6 @@ void init_FRQ_gen(void);
 
 void configure_MAX2870_20MHz(void);
 
+void configure_MAX2870_FRAC(void);
+
 #endif
