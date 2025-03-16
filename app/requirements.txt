@@ -1,2 +1,4 @@
 PyQt5==5.15.11
 pyserial==3.5
+pandas==2.2.3
+numpy==2.2.3

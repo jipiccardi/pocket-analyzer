@@ -58,8 +58,8 @@ class SerialClient:
 
         # TODO handle response
 
-    def receive_value(self):
-        return self.conn.read(26)
+    def receive_value(self, n):
+        return self.conn.read(n)
 
 
 def get_available_ports():
