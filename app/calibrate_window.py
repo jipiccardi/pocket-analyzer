@@ -33,22 +33,22 @@ class CalibrateWindow(QDialog):
         self.match_1_btn.clicked.connect(lambda: self.calib_button_clicked('MTC1','SM1000000'))
 
         self.match_2_btn = QPushButton("Match 2")
-        self.match_2_btn.clicked.connect(lambda: self.calib_button_clicked('MTC2','SM1000000'))
+        self.match_2_btn.clicked.connect(lambda: self.calib_button_clicked('MTC2','SM2000000'))
 
         self.open_1_btn = QPushButton("Open 1")
         self.open_1_btn.clicked.connect(lambda: self.calib_button_clicked('OP1','SM1000000'))
 
         self.open_2_btn = QPushButton("Open 2")
-        self.open_2_btn.clicked.connect(lambda: self.calib_button_clicked('OP2','SM1000000'))
+        self.open_2_btn.clicked.connect(lambda: self.calib_button_clicked('OP2','SM2000000'))
 
         self.short_1_btn = QPushButton("Short 1")
         self.short_1_btn.clicked.connect(lambda: self.calib_button_clicked('SH1','SM1000000'))
 
         self.short_2_btn = QPushButton("Short 2")
-        self.short_2_btn.clicked.connect(lambda: self.calib_button_clicked('SH2','SM1000000'))
+        self.short_2_btn.clicked.connect(lambda: self.calib_button_clicked('SH2','SM2000000'))
 
         self.thru_btn = QPushButton("Thru")
-        self.thru_btn.clicked.connect(lambda: self.calib_button_clicked('THR','SM1000000'))
+        self.thru_btn.clicked.connect(lambda: self.calib_button_clicked('THR','SM3000000'))
 
         buttons_layout.addWidget(self.match_1_btn, 0, 0)
         buttons_layout.addWidget(self.match_2_btn, 0, 1)
@@ -63,6 +63,7 @@ class CalibrateWindow(QDialog):
         aux_layout = QHBoxLayout()
         aux_layout.addStretch()
         self.apply_button = QPushButton('Apply')
+        
 
         aux_layout.addWidget(self.apply_button)
 
@@ -178,10 +179,19 @@ class CalibThread(QThread):
             time.sleep(0.00005)
             if self.cmd == 'SM1000000' or self.cmd == 'SM2000000':
                 v = serial_client.receive_value(18)
+                print(v)
                 if v.startswith(b'\x02') and v.endswith(b'\x03'):
                     print(v)
                     measured_value = MeasuredValue(v[4:17])
-                    #measured_value.convert_from_voltage()
+                    measured_value.convert_from_voltage()
+                    data.append(measured_value)
+            elif self.cmd == 'SM3000000' :
+                v = serial_client.receive_value(42)
+                print(v)
+                if v.startswith(b'\x02') and v.endswith(b'\x03'):
+                    #print(v)
+                    measured_value = MeasuredValue(v[4:41])
+                    measured_value.convert_from_voltage()
                     data.append(measured_value)
             #if self.cmd == 'SM3000000':
             #    v = serial_client.receive_value(42)
