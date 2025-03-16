@@ -83,26 +83,26 @@ class MeasuredValue:
         try:
             self.mag_1 = ((-1/30)*float(self.mag_1)) + 30
             if self.mag_2 != "":
-                self.mag_2 = ""
+                self.mag_2 = ((-1/30)*float(self.mag_2)) + 30
             if self.mag_3 != "":
-                self.mag_3 = ""
+                self.mag_3 = ((-1/30)*float(self.mag_3)) + 30
             if self.mag_4 != "":
-                self.mag_4 = ""
+                self.mag_4 = ((-1/30)*float(self.mag_4)) + 30
 
             self.ph1 = (-1/10)*float(self.ph1) + 180
             if self.ph2 != "":
-                self.ph2 = ""
+                self.ph2 = (-1/10)*float(self.ph2) + 180
             if self.ph3 != "":
-                self.ph3 = ""
+                self.ph3 = (-1/10)*float(self.ph3) + 180
             if self.ph4 != "":
-                self.ph4 = ""
+                self.ph4 = (-1/10)*float(self.ph4) + 180
         except Exception as e:
             print(e)
 
     #def values_from_voltage(self):
     #    self.mag_1 = ((-1/30)*float(self.mag_1)) + 30
-    #    #self.mag_2 = ((-1/30)*float(self.mag_2)) + 30
-    #    self.ph1 = (-1/10)*float(self.ph1) + 180
+    #    #self.mag_2 = ((-1/30) * float(self.mag_2)) + 30
+    #    self.ph1 = (-1/10) * float(self.ph1) + 180
     #    #self.ph2 = (-1 /10) * float(self.ph2) + 180
 
 
