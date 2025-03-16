@@ -19,7 +19,7 @@ void MAX2870_write_register(uint32_t data){
     t.tx_data[1] = (data >> 16) & 0xFF;     // Tercer byte (8 bits)
     t.tx_data[0] = (data >> 24) & 0xFF;     // Cuarto byte (8 bits)
     spi_device_transmit(MAX2870_handle, &t);
-    printf("\n Write Register Ok");
+    //printf("\n Write Register Ok");
  
     //Guardo el cambio si correspode, del REG0 al REG5
     if ((data & 0x7) < 6) 
@@ -36,7 +36,7 @@ uint32_t MAX2870_get_register(uint8_t reg){
 }
 
 
-static void MAX2870_init(void){
+void MAX2870_init(void){
 
     //Default values two times as datasheet indicates
     

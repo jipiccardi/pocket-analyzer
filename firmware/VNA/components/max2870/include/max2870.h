@@ -46,7 +46,7 @@ uint32_t MAX2870_get_register(uint8_t reg);
 *
 *   @note Se escriben los registros con el valores en default 2 veces con un intervalo de 20mSeg entre escritura
 */
-static void MAX2870_init(void);
+void MAX2870_init(void);
 
 
 /**

@@ -3,7 +3,7 @@
 void uart_init(void)
 {
     uart_config_t uart_config = {
-        .baud_rate = 9600,
+        .baud_rate = 921600,
         .data_bits = UART_DATA_8_BITS,
         .parity = UART_PARITY_DISABLE,
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
@@ -30,7 +30,7 @@ void state_machine_uart(void){
             switch (STATE_UART)
             {
             case WAIT_UART:
-                ESP_LOGI(TAG_UART, "Estoy en el primer estado");
+                //ESP_LOGI(TAG_UART, "Estoy en el primer estado");
                 uart_get_buffered_data_len(UART_NUM, (size_t*)&length);
 
                 if (length < 11)
@@ -39,7 +39,7 @@ void state_machine_uart(void){
                     int len = uart_read_bytes(UART_NUM, buff_uart, 11, 20 / portTICK_PERIOD_MS);
                     if (len > 0){
                         buff_uart[len] = '\0'; //Pongo final de caracter para tratarloc como un string
-                        ESP_LOGI(TAG_UART, "Buff RX: %s", (char *) buff_uart);
+                        //ESP_LOGI(TAG_UART, "Buff RX: %s", (char *) buff_uart);
                         STATE_UART = STX_CHECK;
                         break;
                     }
@@ -48,25 +48,25 @@ void state_machine_uart(void){
             }
             case STX_CHECK:
                 /* code */
-                ESP_LOGI(TAG_UART, "Estoy en el segundo estado");
+                //ESP_LOGI(TAG_UART, "Estoy en el segundo estado");
                 if (buff_uart[0] == '\x02') //El primer caracter STX
                     STATE_UART = ETX_CHECK;
                 else 
                     STATE_UART = WAIT_UART;
                 break;
             case ETX_CHECK:
-                ESP_LOGI(TAG_UART, "Estoy en el tercer estado");
+                //ESP_LOGI(TAG_UART, "Estoy en el tercer estado");
                 if (buff_uart[10] == '\x03') //El ultimo caracter ETX
                     STATE_UART = DATA_CHECK;
                 else
                     STATE_UART = WAIT_UART;
                 break;
             case DATA_CHECK:
-                ESP_LOGI(TAG_UART, "Estoy en el cuarto estado");
+                //ESP_LOGI(TAG_UART, "Estoy en el cuarto estado");
                 for(int i=0;i<9;i++)
                     data_uart[i] = (char) buff_uart[i+1];
                 data_uart[9] = '\0';
-                ESP_LOGI(TAG_UART, "EL dato es %s",data_uart);
+                //(TAG_UART, "EL dato es %s",data_uart);
                 STATE_UART = WAIT_UART;
                 flag_main = 1;
                 break;
