@@ -9,7 +9,7 @@ def calculate_error_coefficients():
     open2_df = pd.read_csv('./data/open2.csv')
     short1_df = pd.read_csv('./data/short1.csv')
     short2_df = pd.read_csv('./data/short2.csv')
-    thru_df = pd.read_csv('./data/through.csv')
+    thru_df = pd.read_csv('./data/thru.csv')
 
     match1_df["s11m"] = match1_df["Magnitude 1"] * np.exp(1j * np.radians(match1_df["Phase 1"]))
     open1_df['s11m'] = open1_df["Magnitude 1"] * np.exp(1j * np.radians(open1_df["Phase 1"]))
@@ -47,4 +47,3 @@ def calculate_error_coefficients():
     #errors_df['e2301'] = (thru_df['s12m'])*(1 - errors_df['e33']*errors_df['e_11'])
 
     errors_df.to_csv("./data/errors_df.csv")
-calculate_error_coefficients()

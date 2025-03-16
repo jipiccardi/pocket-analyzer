@@ -21,7 +21,7 @@ def send_frequency(value: float):
         logging.warning('Device is not connected')
     
 
-def send_frequency_low(value: int):
+def send_frequency_low(value: float):
     aux = str(f'{value}')
     aux = aux.replace(".","") #Quito el punto del string
     aux = aux.rjust(6,'0')    #Relleno con ceros para llegar a los 6 caracteres
@@ -34,7 +34,7 @@ def send_frequency_low(value: int):
     else:
         logging.warning('Device is not connected')
 
-def send_frequency_high(value: int):
+def send_frequency_high(value: float):
     aux = str(f'{value}')
     aux = aux.replace(".","") #Quito el punto del string
     aux = aux.rjust(6,'0')    #Relleno con ceros para llegar a los 6 caracteres

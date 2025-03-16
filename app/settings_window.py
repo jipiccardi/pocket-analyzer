@@ -1,5 +1,7 @@
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QDoubleValidator,QIntValidator
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit, QLineEdit, QPushButton, QMessageBox
+from unicodedata import decimal
+
 from globals import settings
 from models import Settings
 
@@ -18,7 +20,7 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         f_start_label = QLabel('Frequency Start [MHz]')
         self.f_start_text = QLineEdit()
-        self.f_start_text.setValidator(QIntValidator(bottom=0, top=100000))
+        self.f_start_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
         self.f_start_text.setText(settings.get_values()['f_init'])
         aux_layout.addWidget(f_start_label)
         aux_layout.addStretch()
@@ -28,7 +30,7 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         f_end_label = QLabel('Frequency End [MHz]')
         self.f_end_text = QLineEdit()
-        self.f_end_text.setValidator(QIntValidator(bottom=0, top=100000))
+        self.f_end_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
         self.f_end_text.setText(settings.get_values()['f_end'])
         aux_layout.addWidget(f_end_label)
         aux_layout.addStretch()
@@ -38,7 +40,7 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         n_steps_label = QLabel('Number of steps')
         self.n_steps_text = QLineEdit()
-        self.n_steps_text.setValidator(QIntValidator(bottom=0, top=100000))
+        self.n_steps_text.setValidator(QIntValidator(bottom=0, top=235))
         self.n_steps_text.setText(settings.get_values()['n_step'])
         aux_layout.addWidget(n_steps_label)
         aux_layout.addStretch()
