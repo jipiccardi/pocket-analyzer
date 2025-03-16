@@ -120,9 +120,9 @@ void get_measure(uint16_t* data){
     //Muestreo durante 10 mS que es el ciclo de ruido que mido en el osciloscopio
     for (int i = 0; i < 128; i++){
         mag_value += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-        usleep(39);
+        usleep(20);
         pha_value += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
-        usleep(39);
+        usleep(20);
     }
     mag_value >>=  7;
     pha_value >>=  7;
@@ -161,9 +161,8 @@ void start_2p_meas(uint16_t f_low, uint16_t f_high){
     f_out = f_low;
     while (f_out < f_high){
         configure_MAX2870_20MHz();
-        usleep(1000);
         set_FRQ(f_out);
-        usleep(1000);
+        vTaskDelay(pdMS_TO_TICKS(10));
         set_VNA_path(S11_PATH);
         get_measure(&data[0]);
         set_VNA_path(S21_PATH);
@@ -172,9 +171,9 @@ void start_2p_meas(uint16_t f_low, uint16_t f_high){
         get_measure(&data[4]);
         set_VNA_path(S12_PATH);
         get_measure(&data[6]);
-        data[9] = get_FRQ();
+        data[8] = get_FRQ();
         send_data(TWOPORT, data);
-        f_out += get_sweep_step_octave(f_out);  
+        f_out += get_sweep_step_octave(f_out); 
     }
     send_data (END, NULL); 
 }
@@ -186,9 +185,9 @@ void start_1p_meas(uint16_t f_low, uint16_t f_high, uint8_t port){
     f_out = f_low;
     while (f_out < f_high){   
         configure_MAX2870_20MHz();
-        usleep(1000);
+        XRA1403_set_gpio_level(CE_PIN, HIGH); 
         set_FRQ(f_out);
-        usleep(1000);
+        vTaskDelay(10/portTICK_PERIOD_MS);
         if (port == ONE) set_VNA_path(S11_PATH);
         else set_VNA_path(S22_PATH);
         get_measure(&data[0]);
@@ -199,7 +198,25 @@ void start_1p_meas(uint16_t f_low, uint16_t f_high, uint8_t port){
     send_data (END, NULL);
 }
 
+void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
+    uint16_t f_out = 0;
+    uint16_t data[3];
 
+    f_out = get_FRQ();
+    for (int i=0; i<1000; i++){  
+        configure_MAX2870_20MHz();
+        XRA1403_set_gpio_level(CE_PIN, HIGH); 
+        set_FRQ(f_out);
+        usleep(500000);
+        if (port == ONE) set_VNA_path(S11_PATH);
+        else set_VNA_path(S22_PATH);
+        get_measure(&data[0]);
+        data[2] = get_FRQ();
+        send_data(ONEPORT, data);
+        //f_out += get_sweep_step_octave(f_out); 
+    }
+    send_data (END, NULL);
+}
 
 
 /*FIN*/
@@ -244,11 +261,16 @@ static void state_machine_process_data(void){
             set_FRQ((uint32_t)n);
             flag_main = 0;
         }
-        else if (data_uart[0] == 'S' && data_uart[1] == 'M' && data_uart[2] == '1'){
+        else if (data_uart[0] == 'S' && data_uart[1] == 'M'){
             uart_flush(UART_NUM);
             f_low = 235;
             f_high = 30000;
-            start_1p_meas(f_low, f_high, ONEPORT);
+            if (data_uart[2] == '1')
+                start_1p_meas(f_low, f_high, ONE);
+            if (data_uart[2] == '2')
+                start_1p_meas(f_low, f_high, TWO);
+            if (data_uart[2] == '3')
+                start_2p_meas(f_low, f_high);
             flag_main = 0; 
         }
 /*        else if (data_uart[0] == 'S' && data_uart[1] == 'M' && data_uart[2] == '1'){

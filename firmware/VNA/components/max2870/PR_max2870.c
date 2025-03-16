@@ -1,4 +1,5 @@
 #include "PR_max2870.h"
+#include <unistd.h>
 
 void set_FRQ(uint32_t freq){
     uint8_t out_div = 0,diva = 0;
@@ -27,10 +28,13 @@ void set_FRQ(uint32_t freq){
     
     diva = (uint16_t) ((MAX2870_get_register(REG4_CMD) & 0x700000) >> 20); //DIVA_Divider
 
-    if (out_div != diva) 
-        MAX2870_write_register((reg4 & 0xFF8FFFFF) | (uint32_t) out_div << 20); //Output divider 
+    if (out_div != diva){
+        reg_mod = ((reg4 & 0xFF8FFFFF) | (uint32_t) out_div << 20);
+        MAX2870_write_register(reg_mod);
+    }
+
     
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(1000);
     reg_mod = ((reg0 & 0X80007FFF) | (uint32_t) n_div << 15);
     MAX2870_write_register(reg_mod); //N-Divider
 }
@@ -138,25 +142,25 @@ void configure_MAX2870_20MHz(void){
     
     // Registro 5: Configuración básica
     MAX2870_write_register(0x01400005); // Reset por seguridad
-    
+    usleep(1000);
     // Registro 4 
     MAX2870_write_register(0x61F801FC); // DIVA = 128, RFOUTA habilitado
-    
+    usleep(1000);
     // Registro 3: Configuración del VCO y autoselección
     MAX2870_write_register(0x0100000B); // Configuración básica del VCO
-  
+    usleep(1000);
     // Registro 2: Configuración del divisor de referencia (R) y otros parámetros
     // R = 1, DBR = 0, RDIV2 = 0, MUXOUT = R divider output
     MAX2870_write_register(0x10004FD2); // R = 1, MUXOUT = R divider output
-  
+    usleep(1000);
     // Registro 1: Configuración del valor de M (modulus)
     MAX2870_write_register(0x80008011);
-   
+    usleep(1000);
     // Registro 0: Configuración del valor de N y F
     // N = 157, F = 0 (para 23 MHz)
     MAX2870_write_register(0x804E8000); // N = 157, F = 0
-
-    set_Rdiv(1);
+    usleep(1000);
+    //set_Rdiv(1);
 
 
 //    XRA1403_set_gpio_level(LD_PIN, LOW);

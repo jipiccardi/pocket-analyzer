@@ -21,5 +21,6 @@
         "pr_max2870.h": "c",
         "adc.h": "c",
         "adc_oneshot.h": "c",
+        "gpio.h": "c"
     },
 }
