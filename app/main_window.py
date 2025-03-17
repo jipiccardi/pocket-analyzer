@@ -1,12 +1,15 @@
+from logging import exception
+
+import pyqtgraph as pg
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget, \
-    QApplication, QStyle
+    QApplication, QStyle, QMessageBox, QGridLayout
 from globals import serial_client
 from debug_window import DebugWindow
 from connect_window import ConnectWindow
 from calibrate_window import CalibrateWindow
 from settings_window import SettingsWindow
 from start_measure import StartMeasureWindow
-
+import pandas as pd
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -17,7 +20,8 @@ class MainWindow(QMainWindow):
 
         main_layout = QVBoxLayout()
         top_layout = QHBoxLayout()
-        self.mid_layout = QHBoxLayout()
+        self.mid_layout = QGridLayout()
+
 
         # Top Layout
         self.connect_button = QPushButton("Connect")
@@ -47,6 +51,7 @@ class MainWindow(QMainWindow):
         self.plot_button = QPushButton()
         default_icon = QApplication.style().standardIcon(QStyle.SP_MediaPlay)
         self.plot_button.setIcon(default_icon)
+        self.plot_button.clicked.connect(self.plot_button_clicked)
 
         top_layout.addStretch()
         top_layout.addWidget(self.plot_button)
@@ -54,8 +59,9 @@ class MainWindow(QMainWindow):
         # Mid Layout
 
         # Main Layout
-        main_layout.addLayout(top_layout, 1)
-        main_layout.addLayout(self.mid_layout, 15)
+        main_layout.addLayout(top_layout)
+        main_layout.addLayout(self.mid_layout)
+        main_layout.addStretch()
 
         main_widget.setLayout(main_layout)
         self.setWindowTitle("Pocket Analyzer")
@@ -109,3 +115,25 @@ class MainWindow(QMainWindow):
     def disconnect_button_clicked(self):
         serial_client.disconnect()
         self.refresh_buttons(False)
+
+    def plot_button_clicked(self):
+        try:
+            df = pd.read_csv("./data/dut_c.csv")
+
+            # Define the columns to plot
+            columns = ["s11_mag", "s11_pha", "s21_mag", "s21_pha",
+                       "s22_mag", "s22_pha", "s12_mag", "s12_pha"]
+
+            # Create plots in a 4x2 grid
+            for i, col in enumerate(columns):
+                plot_widget = pg.PlotWidget()
+                plot_widget.setBackground('white')
+
+                plot_widget.plot(df["freq"], df[col], pen="k", name=col)
+                plot_widget.setLabel("left", col)
+                plot_widget.setLabel("bottom", "Frequency")
+                self.mid_layout.addWidget(plot_widget, i // 2, i % 2)
+
+        except Exception as e:  # Catch all exceptions
+            QMessageBox.warning(self, "Warning", "No file available")
+
