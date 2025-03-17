@@ -11,7 +11,7 @@ def calculate_error_coefficients():
     short2_df = pd.read_csv('./data/short2_pha_corr.csv')
     thru_df = pd.read_csv('./data/thru_pha_corr.csv')
 
-    
+     
 
     match1_df["s11_m1"] = match1_df["Magnitude 1"] * np.exp(1j * np.radians(match1_df["Phase 1"]))
     open1_df['s11_o1'] = open1_df["Magnitude 1"] * np.exp(1j * np.radians(open1_df["Phase 1"]))
@@ -54,7 +54,7 @@ def calculate_error_coefficients():
 
 def calculate_dut_coefficients():
     errors_df = pd.read_csv('./data/errors_df.csv').astype(complex)
-    dut_med_df = pd.read_csv('./data/dut_med.csv')
+    dut_med_df = pd.read_csv('./data/dut_med_corr.csv')
     dut_med_df['s11_m'] = dut_med_df["Magnitude 1"] * np.exp(1j * np.radians(dut_med_df["Phase 1"]))
     dut_med_df['s12_m'] = dut_med_df["Magnitude 2"] * np.exp(1j * np.radians(dut_med_df["Phase 2"]))
     dut_med_df['s22_m'] = dut_med_df["Magnitude 3"] * np.exp(1j * np.radians(dut_med_df["Phase 3"]))
@@ -76,13 +76,13 @@ def calculate_dut_coefficients():
     dut_c_df = pd.DataFrame()
     dut_c_df['freq'] = abs(errors_df['frequency']*1e5)
     dut_c_df['s11_mag'] = 20*np.log10(abs(dut_c_complex_df['s11_c']))
-    dut_c_df['s11_pha'] = np.angle(dut_c_complex_df['s11_c'])
+    dut_c_df['s11_pha'] = np.degrees(np.angle(dut_c_complex_df['s11_c']))
     dut_c_df['s21_mag'] = 20*np.log10(abs(dut_c_complex_df['s21_c']))
-    dut_c_df['s21_pha'] = np.angle(dut_c_complex_df['s21_c'])
+    dut_c_df['s21_pha'] = np.degrees(np.angle(dut_c_complex_df['s21_c']))
     dut_c_df['s22_mag'] = 20*np.log10(abs(dut_c_complex_df['s22_c']))
-    dut_c_df['s22_pha'] = np.angle(dut_c_complex_df['s22_c'])
+    dut_c_df['s22_pha'] = np.degrees(np.angle(dut_c_complex_df['s22_c']))
     dut_c_df['s12_mag'] = 20*np.log10(abs(dut_c_complex_df['s12_c']))
-    dut_c_df['s12_pha'] = np.angle(dut_c_complex_df['s12_c'])
+    dut_c_df['s12_pha'] = np.degrees(np.angle(dut_c_complex_df['s12_c']))
     df_cleaned = dut_c_df[~dut_c_df['freq'].duplicated(keep=False)]
     df_cleaned.to_csv("./data/dut_c.csv")
     df_cleaned.to_csv("./data/dut_c.s2p", sep='\t', header=False, index=False)

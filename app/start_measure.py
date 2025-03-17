@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QDialog, QVBoxLayout, QProgressBar, QPushButton, QMe
 from data_processing import calculate_dut_coefficients
 from globals import serial_client
 from models import MeasuredValue, save_measured_values_to_csv
+from data_correct_points import apply_extrapole, apply_phase_correction
 
 
 class StartMeasureWindow(QDialog):
@@ -31,6 +32,8 @@ class StartMeasureWindow(QDialog):
         for d in self.dut_data:
             d.print_value()
         save_measured_values_to_csv('./data/dut_med.csv',self.dut_data)
+        apply_extrapole(1)
+        apply_phase_correction(1)
         calculate_dut_coefficients()
 
 
