@@ -3,13 +3,13 @@ import numpy as np
 
 
 def calculate_error_coefficients():
-    match1_df = pd.read_csv('./data/calib_16_mar/match1.csv')
-    match2_df = pd.read_csv('./data/calib_16_mar/match2.csv')
-    open1_df = pd.read_csv('./data/calib_16_mar/open1.csv')
-    open2_df = pd.read_csv('./data/calib_16_mar/open2.csv')
-    short1_df = pd.read_csv('./data/calib_16_mar/short1.csv')
-    short2_df = pd.read_csv('./data/calib_16_mar/short2.csv')
-    thru_df = pd.read_csv('./data/calib_16_mar/thru.csv')
+    match1_df = pd.read_csv('./data/match1.csv')
+    match2_df = pd.read_csv('./data/match2.csv')
+    open1_df = pd.read_csv('./data/open1.csv')
+    open2_df = pd.read_csv('./data/open2.csv')
+    short1_df = pd.read_csv('./data/short1.csv')
+    short2_df = pd.read_csv('./data/short2.csv')
+    thru_df = pd.read_csv('./data/thru.csv')
 
     
 
@@ -52,8 +52,6 @@ def calculate_error_coefficients():
     print(errors_df.dtypes)
     print("Correction applied")
 
-calculate_error_coefficients()
-
 
 def calculate_dut_coefficients():
     errors_df = pd.read_csv('./data/errors_df.csv').astype(complex)
@@ -91,4 +89,3 @@ def calculate_dut_coefficients():
     dut_c_df.to_csv("./data/dut_c.csv")
 
     print("K calculated")
-calculate_dut_coefficients()
