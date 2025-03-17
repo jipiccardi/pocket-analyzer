@@ -37,7 +37,7 @@ void VNA_path(uint8_t path);
 #define S22_PATH    2
 #define S12_PATH    3
 
-#define LINEAR      0
+#define STEPMODE    1       //1 = LINEAR       2 = OCTAVE
 
 #define END         0
 #define ONEPORT     1
@@ -45,6 +45,8 @@ void VNA_path(uint8_t path);
 
 #define ONE         1
 #define TWO         2
+
+
 
 static void set_VNA_path(uint8_t path){
     switch (path){
@@ -78,27 +80,13 @@ static void set_VNA_path(uint8_t path){
     }
 }
 
-uint16_t get_sweep_step(uint16_t f_low, uint16_t f_high, uint8_t mode, uint16_t npoints, uint16_t nstep){
-    uint16_t f_range = 0, f_step = 0, f_out = 0;
-    uint16_t points_octave=0;
-    switch (mode){
-        case LINEAR:
-            f_range = f_low - f_high;
-            f_step = f_range / (npoints - 1);
-            f_out = f_low + f_step * npoints;
-            break;
-   /*     case OCTAVE:
-            if(freq < 469)            out_div = 7;
-            else if (freq < 938)      out_div = 6;
-            else if (freq < 1875)     out_div = 5;  
-            else if (freq < 3750)     out_div = 4;
-            else if (freq < 7500)     out_div = 3; 
-            else if (freq < 15000)    out_div = 2;
-            else if (freq < 30000)    out_div = 1;
-            else                      out_div = 0;
-*/
-    }
-return f_out;
+uint16_t get_sweep_step_lin(uint16_t f_low, uint16_t f_high, uint16_t npoints){
+    uint16_t f_range = 0, f_step = 0;
+
+    f_range = f_high - f_low;
+    f_step = f_range / (npoints - 1);
+
+    return f_step;
 }
 uint16_t get_sweep_step_octave(uint16_t f_out){
     uint16_t step = 0;
@@ -118,14 +106,14 @@ void get_measure(uint16_t* data){
     uint32_t mag_value = 0, pha_value = 0;
 
     //Muestreo durante 10 mS que es el ciclo de ruido que mido en el osciloscopio
-    for (int i = 0; i < 128; i++){
+    for (int i = 0; i < 64; i++){
         mag_value += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-        usleep(20);
+        usleep(10);
         pha_value += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
-        usleep(20);
+        usleep(10);
     }
-    mag_value >>=  7;
-    pha_value >>=  7;
+    mag_value >>=  6;
+    pha_value >>=  6;
 
     *(data) = mag_value;
     *(data+1) = pha_value;
@@ -155,45 +143,59 @@ void send_data (uint8_t mode, uint16_t* data){
 }
 
 void start_2p_meas(uint16_t f_low, uint16_t f_high){
-    uint16_t f_out = 0;
+    uint16_t f_out = 0, npoints = 500;
     uint16_t data[9];
 
     f_out = f_low;
     while (f_out < f_high){
+        //XRA1403_set_gpio_level(CE_PIN, LOW); 
+        //XRA1403_set_gpio_level(CE_PIN, HIGH);
+        
         configure_MAX2870_20MHz();
+        vTaskDelay(10/portTICK_PERIOD_MS);
         set_FRQ(f_out);
-        vTaskDelay(pdMS_TO_TICKS(10));
         set_VNA_path(S11_PATH);
+        usleep(2000);
         get_measure(&data[0]);
         set_VNA_path(S21_PATH);
+        usleep(2000);
         get_measure(&data[2]);
         set_VNA_path(S22_PATH);
+        usleep(2000);
         get_measure(&data[4]);
         set_VNA_path(S12_PATH);
+        usleep(2000);
         get_measure(&data[6]);
         data[8] = get_FRQ();
         send_data(TWOPORT, data);
-        f_out += get_sweep_step_octave(f_out); 
+        if (STEPMODE == 1)
+            f_out += get_sweep_step_lin(f_low,f_high,npoints); 
+        else if (STEPMODE == 2)
+            f_out += get_sweep_step_octave(f_out);
     }
     send_data (END, NULL); 
 }
 
 void start_1p_meas(uint16_t f_low, uint16_t f_high, uint8_t port){
-    uint16_t f_out = 0;
+    uint16_t f_out = 0, npoints = 500;
     uint16_t data[3];
 
     f_out = f_low;
     while (f_out < f_high){   
-        configure_MAX2870_20MHz();
-        XRA1403_set_gpio_level(CE_PIN, HIGH); 
-        set_FRQ(f_out);
+        XRA1403_set_gpio_level(CE_PIN, LOW); 
+        XRA1403_set_gpio_level(CE_PIN, HIGH);
         vTaskDelay(10/portTICK_PERIOD_MS);
+        configure_MAX2870_20MHz();
+        set_FRQ(f_out);
         if (port == ONE) set_VNA_path(S11_PATH);
         else set_VNA_path(S22_PATH);
         get_measure(&data[0]);
         data[2] = get_FRQ();
         send_data(ONEPORT, data);
-        f_out += get_sweep_step_octave(f_out); 
+        if (STEPMODE == 1)
+            f_out += get_sweep_step_lin(f_low,f_high,npoints); 
+        else if (STEPMODE == 2)
+            f_out += get_sweep_step_octave(f_out); 
     }
     send_data (END, NULL);
 }
@@ -264,7 +266,7 @@ static void state_machine_process_data(void){
         else if (data_uart[0] == 'S' && data_uart[1] == 'M'){
             uart_flush(UART_NUM);
             f_low = 235;
-            f_high = 30000;
+            f_high = 25000;
             if (data_uart[2] == '1')
                 start_1p_meas(f_low, f_high, ONE);
             if (data_uart[2] == '2')

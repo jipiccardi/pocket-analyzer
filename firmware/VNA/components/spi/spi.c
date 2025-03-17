@@ -20,7 +20,7 @@ void spi_init(void)
         .command_bits = 1,
         .address_bits = 6,
         .dummy_bits = 1,
-        .clock_speed_hz = 40000000,
+        .clock_speed_hz = 60000000,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS3,
@@ -33,7 +33,7 @@ void spi_init(void)
         .command_bits = 0,
         .address_bits = 0,
         .dummy_bits = 0,
-        .clock_speed_hz = 40000000,
+        .clock_speed_hz = 60000000,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS2,
