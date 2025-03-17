@@ -17,13 +17,13 @@ def extrapole_phase(array):
     
 
 def apply_extrapole():
-    match1_df = pd.read_csv('./data/calib2_16_mar/match1.csv')
-    match2_df = pd.read_csv('./data/calib2_16_mar/match2.csv')
-    open1_df = pd.read_csv('./data/calib2_16_mar/open1.csv')
-    open2_df = pd.read_csv('./data/calib2_16_mar/open2.csv')
-    short1_df = pd.read_csv('./data/calib2_16_mar/short1.csv')
-    short2_df = pd.read_csv('./data/calib2_16_mar/short2.csv')
-    thru_df = pd.read_csv('./data/calib2_16_mar/thru.csv')
+    match1_df = pd.read_csv('./data/match1.csv')
+    match2_df = pd.read_csv('./data//match2.csv')
+    open1_df = pd.read_csv('./data/open1.csv')
+    open2_df = pd.read_csv('./data/open2.csv')
+    short1_df = pd.read_csv('./data/short1.csv')
+    short2_df = pd.read_csv('./data/short2.csv')
+    thru_df = pd.read_csv('./data/thru.csv')
 
     for k in range (1,10):
         extrapole_phase(match1_df["Phase 1"])
@@ -32,13 +32,18 @@ def apply_extrapole():
         extrapole_phase(open2_df["Phase 1"])
         extrapole_phase(short1_df["Phase 1"])
         extrapole_phase(short2_df["Phase 1"])
+        extrapole_phase(thru_df["Phase 1"])
+        extrapole_phase(thru_df["Phase 2"])
+        extrapole_phase(thru_df["Phase 3"])
+        extrapole_phase(thru_df["Phase 4"])
 
-    match1_df.to_csv("./data/calib2_16_mar/match1_extrapole.csv")
-    match2_df.to_csv("./data/calib2_16_mar/match2_extrapole.csv")
-    open1_df.to_csv("./data/calib2_16_mar/open1_extrapole.csv")
-    open2_df.to_csv("./data/calib2_16_mar/open2_extrapole.csv")
-    short1_df.to_csv("./data/calib2_16_mar/short1_extrapole.csv")
-    short2_df.to_csv("./data/calib2_16_mar/short2_extrapole.csv")
+    match1_df.to_csv("./data/match1_extrapole.csv",index=False)
+    match2_df.to_csv("./data/match2_extrapole.csv",index=False)
+    open1_df.to_csv("./data/open1_extrapole.csv",index=False)
+    open2_df.to_csv("./data/open2_extrapole.csv",index=False)
+    short1_df.to_csv("./data/short1_extrapole.csv",index=False)
+    short2_df.to_csv("./data/short2_extrapole.csv",index=False)
+    thru_df.to_csv("./data/thru_extrapole.csv",index=False)
 
     print("Extrapole applied")
 
@@ -78,12 +83,13 @@ def phase_correction(PhaseVector):
 
 def apply_phase_correction():
      
-    match1_df = pd.read_csv('./data/calib2_16_mar/match1_extrapole.csv')
-    match2_df = pd.read_csv('./data/calib2_16_mar/match2_extrapole.csv')
-    open1_df = pd.read_csv('./data/calib2_16_mar/open1_extrapole.csv')
-    open2_df = pd.read_csv('./data/calib2_16_mar/open2_extrapole.csv')
-    short1_df = pd.read_csv('./data/calib2_16_mar/short1_extrapole.csv')
-    short2_df = pd.read_csv('./data/calib2_16_mar/short2_extrapole.csv')
+    match1_df = pd.read_csv('./data/match1_extrapole.csv')
+    match2_df = pd.read_csv('./data/match2_extrapole.csv')
+    open1_df = pd.read_csv('./data/open1_extrapole.csv')
+    open2_df = pd.read_csv('./data/open2_extrapole.csv')
+    short1_df = pd.read_csv('./data/short1_extrapole.csv')
+    short2_df = pd.read_csv('./data/short2_extrapole.csv')
+    thru_df = pd.read_csv('./data/thru_extrapole.csv')
     
     phase_correction(match1_df["Phase 1"])
     phase_correction(match2_df["Phase 1"])
@@ -91,14 +97,16 @@ def apply_phase_correction():
     phase_correction(open2_df["Phase 1"])
     phase_correction(short1_df["Phase 1"])
     phase_correction(short2_df["Phase 1"])
+    phase_correction(thru_df["Phase 1"])
+    phase_correction(thru_df["Phase 2"])
+    phase_correction(thru_df["Phase 3"])
+    phase_correction(thru_df["Phase 4"])
 
-    match1_df.to_csv("./data/calib2_16_mar/match1_pha_corr.csv")
-    match2_df.to_csv("./data/calib2_16_mar/match2_pha_corr.csv")
-    open1_df.to_csv("./data/calib2_16_mar/open1_pha_corr.csv")
-    open2_df.to_csv("./data/calib2_16_mar/open2_pha_corr.csv")
-    short1_df.to_csv("./data/calib2_16_mar/short1_pha_corr.csv")
-    short2_df.to_csv("./data/calib2_16_mar/short2_pha_corr.csv")
+    match1_df.to_csv("./data/match1_pha_corr.csv",index=False)
+    match2_df.to_csv("./data/match2_pha_corr.csv",index=False)
+    open1_df.to_csv("./data/open1_pha_corr.csv",index=False)
+    open2_df.to_csv("./data/open2_pha_corr.csv",index=False)
+    short1_df.to_csv("./data/short1_pha_corr.csv",index=False)
+    short2_df.to_csv("./data/short2_pha_corr.csv",index=False)
+    thru_df.to_csv("./data/thru_pha_corr.csv",index=False)
     print("Phase Correction applied")
-
-apply_extrapole()
-apply_phase_correction()

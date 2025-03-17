@@ -3,13 +3,13 @@ import numpy as np
 
 
 def calculate_error_coefficients():
-    match1_df = pd.read_csv('./data/match1.csv')
-    match2_df = pd.read_csv('./data/match2.csv')
-    open1_df = pd.read_csv('./data/open1.csv')
-    open2_df = pd.read_csv('./data/open2.csv')
-    short1_df = pd.read_csv('./data/short1.csv')
-    short2_df = pd.read_csv('./data/short2.csv')
-    thru_df = pd.read_csv('./data/thru.csv')
+    match1_df = pd.read_csv('./data/match1_pha_corr.csv')
+    match2_df = pd.read_csv('./data/match2_pha_corr.csv')
+    open1_df = pd.read_csv('./data/open1_pha_corr.csv')
+    open2_df = pd.read_csv('./data/open2_pha_corr.csv')
+    short1_df = pd.read_csv('./data/short1_pha_corr.csv')
+    short2_df = pd.read_csv('./data/short2_pha_corr.csv')
+    thru_df = pd.read_csv('./data/thru_pha_corr.csv')
 
     
 
@@ -49,8 +49,7 @@ def calculate_error_coefficients():
     errors_df['e2301'] = (thru_df['s12_t'])*(1 - errors_df['e33']*errors_df['e_11'])
 
     errors_df.to_csv("./data/errors_df.csv")
-    print(errors_df.dtypes)
-    print("Correction applied")
+
 
 
 def calculate_dut_coefficients():
@@ -61,8 +60,6 @@ def calculate_dut_coefficients():
     dut_med_df['s22_m'] = dut_med_df["Magnitude 3"] * np.exp(1j * np.radians(dut_med_df["Phase 3"]))
     dut_med_df['s21_m'] = dut_med_df["Magnitude 4"] * np.exp(1j * np.radians(dut_med_df["Phase 4"]))
     N_df = pd.DataFrame()
-    print(dut_med_df.dtypes)
-    print(errors_df.dtypes)
     N_df['N11'] = (dut_med_df['s11_m'] - errors_df['e00']) / errors_df['e1001']
     N_df['N12'] = (dut_med_df['s12_m']) / (errors_df['e2301'])
     N_df['N22'] = (dut_med_df['s22_m'] - errors_df['e33']) / errors_df['e2332']
@@ -76,9 +73,8 @@ def calculate_dut_coefficients():
     dut_c_complex_df['s21_c'] = (N_df['N21'] * (1 + N_df['N22'] * (errors_df['e_22'] - errors_df['e22']))) / D_df['D']
     dut_c_complex_df.to_csv("./data/dut_c_complex.csv")
 
-    print(dut_c_complex_df.dtypes)
     dut_c_df = pd.DataFrame()
-    dut_c_df['freq'] = abs(errors_df['frequency'])
+    dut_c_df['freq'] = abs(errors_df['frequency']*1e5)
     dut_c_df['s11_mag'] = 20*np.log10(abs(dut_c_complex_df['s11_c']))
     dut_c_df['s11_pha'] = np.angle(dut_c_complex_df['s11_c'])
     dut_c_df['s21_mag'] = 20*np.log10(abs(dut_c_complex_df['s21_c']))
@@ -87,8 +83,9 @@ def calculate_dut_coefficients():
     dut_c_df['s22_pha'] = np.angle(dut_c_complex_df['s22_c'])
     dut_c_df['s12_mag'] = 20*np.log10(abs(dut_c_complex_df['s12_c']))
     dut_c_df['s12_pha'] = np.angle(dut_c_complex_df['s12_c'])
-    dut_c_df.to_csv("./data/dut_c.csv")
-    dut_c_df.to_csv("./data/dut_c.s2p", sep='\t', header=False, index=False)
+    df_cleaned = dut_c_df[~dut_c_df['freq'].duplicated(keep=False)]
+    df_cleaned.to_csv("./data/dut_c.csv")
+    df_cleaned.to_csv("./data/dut_c.s2p", sep='\t', header=False, index=False)
 
     s2p_header = "# Hz S DB R 50.000000\n"
     with open("./data/dut_c.s2p", "r") as file:
@@ -98,7 +95,6 @@ def calculate_dut_coefficients():
         file.write(s2p_header)
         file.writelines(lines)
 
-    print("K calculated")
 
 
-calculate_dut_coefficients()
+

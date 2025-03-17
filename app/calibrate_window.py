@@ -7,6 +7,7 @@ from globals import serial_client
 from typing import List
 from models import MeasuredValue, save_measured_values_to_csv
 from data_processing import calculate_error_coefficients
+from data_correct_points import apply_extrapole, apply_phase_correction
 
 class CalibrateWindow(QDialog):
     def __init__(self, parent=None):
@@ -70,6 +71,8 @@ class CalibrateWindow(QDialog):
         self.setLayout(main_layout)
 
     def apply_button_clicked(self):
+        apply_extrapole()
+        apply_phase_correction()
         calculate_error_coefficients()
         QMessageBox.information(self, "Success", "Apply completed succesfully!")
 
