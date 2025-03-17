@@ -119,7 +119,6 @@ class MainWindow(QMainWindow):
     def plot_button_clicked(self):
         try:
             df = pd.read_csv("./data/dut_c.csv")
-
             # Define the columns to plot
             columns = ["s11_mag", "s11_pha", "s21_mag", "s21_pha",
                        "s22_mag", "s22_pha", "s12_mag", "s12_pha"]
@@ -127,13 +126,15 @@ class MainWindow(QMainWindow):
             # Create plots in a 4x2 grid
             for i, col in enumerate(columns):
                 plot_widget = pg.PlotWidget()
-                plot_widget.setBackground('white')
+                plot_widget.setBackground('w')
 
                 plot_widget.plot(df["freq"], df[col], pen="k", name=col)
                 plot_widget.setLabel("left", col)
                 plot_widget.setLabel("bottom", "Frequency")
+
                 self.mid_layout.addWidget(plot_widget, i // 2, i % 2)
 
         except Exception as e:  # Catch all exceptions
+            print(e)
             QMessageBox.warning(self, "Warning", "No file available")
 
