@@ -3,13 +3,13 @@ import numpy as np
 
 
 def calculate_error_coefficients():
-    match1_df = pd.read_csv('./data/calib2_16_mar/match1.csv')
-    match2_df = pd.read_csv('./data/calib2_16_mar/match2.csv')
-    open1_df = pd.read_csv('./data/calib2_16_mar/open1.csv')
-    open2_df = pd.read_csv('./data/calib2_16_mar/open2.csv')
-    short1_df = pd.read_csv('./data/calib2_16_mar/short1.csv')
-    short2_df = pd.read_csv('./data/calib2_16_mar/short2.csv')
-    thru_df = pd.read_csv('./data/calib2_16_mar/thru.csv')
+    match1_df = pd.read_csv('./data/match1.csv')
+    match2_df = pd.read_csv('./data/match2.csv')
+    open1_df = pd.read_csv('./data/open1.csv')
+    open2_df = pd.read_csv('./data/open2.csv')
+    short1_df = pd.read_csv('./data/short1.csv')
+    short2_df = pd.read_csv('./data/short2.csv')
+    thru_df = pd.read_csv('./data/thru.csv')
 
     
 
@@ -52,8 +52,6 @@ def calculate_error_coefficients():
     print(errors_df.dtypes)
     print("Correction applied")
 
-calculate_error_coefficients()
-
 
 def calculate_dut_coefficients():
     errors_df = pd.read_csv('./data/errors_df.csv').astype(complex)
@@ -80,6 +78,7 @@ def calculate_dut_coefficients():
 
     print(dut_c_complex_df.dtypes)
     dut_c_df = pd.DataFrame()
+    dut_c_df['freq'] = abs(errors_df['frequency'])
     dut_c_df['s11_mag'] = 20*np.log10(abs(dut_c_complex_df['s11_c']))
     dut_c_df['s11_pha'] = np.angle(dut_c_complex_df['s11_c'])
     dut_c_df['s21_mag'] = 20*np.log10(abs(dut_c_complex_df['s21_c']))
@@ -89,6 +88,17 @@ def calculate_dut_coefficients():
     dut_c_df['s12_mag'] = 20*np.log10(abs(dut_c_complex_df['s12_c']))
     dut_c_df['s12_pha'] = np.angle(dut_c_complex_df['s12_c'])
     dut_c_df.to_csv("./data/dut_c.csv")
+    dut_c_df.to_csv("./data/dut_c.s2p", sep='\t', header=False, index=False)
+
+    s2p_header = "# Hz S DB R 50.000000\n"
+    with open("./data/dut_c.s2p", "r") as file:
+        lines = file.readlines()
+
+    with open("./data/dut_c.s2p", "w") as file:
+        file.write(s2p_header)
+        file.writelines(lines)
 
     print("K calculated")
+
+
 calculate_dut_coefficients()

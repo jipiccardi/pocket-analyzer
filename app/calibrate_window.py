@@ -1,14 +1,12 @@
-
 import time
 
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QGridLayout, QPushButton, QProgressBar, QMessageBox, QHBoxLayout
 from PyQt5.QtCore import QThread, pyqtSignal
 
-from globals import serial_client, settings
+from globals import serial_client
 from typing import List
-from models import MeasuredValue, save_measured_values_to_csv, Settings
-from debug_window import send_frequency_low,send_frequency_high,send_frequency_step
-
+from models import MeasuredValue, save_measured_values_to_csv
+from data_processing import calculate_error_coefficients
 
 class CalibrateWindow(QDialog):
     def __init__(self, parent=None):
@@ -63,13 +61,18 @@ class CalibrateWindow(QDialog):
         aux_layout = QHBoxLayout()
         aux_layout.addStretch()
         self.apply_button = QPushButton('Apply')
-        
+        self.apply_button.clicked.connect(self.apply_button_clicked)
 
         aux_layout.addWidget(self.apply_button)
 
         main_layout.addLayout(aux_layout)
 
         self.setLayout(main_layout)
+
+    def apply_button_clicked(self):
+        calculate_error_coefficients()
+        QMessageBox.information(self, "Success", "Apply completed succesfully!")
+
 
     def calib_button_clicked(self, calib_mode: str, cmd: str):
         self.progress_dialog = ProgressDialog(self)
@@ -185,7 +188,7 @@ class CalibThread(QThread):
                     measured_value = MeasuredValue(v[4:17])
                     measured_value.convert_from_voltage()
                     data.append(measured_value)
-            elif self.cmd == 'SM3000000' :
+            elif self.cmd == 'SM3000000':
                 v = serial_client.receive_value(42)
                 print(v)
                 if v.startswith(b'\x02') and v.endswith(b'\x03'):

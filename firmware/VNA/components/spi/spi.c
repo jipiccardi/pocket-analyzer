@@ -20,7 +20,7 @@ void spi_init(void)
         .command_bits = 1,
         .address_bits = 6,
         .dummy_bits = 1,
-        .clock_speed_hz = 20000000,
+        .clock_speed_hz = 40000000,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS3,
@@ -33,12 +33,12 @@ void spi_init(void)
         .command_bits = 0,
         .address_bits = 0,
         .dummy_bits = 0,
-        .clock_speed_hz = 20000000,
+        .clock_speed_hz = 40000000,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS2,
-        .cs_ena_pretrans = 3,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
-        .cs_ena_posttrans = 3,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
+        .cs_ena_pretrans = 1,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
+        .cs_ena_posttrans = 1,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
         .queue_size = 3,
         .flags = SPI_DEVICE_HALFDUPLEX,
     };
@@ -88,7 +88,7 @@ void XRA1403_write_register(uint8_t reg, uint8_t data){
     my_buff[0] = data;
     t.tx_buffer=my_buff;
     spi_device_transmit(XRA1403_handle, &t);
-    printf("\n Write Register Ok");
+    //printf("\n Write Register Ok");
 }
 
 //Lee un registro de la expansion GPIO
@@ -105,22 +105,8 @@ uint8_t XRA1403_read_register(uint8_t reg){
     t.flags = SPI_TRANS_USE_RXDATA;
     spi_device_transmit(XRA1403_handle, &t);
     out_data=t.rx_data[0];
-    printf("\n output:%d",(int)out_data);
+    //printf("\n output:%d",(int)out_data);
 
     return out_data;
 }
 
-void MAX2870_write_register(uint8_t reg, uint32_t data){
-    spi_transaction_t t;
-    uint32_t my_buff[1] = {0};
-
-    memset(&t, 0, sizeof(t));
-
-    t.cmd = 0;
-    t.addr= 0;
-    t.length = 32;
-    my_buff[0] = data<<3|reg;
-    t.tx_buffer=my_buff;
-    spi_device_transmit(MAX2870_handle, &t);
-    printf("\n Write Register Ok");
-}

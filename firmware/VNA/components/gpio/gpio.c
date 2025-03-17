@@ -7,6 +7,9 @@ void XRA1403_init(void){
     //Deshabilito las interrupciones
     XRA1403_write_register(IER1_CMD,0x00);
     XRA1403_write_register(IER2_CMD,0x00);
+    //Los pongo todos en 0
+    XRA1403_write_register(OCR1_CMD,0x00);
+    XRA1403_write_register(OCR2_CMD,0x00);
 }
 
 //Pone el gpio indicado en HIGH o LOW

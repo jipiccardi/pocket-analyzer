@@ -1,9 +1,11 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget, \
+    QApplication, QStyle
 from globals import serial_client
 from debug_window import DebugWindow
 from connect_window import ConnectWindow
 from calibrate_window import CalibrateWindow
 from settings_window import SettingsWindow
+from start_measure import StartMeasureWindow
 
 
 class MainWindow(QMainWindow):
@@ -15,7 +17,7 @@ class MainWindow(QMainWindow):
 
         main_layout = QVBoxLayout()
         top_layout = QHBoxLayout()
-        mid_layout = QHBoxLayout()
+        self.mid_layout = QHBoxLayout()
 
         # Top Layout
         self.connect_button = QPushButton("Connect")
@@ -38,18 +40,22 @@ class MainWindow(QMainWindow):
         self.calibrate_button.clicked.connect(self.show_calibrate_window)
         top_layout.addWidget(self.calibrate_button)
 
+        self.start_measure = QPushButton("Start Measure")
+        self.start_measure.clicked.connect(self.show_start_measure_window)
+        top_layout.addWidget(self.start_measure)
+
+        self.plot_button = QPushButton()
+        default_icon = QApplication.style().standardIcon(QStyle.SP_MediaPlay)
+        self.plot_button.setIcon(default_icon)
+
         top_layout.addStretch()
+        top_layout.addWidget(self.plot_button)
 
         # Mid Layout
-        self.file_list_widget = QListWidget()
-        plot = QTextEdit("Plot View")
-        plot.setEnabled(False)
-        mid_layout.addWidget(self.file_list_widget, 1)
-        mid_layout.addWidget(plot, 8)
 
         # Main Layout
         main_layout.addLayout(top_layout, 1)
-        main_layout.addLayout(mid_layout, 15)
+        main_layout.addLayout(self.mid_layout, 15)
 
         main_widget.setLayout(main_layout)
         self.setWindowTitle("Pocket Analyzer")
@@ -67,6 +73,10 @@ class MainWindow(QMainWindow):
         debug_window = DebugWindow(self)
         debug_window.exec_()
 
+    def show_start_measure_window(self):
+        measure_window = StartMeasureWindow(self)
+        measure_window.exec_()
+
     def show_calibrate_window(self):
         calib_window = CalibrateWindow(self)
         calib_window.exec_()
@@ -80,18 +90,21 @@ class MainWindow(QMainWindow):
         self.disconnect_button.setEnabled(False)
         self.debug_button.setEnabled(False)
         self.calibrate_button.setEnabled(False)
+        self.start_measure.setEnabled(False)
 
     def refresh_buttons(self, is_connected: bool):
         self.connect_button.setEnabled(True)
         self.disconnect_button.setEnabled(False)
         self.debug_button.setEnabled(False)
         self.calibrate_button.setEnabled(False)
+        self.start_measure.setEnabled(False)
 
         if is_connected:
             self.connect_button.setEnabled(False)
             self.disconnect_button.setEnabled(True)
             self.debug_button.setEnabled(True)
             self.calibrate_button.setEnabled(True)
+            self.start_measure.setEnabled(True)
 
     def disconnect_button_clicked(self):
         serial_client.disconnect()
