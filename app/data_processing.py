@@ -78,6 +78,7 @@ def calculate_dut_coefficients():
 
     print(dut_c_complex_df.dtypes)
     dut_c_df = pd.DataFrame()
+    dut_c_df['freq'] = abs(errors_df['frequency'])
     dut_c_df['s11_mag'] = 20*np.log10(abs(dut_c_complex_df['s11_c']))
     dut_c_df['s11_pha'] = np.angle(dut_c_complex_df['s11_c'])
     dut_c_df['s21_mag'] = 20*np.log10(abs(dut_c_complex_df['s21_c']))
@@ -87,5 +88,17 @@ def calculate_dut_coefficients():
     dut_c_df['s12_mag'] = 20*np.log10(abs(dut_c_complex_df['s12_c']))
     dut_c_df['s12_pha'] = np.angle(dut_c_complex_df['s12_c'])
     dut_c_df.to_csv("./data/dut_c.csv")
+    dut_c_df.to_csv("./data/dut_c.s2p", sep='\t', header=False, index=False)
+
+    s2p_header = "# Hz S DB R 50.000000\n"
+    with open("./data/dut_c.s2p", "r") as file:
+        lines = file.readlines()
+
+    with open("./data/dut_c.s2p", "w") as file:
+        file.write(s2p_header)
+        file.writelines(lines)
 
     print("K calculated")
+
+
+calculate_dut_coefficients()
