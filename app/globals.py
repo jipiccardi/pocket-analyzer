@@ -13,7 +13,7 @@ dict_s2p = {
 
 stylesheet_tabs = """
             QTabBar::tab:selected {
-                background-color: #80b85b; /* Color salmón para la pestaña seleccionada */
+                background-color: #80b85b; /* Color verde para la pestaña seleccionada */
                 color: black;             /* Texto blanco en la pestaña seleccionada */
                 border-radius: 5px;       /* Bordes redondeados */
                 padding: 5px;             /* Espaciado interno */

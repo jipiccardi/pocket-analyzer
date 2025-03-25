@@ -1,5 +1,6 @@
 from logging import exception
 
+import os
 from os import listdir,path
 from pathlib import Path
 
@@ -77,6 +78,8 @@ class MainWindow(QMainWindow):
 
         # Mid Layout
         file_name_label = QLabel("File:")
+        self.clear_button = QPushButton("Clear")
+        self.clear_button.clicked.connect(self.clear_screen)
 
         #Archivo seleccionado
         self.file_name = QLineEdit()
@@ -94,6 +97,7 @@ class MainWindow(QMainWindow):
 
         # Instancia QFileSystemWatcher para actualizar la lista de archivos cuando se agregue o elimine un archivo
         self.directory_watcher = QFileSystemWatcher()
+        self.file_watcher = QFileSystemWatcher()
         self.directory_watcher.addPath(DATA_PATH)
         self.directory_watcher.directoryChanged.connect(self.on_directory_changed)
         
@@ -153,9 +157,10 @@ class MainWindow(QMainWindow):
 
         self.plot_layout.setCurrentIndex(0)
 
-        self.mid_layout.addLayout(aux_Hlayout, 0,0,1,2)
-        self.mid_layout.addWidget(self.file_list_widget, 1, 0, 9, 2)
-        self.mid_layout.addLayout(self.plot_layout, 0, 3, 10, 10)
+        self.mid_layout.addLayout(aux_Hlayout, 0,0,1,3)
+        self.mid_layout.addWidget(self.file_list_widget, 1, 0, 9, 3)
+        self.mid_layout.addWidget(self.clear_button, 10, 1, 1, 1)
+        self.mid_layout.addLayout(self.plot_layout, 0, 4, 11, 14)
 
         # Main Layout
         main_layout.addLayout(top_layout)
@@ -173,8 +178,18 @@ class MainWindow(QMainWindow):
         filename,_ = QFileDialog.getOpenFileName(self, caption='Select file', filter='S param files (*.csv *.s1p *.s2p)')
 
         if filename:
+
+            #Si ya hay un archivo seleccionado lo removemos del watcher
+            if self.path_sNp_file is not None:
+                self.file_watcher.removePath(str(self.path_sNp_file))
+            
+            #Guardamos el path absoluto del archivo seleccionado
             self.path_sNp_file = Path(filename)
             name_string = self.path_sNp_file.name
+
+            #Agregamos el nuevo archivo seleccionado al watcher
+            self.file_watcher.addPath(str(self.path_sNp_file))
+            self.file_watcher.fileChanged.connect(self.on_file_changed)
 
             #Cambiamos el layout de los graficos segun el tipo de archivo seleccionado
             if self.path_sNp_file.suffix == ".s1p":
@@ -260,24 +275,42 @@ class MainWindow(QMainWindow):
             self.file_list_widget.addItem("Directory not found")
 
     def on_item_double_clicked(self, item):
-        # Obtén el texto del elemento seleccionado
-        #if self.path_sNp_file is None or self.path_sNp_file.name != item.text():    
+
+        #Si ya hay un archivo seleccionado lo removemos del watcher
+        if self.path_sNp_file is not None:
+            self.file_watcher.removePath(str(self.path_sNp_file))
+
         self.path_sNp_file = path.join(DATA_PATH, item.text())
         self.path_sNp_file = Path( self.path_sNp_file)
+        #Agregamos el nuevo archivo seleccionado al watcher
+        self.file_watcher.addPath(str(self.path_sNp_file))
+        self.file_watcher.fileChanged.connect(self.on_file_changed)
+        #Pongo el nombre del archivo seleccionado en el QLineEdit
         self.file_name.setText(item.text())
         print("Selected file:", item.text())
         #Cambiamos el layout de los graficos segun el tipo de archivo seleccionado
         if self.path_sNp_file.suffix == ".s1p":
+            self.plot_s1p(str(self.path_sNp_file))
             self.plot_layout.setCurrentIndex(1)
         elif self.path_sNp_file.suffix == ".s2p":
             self.plot_s2p(str(self.path_sNp_file))
             self.plot_layout.setCurrentIndex(2)
+    
+    def plot_s1p(self,archive):
+        try:
+            print("Archivo seleccionado:",archive)
+            df = pd.read_csv(archive,comment="#",delimiter="\t",header=None)
+            self.plot_s1p_s11_mag.plot(df[0], df[dict_s2p["S11"]], pen="k")
+            self.plot_s1p_s11_pha.plot(df[0], df[dict_s2p["S11"]+1], pen="k")
+            
+        except Exception as e:  # Catch all exceptions
+            print(e)
+            print("No file available")
         
     def plot_s2p(self,archive):
         try:
             print("Archivo seleccionado:",archive)
             df = pd.read_csv(archive,comment="#",delimiter="\t",header=None)
-            print(df[0])
     
             for key in self.dict_plots.keys():
                 self.dict_plots[key]["Magnitude"].plot(df[0], df[dict_s2p[key]], pen="k")
@@ -288,24 +321,23 @@ class MainWindow(QMainWindow):
             print("No file available")
         
     def plot_button_clicked(self):
-        try:
-            df = pd.read_csv("./data/dut_c.csv")
-            # Define the columns to plot
-            columns = ["s11_mag", "s11_pha", "s21_mag", "s21_pha",
-                       "s22_mag", "s22_pha", "s12_mag", "s12_pha"]
+        if self.path_sNp_file is not None:
+            if self.path_sNp_file.suffix == ".s1p":
+                self.plot_s1p(str(self.path_sNp_file))
+            elif self.path_sNp_file.suffix == ".s2p":
+                self.plot_s2p(str(self.path_sNp_file))
+        else:
+            QMessageBox.warning(self, "Warning", "No file selected", QMessageBox.Ok)
 
-            # Create plots in a 4x2 grid
-            for i, col in enumerate(columns):
-                plot_widget = pg.PlotWidget()
-                plot_widget.setBackground('w')
+    def on_file_changed(self, archive):
+        if not os.path.exists(archive):
+            self.clear_screen()
 
-                plot_widget.plot(df["freq"], df[col], pen="k", name=col)
-                plot_widget.setLabel("left", col)
-                plot_widget.setLabel("bottom", "Frequency")
 
-                self.mid_layout.addWidget(plot_widget, i // 2, i % 2)
-
-        except Exception as e:  # Catch all exceptions
-            print(e)
-            QMessageBox.warning(self, "Warning", "No file available")
+    def clear_screen(self):
+        self.file_list_widget.clearSelection()
+        self.file_name.setText("No file selected")
+        self.plot_layout.setCurrentIndex(0)
+        self.path_sNp_file = None
+    
 
