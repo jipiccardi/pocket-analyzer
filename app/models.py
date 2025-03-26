@@ -4,6 +4,8 @@ import logging
 import os
 from typing import List
 import numpy as np
+import pandas as pd
+import io
 
 
 class Settings:
@@ -125,3 +127,68 @@ def save_measured_values_to_csv(name: str, values: List["MeasuredValue"]):
         for value in values:
             writer.writerow([value.freq, value.mag_1, value.ph1, value.mag_2, value.ph2, value.mag_3,
                              value.ph3, value.mag_4, value.ph4])
+            
+class DUT:
+    def __init__(self):
+        self.filename = None
+        self.freq_units = ""
+        self.s_units = ""
+        self.port_mode = ""
+        self.s_polar = None
+        self.s_complex = None
+        self.freq = []
+        
+
+
+    def read_file(self,filename):
+        dict_s2p = {"S11":1,"S21":3,"S22":5,"S12":7 }
+        dict_s1p = {"S11":1}
+
+        self.filename = filename
+        with open(self.filename, 'r') as f:
+            lines = f.readlines()
+            for i, line in enumerate(lines):
+                if line.startswith("#"):
+                    config = line.strip()
+
+        data_lines = [line for line in lines if not line.startswith(("!", "#"))]
+
+        config = config.split(" ")
+        self.freq_units = config[1]
+        self.s_units = config[3]
+
+        self.s_polar = pd.read_csv(io.StringIO(''.join(data_lines)), sep=None,engine='python', header=None)
+        self.s_complex = pd.read_csv(io.StringIO(''.join(data_lines)), sep=None,engine='python', header=None)
+
+        if self.s_polar.shape[1] > 4:
+            self.port_mode = "2 Port"
+            dict = dict_s2p
+        else:
+            self.port_mode = "1 Port"
+            dict = dict_s1p
+
+        if self.s_units == "DB":
+            for i in dict.values():
+                p = self.s_polar[i]
+                theta = self.s_polar[i+1]
+                self.s_complex[i] = np.power(10, p / 20) * np.cos(np.radians(theta))
+                self.s_complex[i+1] = np.power(10, p / 20) * np.sin(np.radians(theta))
+
+        elif self.s_units == "RI":
+            for i in dict.values():
+                x = self.s_complex[i]
+                y = self.s_complex[i+1]
+                self.s_polar[i] = 20*np.log10(np.abs(x + 1j*y))
+                self.s_polar[i+1] = np.degrees(np.arctan2(x,y))
+
+        
+            
+        
+    
+        
+
+
+
+                
+
+

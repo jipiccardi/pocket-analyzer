@@ -7,7 +7,7 @@ from pathlib import Path
 import pyqtgraph as pg
 from PyQt5.QtCore import QFileSystemWatcher
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget, \
-    QApplication, QStyle, QMessageBox, QGridLayout, QFileDialog,QLineEdit,QStackedLayout, QLabel, QTabWidget
+    QApplication, QStyle, QMessageBox, QGridLayout, QFileDialog,QLineEdit,QStackedLayout, QLabel, QTabWidget, QComboBox
 from PyQt5.QtGui import QIcon
 from globals import serial_client, dict_s2p,stylesheet_tabs
 from debug_window import DebugWindow
@@ -16,6 +16,7 @@ from calibrate_window import CalibrateWindow
 from settings_window import SettingsWindow
 from start_measure import StartMeasureWindow
 import pandas as pd
+from models import DUT
 
 #Path absoluto del file para tener el relativo 
 basedir = path.dirname(__file__)
@@ -77,6 +78,11 @@ class MainWindow(QMainWindow):
         top_layout.addWidget(self.plot_button)
 
         # Mid Layout
+        self.plot_type = QComboBox()
+        self.plot_type.addItems(["Polar","Complex"])
+        self.plot_type.currentIndexChanged.connect(self.on_type_changed)
+        
+
         file_name_label = QLabel("File:")
         self.clear_button = QPushButton("Clear")
         self.clear_button.clicked.connect(self.clear_screen)
@@ -89,6 +95,7 @@ class MainWindow(QMainWindow):
         aux_Hlayout = QHBoxLayout()
         aux_Hlayout.addWidget(file_name_label)
         aux_Hlayout.addWidget(self.file_name)
+        
 
         #Lista de archivos del directorio por defecto ./data
         self.file_list_widget = QListWidget()
@@ -131,25 +138,21 @@ class MainWindow(QMainWindow):
         self.dict_plots = {}
         
         for key in dict_s2p.keys():
-            self.dict_plots[key] = {"Layout":pg.GraphicsLayoutWidget(),"Magnitude":None,"Phase":None}
+            self.dict_plots[key] = {"Layout":pg.GraphicsLayoutWidget(),"Plot 1":None,"Plot 2":None}
 
         for key in self.dict_plots.keys():
             self.dict_plots[key]["Layout"].setBackground('w')
 
-            self.dict_plots[key]["Magnitude"] = self.dict_plots[key]["Layout"].addPlot(
+            self.dict_plots[key]["Plot 1"] = self.dict_plots[key]["Layout"].addPlot(
                 title=f"<span style='color: #80b85b; font-size: 12pt;'>{key} Magnitude</span>"
                 ,row=0
                 ,col=0)
-            self.dict_plots[key]["Magnitude"].setLabel('left', 'Magnitud [dB]', color='black')
-            self.dict_plots[key]["Magnitude"].setLabel('bottom', 'Frecuencia [MHz]',color='black')
-            self.dict_plots[key]["Magnitude"].showGrid(x=True, y=True, alpha=0.5)
-            self.dict_plots[key]["Phase"] = self.dict_plots[key]["Layout"].addPlot(
+            
+            self.dict_plots[key]["Plot 2"] = self.dict_plots[key]["Layout"].addPlot(
                 title=f"<span style='color: #80b85b; font-size: 12pt;'>{key} Phase</span>",
                 row=1,
                 col=0)
-            self.dict_plots[key]["Phase"].setLabel('left', 'Fase [°]', color='black')
-            self.dict_plots[key]["Phase"].setLabel('bottom', 'Frecuencia [MHz]',color='black')
-            self.dict_plots[key]["Phase"].showGrid(x=True, y=True, alpha=0.5)
+            
             self.task_tab_s2p.addTab(self.dict_plots[key]["Layout"], key)
 
         self.plot_layout.setCurrentIndex(2)
@@ -158,9 +161,10 @@ class MainWindow(QMainWindow):
         self.plot_layout.setCurrentIndex(0)
 
         self.mid_layout.addLayout(aux_Hlayout, 0,0,1,3)
-        self.mid_layout.addWidget(self.file_list_widget, 1, 0, 9, 3)
-        self.mid_layout.addWidget(self.clear_button, 10, 1, 1, 1)
-        self.mid_layout.addLayout(self.plot_layout, 0, 4, 11, 14)
+        self.mid_layout.addWidget(self.plot_type, 0, 4, 1, 1)
+        self.mid_layout.addWidget(self.file_list_widget, 1, 0, 10, 3)
+        self.mid_layout.addWidget(self.clear_button, 11, 1, 1, 1)
+        self.mid_layout.addLayout(self.plot_layout, 1, 4, 11, 14)
 
         # Main Layout
         main_layout.addLayout(top_layout)
@@ -295,26 +299,81 @@ class MainWindow(QMainWindow):
         elif self.path_sNp_file.suffix == ".s2p":
             self.plot_s2p(str(self.path_sNp_file))
             self.plot_layout.setCurrentIndex(2)
-    
+
+    def on_type_changed(self):
+        if not self.file_name.text() == "No file selected":
+            if self.path_sNp_file.suffix == ".s1p":
+                self.plot_s1p(str(self.path_sNp_file))
+            elif self.path_sNp_file.suffix == ".s2p":
+                self.plot_s2p(str(self.path_sNp_file))
+            
+
     def plot_s1p(self,archive):
         try:
-            print("Archivo seleccionado:",archive)
-            df = pd.read_csv(archive,comment="#",delimiter="\t",header=None)
+            dut = DUT()
+            dut.read_file(archive)
+            df = None
+
+            self.plot_s1p_s11_mag.clear()
+            self.plot_s1p_s11_pha.clear()
+
+            self.plot_s1p_s11_pha.showGrid(x=True, y=True, alpha=0.5)
+            self.plot_s1p_s11_mag.setLabel('bottom', f'Frequency [{dut.freq_units}]', color='black')
+            self.plot_s1p_s11_mag.showGrid(x=True, y=True, alpha=0.5)
+            self.plot_s1p_s11_pha.setLabel('bottom', f'Frequency [{dut.freq_units}]', color='black')
+
+            if self.plot_type.currentText() == "Polar":
+                df = dut.s_polar
+                self.plot_s1p_s11_mag.setLabel('left', 'Magnitud [dB]', color='black')
+                self.plot_s1p_s11_pha.setLabel('left', 'Fase [°]', color='black')
+                self.plot_s1p_s11_mag.setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>S11 Magnitude</span>")
+                self.plot_s1p_s11_pha.setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>S11 Phase</span>")
+
+            elif self.plot_type.currentText() == "Complex":
+                df = dut.s_complex
+                self.plot_s1p_s11_mag.setLabel('left', 'Real [Re]', color='black')
+                self.plot_s1p_s11_pha.setLabel('left', 'Imaginario [Im]', color='black')
+                self.plot_s1p_s11_mag.setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>S11 Real</span>")
+                self.plot_s1p_s11_pha.setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>S11 Imaginary</span>")
+            
             self.plot_s1p_s11_mag.plot(df[0], df[dict_s2p["S11"]], pen="k")
             self.plot_s1p_s11_pha.plot(df[0], df[dict_s2p["S11"]+1], pen="k")
             
         except Exception as e:  # Catch all exceptions
             print(e)
-            print("No file available")
+            print("No file available for ploting")
         
     def plot_s2p(self,archive):
         try:
-            print("Archivo seleccionado:",archive)
-            df = pd.read_csv(archive,comment="#",delimiter="\t",header=None)
+            dut = DUT()
+            dut.read_file(archive)
+            df = None
     
             for key in self.dict_plots.keys():
-                self.dict_plots[key]["Magnitude"].plot(df[0], df[dict_s2p[key]], pen="k")
-                self.dict_plots[key]["Phase"].plot(df[0], df[dict_s2p[key]+1], pen="k")
+
+                self.dict_plots[key]["Plot 2"].clear()
+                self.dict_plots[key]["Plot 1"].clear()
+
+                self.dict_plots[key]["Plot 1"].setLabel('bottom', f'Frequency [{dut.freq_units}]', color='black')
+                self.dict_plots[key]["Plot 1"].showGrid(x=True, y=True, alpha=0.5)
+                self.dict_plots[key]["Plot 2"].setLabel('bottom', f'Frequency [{dut.freq_units}]', color='black')
+                self.dict_plots[key]["Plot 2"].showGrid(x=True, y=True, alpha=0.5)
+
+                if self.plot_type.currentText() == "Polar":
+                    df = dut.s_polar
+                    self.dict_plots[key]["Plot 1"].setLabel('left', 'Magnitud [dB]', color='black')
+                    self.dict_plots[key]["Plot 2"].setLabel('left', 'Fase [°]', color='black')
+                    self.dict_plots[key]["Plot 1"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Magnitude</span>")
+                    self.dict_plots[key]["Plot 2"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Phase</span>")
+                elif self.plot_type.currentText() == "Complex":
+                    df = dut.s_complex
+                    self.dict_plots[key]["Plot 1"].setLabel('left', 'Real [Re]', color='black')
+                    self.dict_plots[key]["Plot 2"].setLabel('left', 'Imaginario [Im]', color='black')
+                    self.dict_plots[key]["Plot 1"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Real</span>")
+                    self.dict_plots[key]["Plot 2"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Imaginary</span>")
+
+                self.dict_plots[key]["Plot 1"].plot(df[0], df[dict_s2p[key]], pen="k")
+                self.dict_plots[key]["Plot 2"].plot(df[0], df[dict_s2p[key]+1], pen="k")    
             
         except Exception as e:  # Catch all exceptions
             print(e)
