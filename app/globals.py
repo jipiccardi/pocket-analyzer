@@ -26,3 +26,4 @@ stylesheet_tabs = """
                 padding: 5px;
             }
         """
+

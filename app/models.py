@@ -137,8 +137,6 @@ class DUT:
         self.s_polar = None
         self.s_complex = None
         self.freq = []
-        
-
 
     def read_file(self,filename):
         dict_s2p = {"S11":1,"S21":3,"S22":5,"S12":7 }

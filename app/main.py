@@ -15,7 +15,6 @@ def main():
     #Esto es solo para sistemas windows para que se vea el icono en la barra de tareas
     app_id = "pocket_analyzer.app"  # Identificador único
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)
-
     
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(ICON_PATH))

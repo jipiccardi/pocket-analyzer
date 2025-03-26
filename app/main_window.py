@@ -5,7 +5,7 @@ from os import listdir,path
 from pathlib import Path
 
 import pyqtgraph as pg
-from PyQt5.QtCore import QFileSystemWatcher
+from PyQt5.QtCore import QFileSystemWatcher, Qt
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTextEdit, QHBoxLayout, QVBoxLayout, QPushButton, QListWidget, \
     QApplication, QStyle, QMessageBox, QGridLayout, QFileDialog,QLineEdit,QStackedLayout, QLabel, QTabWidget, QComboBox
 from PyQt5.QtGui import QIcon
@@ -348,7 +348,9 @@ class MainWindow(QMainWindow):
             dut = DUT()
             dut.read_file(archive)
             df = None
-    
+
+            pen = pg.mkPen(color='black', width=1, style=Qt.SolidLine)
+
             for key in self.dict_plots.keys():
 
                 self.dict_plots[key]["Plot 2"].clear()
@@ -372,8 +374,8 @@ class MainWindow(QMainWindow):
                     self.dict_plots[key]["Plot 1"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Real</span>")
                     self.dict_plots[key]["Plot 2"].setTitle(f"<span style='color: #80b85b; font-size: 12pt;'>{key} Imaginary</span>")
 
-                self.dict_plots[key]["Plot 1"].plot(df[0], df[dict_s2p[key]], pen="k")
-                self.dict_plots[key]["Plot 2"].plot(df[0], df[dict_s2p[key]+1], pen="k")    
+                self.dict_plots[key]["Plot 1"].plot(df[0], df[dict_s2p[key]], pen=pen)
+                self.dict_plots[key]["Plot 2"].plot(df[0], df[dict_s2p[key]+1], pen=pen)    
             
         except Exception as e:  # Catch all exceptions
             print(e)
@@ -392,8 +394,9 @@ class MainWindow(QMainWindow):
         if not os.path.exists(archive):
             self.clear_screen()
 
-
     def clear_screen(self):
+        self.task_tab_s1p.setCurrentIndex(0)
+        self.task_tab_s2p.setCurrentIndex(0)
         self.file_list_widget.clearSelection()
         self.file_name.setText("No file selected")
         self.plot_layout.setCurrentIndex(0)
