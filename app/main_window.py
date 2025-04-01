@@ -17,11 +17,13 @@ from settings_window import SettingsWindow
 from start_measure import StartMeasureWindow
 import pandas as pd
 from models import DUT
+from matplotlib_canvas import smith_chart_canvas
+from skrf import Network,plotting
 
 #Path absoluto del file para tener el relativo 
 basedir = path.dirname(__file__)
 DATA_PATH = path.join(basedir, "./data")
-ICON_PATH = path.join(basedir, "./images/icono.png")
+ICON_PATH = path.join(basedir, "./images/Icono_VNA.png")
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -120,6 +122,8 @@ class MainWindow(QMainWindow):
         self.task_tab_s2p.setStyleSheet(stylesheet_tabs)
 
         #Agrego el grafico de S11 para el caso de archivos .s1p
+        self.plot_smith_s1p = smith_chart_canvas()
+    
         self.plot_s1p_s11 = pg.GraphicsLayoutWidget()
         self.plot_s1p_s11.setBackground('w')
 
@@ -130,12 +134,15 @@ class MainWindow(QMainWindow):
         self.plot_s1p_s11_pha.setLabel('left', 'Fase [°]', color='black')
         self.plot_s1p_s11_pha.setLabel('bottom', 'Frecuencia [MHz]',color='black')
         self.task_tab_s1p.addTab(self.plot_s1p_s11, "S11")
+        self.task_tab_s1p.addTab(self.plot_smith_s1p, "Smith Chart")
 
         self.plot_layout.setCurrentIndex(1)
         self.plot_layout.addWidget(self.task_tab_s1p)
         
         #Agrego los graficos de S11, S21, S12 y S22 para el caso de archivos .s2p
         self.dict_plots = {}
+
+        self.plot_smith_s2p = smith_chart_canvas()
         
         for key in dict_s2p.keys():
             self.dict_plots[key] = {"Layout":pg.GraphicsLayoutWidget(),"Plot 1":None,"Plot 2":None}
@@ -155,6 +162,7 @@ class MainWindow(QMainWindow):
             
             self.task_tab_s2p.addTab(self.dict_plots[key]["Layout"], key)
 
+        self.task_tab_s2p.addTab(self.plot_smith_s2p, "Smith Chart")
         self.plot_layout.setCurrentIndex(2)
         self.plot_layout.addWidget(self.task_tab_s2p)
 
@@ -196,8 +204,12 @@ class MainWindow(QMainWindow):
             self.file_watcher.fileChanged.connect(self.on_file_changed)
 
             #Cambiamos el layout de los graficos segun el tipo de archivo seleccionado
+            self.plot_smith(str(self.path_sNp_file))
+
             if self.path_sNp_file.suffix == ".s1p":
                 self.plot_layout.setCurrentIndex(1)
+                self.plot_s1p(str(self.path_sNp_file))
+                
             elif self.path_sNp_file.suffix == ".s2p":
                 self.plot_layout.setCurrentIndex(2)
                 self.plot_s2p(str(self.path_sNp_file))
@@ -211,6 +223,8 @@ class MainWindow(QMainWindow):
                         self.file_list_widget.setCurrentItem(item)
 
             print("Selected file:", self.path_sNp_file.name)
+            self.task_tab_s1p.setCurrentIndex(0)
+            self.task_tab_s2p.setCurrentIndex(0)
             self.file_name.setText(name_string)
 
     def show_connect_window(self):
@@ -289,17 +303,25 @@ class MainWindow(QMainWindow):
         #Agregamos el nuevo archivo seleccionado al watcher
         self.file_watcher.addPath(str(self.path_sNp_file))
         self.file_watcher.fileChanged.connect(self.on_file_changed)
-        #Pongo el nombre del archivo seleccionado en el QLineEdit
-        self.file_name.setText(item.text())
-        print("Selected file:", item.text())
+        
+        
         #Cambiamos el layout de los graficos segun el tipo de archivo seleccionado
+        self.plot_smith(str(self.path_sNp_file))
+
         if self.path_sNp_file.suffix == ".s1p":
             self.plot_s1p(str(self.path_sNp_file))
             self.plot_layout.setCurrentIndex(1)
         elif self.path_sNp_file.suffix == ".s2p":
             self.plot_s2p(str(self.path_sNp_file))
             self.plot_layout.setCurrentIndex(2)
+        self.task_tab_s1p.setCurrentIndex(0)
+        self.task_tab_s2p.setCurrentIndex(0)
+        #Pongo el nombre del archivo seleccionado en el QLineEdit
+        self.file_name.setText(item.text())
+        print("Selected file:", item.text())
+        
 
+    #Si cambio las unidades en que quiero ver los graficos, vuelvo a plotear con la unidad seleccionada
     def on_type_changed(self):
         if not self.file_name.text() == "No file selected":
             if self.path_sNp_file.suffix == ".s1p":
@@ -381,6 +403,53 @@ class MainWindow(QMainWindow):
             print(e)
             print("No file available")
         
+    def plot_smith(self,archive):
+        dut = Network(archive)
+        ax = None
+        lines = []
+        canva = None
+
+        if dut.nports == 1:
+            canva = self.plot_smith_s1p
+            ax = self.plot_smith_s1p.axes
+            lines = [{'marker_idx': [1, -1], 'color': 'g', 'm': 0, 'n': 0, 'ntw': dut}]
+        elif dut.nports == 2:
+            canva = self.plot_smith_s2p
+            ax = self.plot_smith_s2p.axes
+            lines = [
+                {'marker_idx': [1, -1], 'color': 'g', 'm': 0, 'n': 0, 'ntw': dut},
+                {'marker_idx': [1, -1], 'color': 'r', 'm': 1, 'n': 0, 'ntw': dut},
+                {'marker_idx': [1, -1], 'color': 'b', 'm': 1, 'n': 1, 'ntw': dut},
+                {'marker_idx': [1, -1], 'color': 'm', 'm': 0, 'n': 1, 'ntw': dut},
+            ]
+
+        ax.cla() #Eliminamos el grafico anterior
+        plotting.smith(ax = ax, draw_labels = True, ref_imm = 50.0, chart_type = 'z')
+        # plot data
+        row_labels = []
+        row_colors = []
+        cell_text = []
+        for l in lines:
+            m = l['m']
+            n = l['n']
+            l['ntw'].plot_s_smith(m=m, n=n, ax = ax, color=l['color'])
+            #plot markers
+            for i, k in enumerate(l['marker_idx']):
+                x = l['ntw'].s.real[k, m, n]
+                y = l['ntw'].s.imag[k, m, n]
+                z = l['ntw'].z[k, m, n]
+                z = f'{z.real:.4f} + {z.imag:.4f}j ohm'
+                f = l['ntw'].frequency.f_scaled[k]
+                f_unit = l['ntw'].frequency.unit
+                row_labels.append(f'M{i + 1}')
+                row_colors.append(l['color'])
+                ax.scatter(x, y, marker = 'v', s=20, color=l['color'])
+                ax.annotate(row_labels[-1], (x, y), xytext=(-7, 7), textcoords='offset points', color=l['color'])
+                cell_text.append([f'{f:.3f} {f_unit}', z])
+        leg1 = ax.legend(loc="upper right", fontsize= 6)
+
+        canva.draw()
+
     def plot_button_clicked(self):
         if self.path_sNp_file is not None:
             if self.path_sNp_file.suffix == ".s1p":
