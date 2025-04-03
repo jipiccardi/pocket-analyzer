@@ -1,9 +1,6 @@
-from PyQt5.QtGui import QDoubleValidator,QIntValidator
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit, QLineEdit, QPushButton, QMessageBox
+from PyQt5.QtGui import QDoubleValidator,QIntValidator
 from unicodedata import decimal
-
-from globals import settings
-from models import Settings
 
 
 class SettingsWindow(QDialog):
@@ -20,8 +17,7 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         f_start_label = QLabel('Frequency Start [MHz]')
         self.f_start_text = QLineEdit()
-        self.f_start_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
-        self.f_start_text.setText(settings.get_values()['f_init'])
+
         aux_layout.addWidget(f_start_label)
         aux_layout.addStretch()
         aux_layout.addWidget(self.f_start_text)
@@ -30,8 +26,7 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         f_end_label = QLabel('Frequency End [MHz]')
         self.f_end_text = QLineEdit()
-        self.f_end_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
-        self.f_end_text.setText(settings.get_values()['f_end'])
+        
         aux_layout.addWidget(f_end_label)
         aux_layout.addStretch()
         aux_layout.addWidget(self.f_end_text)
@@ -40,26 +35,20 @@ class SettingsWindow(QDialog):
         aux_layout = QHBoxLayout()
         n_steps_label = QLabel('Number of steps')
         self.n_steps_text = QLineEdit()
-        self.n_steps_text.setValidator(QIntValidator(bottom=0, top=235))
-        self.n_steps_text.setText(settings.get_values()['n_step'])
+        
         aux_layout.addWidget(n_steps_label)
         aux_layout.addStretch()
         aux_layout.addWidget(self.n_steps_text)
         input_layout.addLayout(aux_layout)
 
-        save_button = QPushButton('Save')
-        save_button.clicked.connect(self.save_button_clicked)
+        self.f_start_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
+        self.f_end_text.setValidator(QDoubleValidator(bottom=0, top=3000.0, decimals= 1))
+        self.n_steps_text.setValidator(QIntValidator(bottom=0, top=235))
 
+
+        self.save_button = QPushButton('Save')
+        
         main_layout.addLayout(input_layout)
         main_layout.addStretch()
-        main_layout.addWidget(save_button)
+        main_layout.addWidget(self.save_button)
         self.setLayout(main_layout)
-
-
-    def save_button_clicked(self):
-        if self.f_start_text.text() == "" or self.f_end_text.text() == "" or self.n_steps_text.text() == "":
-            QMessageBox.warning(self, "Input Error", "All values are mandatory.")
-            return
-
-        settings.update_values(self.f_start_text.text(), self.f_end_text.text(), self.n_steps_text.text())
-        self.close()

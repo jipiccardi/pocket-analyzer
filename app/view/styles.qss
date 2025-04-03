@@ -1,0 +1,145 @@
+/* General */
+QWidget {
+    background-color: #f3f3f3;
+    color: #0f0f0f;
+    font-family: "Segoe UI", "Arial";
+    font-size: 12pt;
+}
+
+#topWidget{
+    background-color: #E0E0E0 ;
+}
+
+/* Botones */
+QPushButton {
+    background-color: #ffffff;
+    color: #0f0f0f;
+    border: 1px solid #cfcfcf;
+    padding: 7px;  /* Reducido de 8px a 4px */
+    border-radius: 7px; /* Reducido de 6px a 4px */
+    font-size: 10pt; /* Tamaño de fuente ligeramente menor */
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+
+QPushButton:pressed {
+    background-color: #d0d0d0;
+}
+
+/* Botones deshabilitados */
+QPushButton:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    border: 1px solid #d0d0d0;
+}
+
+#plotButton {
+    background-color: #0078d4;
+    border: 1px solid #005a9e;
+    padding: 7px;  /* Reducido de 8px a 4px */
+    border-radius: 7px; /* Reducido de 6px a 4px */
+}
+
+#plotButton:hover {
+    background-color: #005a9e;
+}
+
+#plotButton:pressed {
+    background-color: #004c87;;
+}
+
+#clearButton {
+    color: white;
+    background-color: #0078d4;
+    font-weight: bold ;
+    border: 1px solid #005a9e;
+    padding: 7px;  /* Reducido de 8px a 4px */
+    border-radius: 7px; /* Reducido de 6px a 4px */
+}
+
+#clearButton:pressed {
+    background-color: #004c87;;
+}
+
+
+/* Listas */
+QListWidget {
+    background-color: #ffffff;
+    color: #0f0f0f;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+}
+
+QListWidget::item {
+    padding: 4px;
+}
+
+QListWidget::item:selected {
+    background-color: #dbeafe;
+    color: #0f0f0f;
+}
+
+/* Selección de archivo */
+QComboBox {
+    background-color: #ffffff;
+    color: #0f0f0f;
+    border: 1px solid #cfcfcf;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+QComboBox::drop-down {
+    background-color: #e6e6e6;
+}
+
+
+/* Barra de texto */
+QLineEdit {
+    background-color: #ffffff;
+    color: #0f0f0f;
+    border: 1px solid #cfcfcf;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* Ventana principal */
+QMainWindow {
+    background-color: #f3f3f3;
+}
+
+/* ScrollBar */
+QScrollBar:vertical {
+    border: none;
+    background: #f3f3f3;
+    width: 10px;
+    margin: 2px 0 2px 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #cfcfcf;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+    background: none;
+    border: none;
+}
+
+/* Pestañas*/
+QTabBar::tab:selected {
+    background-color: #0078d4 ; /* Color azul para la pestaña seleccionada */
+    color: white;             /* Texto blanco en la pestaña seleccionada */
+    font-weight:500;
+    border-radius: 5px;       /* Bordes redondeados */
+    padding: 2px;             /* Espaciado interno */
+}
+
+QTabBar::tab {
+    background-color: #E0E0E0; /* Color gris claro para pestañas no seleccionadas */
+    color: black;              /* Texto negro para pestañas no seleccionadas */
+    border: 1px solid #E0E0E0; /* Bordes grises */
+    padding: 5px;
+}

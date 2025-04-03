@@ -1,8 +1,18 @@
-from conn import SerialClient
-from models import Settings
+from models.conn import SerialClient
+from models.models import Settings
+from os import path
+import pyqtgraph as pg
+from PyQt5.QtCore import Qt
+
+#Path absoluto del file para tener el relativo 
+basedir = path.dirname(__file__)
+DATA_PATH = path.join(basedir, "./data")
+ICON_PATH = path.join(basedir, "./images/Logo Pocket VNA.png")
 
 serial_client = SerialClient()
 settings = Settings()
+
+pen_plots = pg.mkPen(color='black', width=1, style=Qt.SolidLine,cosmetic = True)
 
 dict_s2p = {
                 "S11":1,
@@ -11,19 +21,4 @@ dict_s2p = {
                 "S12":7 
             }
 
-stylesheet_tabs = """
-            QTabBar::tab:selected {
-                background-color: #80b85b; /* Color verde para la pestaña seleccionada */
-                color: black;             /* Texto blanco en la pestaña seleccionada */
-                border-radius: 5px;       /* Bordes redondeados */
-                padding: 5px;             /* Espaciado interno */
-            }
-
-            QTabBar::tab {
-                background-color: #F0F0F0; /* Color gris claro para pestañas no seleccionadas */
-                color: black;              /* Texto negro para pestañas no seleccionadas */
-                border: 1px solid #CCCCCC; /* Bordes grises */
-                padding: 5px;
-            }
-        """
-
+#80b85b

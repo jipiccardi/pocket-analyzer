@@ -2,12 +2,10 @@ import sys
 
 from PyQt5.QtGui import QFont,QIcon
 from PyQt5.QtWidgets import QApplication
-
-from main_window import MainWindow,ICON_PATH
+from controler.main_controller import MainController
+from view.main_window import MainWindow,ICON_PATH
 import logging
 import ctypes
-
-
 
 def main():
     logging.getLogger().setLevel(logging.DEBUG)
@@ -22,8 +20,11 @@ def main():
     font = QFont()
     font.setPointSize(12)
     app.setFont(font)
-    window = MainWindow()
-    window.show()
+    #window = MainWindow()
+    #window.show()
+    window = MainController()
+    window.view.show()
+
     sys.exit(app.exec_())
 
 

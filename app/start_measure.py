@@ -4,10 +4,10 @@ from typing import List
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QProgressBar, QPushButton, QMessageBox
 
-from data_processing import calculate_dut_coefficients
+from models.data_processing import calculate_dut_coefficients
 from globals import serial_client
-from models import MeasuredValue, save_measured_values_to_csv
-from data_correct_points import apply_extrapole, apply_phase_correction
+from models.models import MeasuredValue, save_measured_values_to_csv
+from models.data_correct_points import apply_extrapole, apply_phase_correction
 
 
 class StartMeasureWindow(QDialog):
