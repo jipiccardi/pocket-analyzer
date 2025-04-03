@@ -355,16 +355,14 @@ void app_main(void)
     //MAX2870_init();
     //configure_MAX2870_20MHz();
     //init_FRQ_gen();
-    MAX2870_init();
-    XRA1403_set_gpio_level(LD_PIN, LOW);
-    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
-    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+    //MAX2870_init();
+    
     vTaskDelay(20/portTICK_PERIOD_MS);
-    en_output(RF_B,HIGH);
+    //en_output(RF_B,HIGH);
     vTaskDelay(20/portTICK_PERIOD_MS);
-    en_output(RF_A,HIGH);
+    //en_output(RF_A,HIGH);
     set_VNA_path(S11_PATH);
-    configure_MAX2870_20MHz();
+    //configure_MAX2870_20MHz();
     
 
     //vTaskDelay(1000/portTICK_PERIOD_MS);
@@ -377,6 +375,34 @@ void app_main(void)
     //configure_MAX2870_20MHz();
     uart_flush(UART_NUM);
 
+    //Inicializacion del ADF 
+    //Los pines no cambian al igual que el CHIP SELECT conectarlos de la misma forma
+    XRA1403_set_gpio_level(LD_PIN, LOW);
+    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
+    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+
+    MAX2870_write_register(0x400005);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    MAX2870_write_register(0x8014DC);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    MAX2870_write_register(0x800003);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    MAX2870_write_register(0x400CE42);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    MAX2870_write_register(0x8011);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    MAX2870_write_register(0xB8000);
+
+    //N = 146 R = 2 FRAC = 0 MOD = 2 Activo las dos salidas Fvco = 2560MHz Fpfd = 17.5MHz Fo = 39.92MHz
+    MAX2870_write_register(0x8014DC | (64<<20) | (175<<12) | (1<<5) | (1<<8));
+    MAX2870_write_register(0x400CE42 | (2<<14));
+    MAX2870_write_register(0xB8000 | (146<<15))
+
+
+
+
+
+
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
         //
@@ -386,9 +412,9 @@ void app_main(void)
         
         //if (len > 0){
             //data[len] = '\0';
-            state_machine_uart();
+            //state_machine_uart();
             //ESP_LOGI(TAG_MAIN, "Recv str: %s",data_uart);
-            state_machine_process_data();
+           // state_machine_process_data();
             //ESP_LOGI(TAG_MAIN, "Len str: %d", len);
 
         //}
