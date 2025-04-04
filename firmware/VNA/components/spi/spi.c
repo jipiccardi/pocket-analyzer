@@ -2,6 +2,7 @@
 
 spi_device_handle_t XRA1403_handle;
 spi_device_handle_t MAX2870_handle;
+spi_device_handle_t ADF4351_handle;
 
 void spi_init(void)
 {
@@ -56,7 +57,7 @@ void spi_init(void)
     assert(ret == ESP_OK);
     ret = spi_bus_add_device(SENDER_HOST, &devcfg_XRA1403, &XRA1403_handle);
     assert(ret == ESP_OK);
-    ret = spi_bus_add_device(SENDER_HOST, &devcfg_MAX2870, &MAX2870_handle);
+    ret = spi_bus_add_device(SENDER_HOST, &devcfg_MAX2870, &MAX2870_handle); //Si se quiere probar ADF4351 cambiar el handle
     assert(ret == ESP_OK);
     gpio_set_level(GPIO_RESET,1); //Para evitar el reset
 }

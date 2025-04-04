@@ -16,6 +16,7 @@
 #define REG6_CMD 0x06
 
 extern spi_device_handle_t MAX2870_handle;
+extern spi_device_handle_t ADF4351_handle;
 
 /**
 *   @brief Funcion para escribir registro 0 a 5. Tambien guardar en memoria si corresponde a un registro de escritura el valor seteado
@@ -59,5 +60,10 @@ void MAX2870_init(void);
 */
 void sweep_MAX2870(const uint16_t* sweep, uint8_t sz, uint16_t delay);
 
+void ADF4351_write_register(uint32_t);
+void ADF4351_init(void);
+uint32_t ADF4351_get_register(uint8_t);
+void set_FRQ_ADF4351(uint32_t);
+void en_output_ADF4351 (uint8_t, uint8_t);
 
 #endif

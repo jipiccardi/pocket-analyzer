@@ -1,0 +1,2 @@
+No puedo compilar ni probar el codigo asi que agregué un adf4351.c en el max2870. Si queres probar esas funciones, en spi.c 
+modificá el MAX2870_handle por el ADF4351_handle y deberían andar si tenes todo conectado como antes.
