@@ -396,7 +396,7 @@ void app_main(void)
     //N = 146 R = 2 FRAC = 0 MOD = 2 Activo las dos salidas Fvco = 2560MHz Fpfd = 17.5MHz Fo = 39.92MHz
     MAX2870_write_register(0x8014DC | (64<<20) | (175<<12) | (1<<5) | (1<<8));
     MAX2870_write_register(0x400CE42 | (2<<14));
-    MAX2870_write_register(0xB8000 | (146<<15))
+    MAX2870_write_register(0xB8000 | (146<<15));
 
 
 

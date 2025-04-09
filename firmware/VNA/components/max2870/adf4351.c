@@ -1,12 +1,13 @@
-#include "max2870.h"
 #include "PR_max2870.h"
+#include <unistd.h>
 
-static uint32_t reg_str_adf[6] = {0,0,0,0,0,0};
 
 
 #define RF_MAIN 0
 #define RF_AUX 1
 #define CRYSTAL_FRQ_ADF4351 350 //Son 35MHz
+
+static uint32_t reg_str_adf[6] = {0,0,0,0,0,0};
 
 void ADF4351_write_register(uint32_t data){
     spi_transaction_t t;
@@ -99,13 +100,13 @@ void set_FRQ_ADF4351(uint32_t freq){
     
     usleep(1000);
     
-    reg_mod = ((reg4 & 0XFF800FFF) | ((uint32_t) (out_div) << 20) | ((uint32_t) (band_select) << 12) ));
+    reg_mod = ((reg4 & 0XFF800FFF) | ((uint32_t) (out_div) << 20) | ((uint32_t) (band_select) << 12) );
     ADF4351_write_register(reg_mod); //Output divider Band Select
 
     reg_mod = ((reg2 & 0XFF003FFF) | (uint32_t) (r_div) << 14)  ;
     ADF4351_write_register(reg_mod); //R-Divider
 
-    reg_mod = ((reg1 & 0XFFFF8007) | (uint32_t) (MOD) << 3) | ;
+    reg_mod = ((reg1 & 0XFFFF8007) | (uint32_t) (MOD) << 3) ;
     ADF4351_write_register(reg_mod); //MOD Divider
 
     reg_mod = ((reg0 & 0X80000007) | ((uint32_t) (N) << 15) | ((uint32_t) (FRAC) << 15));
@@ -118,7 +119,7 @@ void set_FRQ_ADF4351(uint32_t freq){
 void en_output_ADF4351 (uint8_t RF_out, uint8_t status){
     uint32_t reg4;
 
-    reg4 = ADF4351_write_register(REG4_CMD);
+    reg4 = ADF4351_get_register(REG4_CMD);
 
     if (RF_out == RF_MAIN)
         ADF4351_write_register((reg4 & ~0x20) | (uint32_t) (status) << 5);
