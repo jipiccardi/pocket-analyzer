@@ -27,16 +27,17 @@ void set_FRQ(uint32_t freq){
     n_div = f_VCO / f_PFD;
     
     diva = (uint16_t) ((MAX2870_get_register(REG4_CMD) & 0x700000) >> 20); //DIVA_Divider
-
+    usleep(30);
     if (out_div != diva){
         reg_mod = ((reg4 & 0xFF8FFFFF) | (uint32_t) out_div << 20);
         MAX2870_write_register(reg_mod);
     }
 
     
-    usleep(1000);
+    usleep(30);
     reg_mod = ((reg0 & 0X80007FFF) | (uint32_t) n_div << 15);
     MAX2870_write_register(reg_mod); //N-Divider
+    usleep(30);
 }
 
 uint16_t get_FRQ(void){
@@ -86,11 +87,12 @@ void en_output (uint8_t RF_out, uint8_t status){
     uint32_t reg4;
 
     reg4 = MAX2870_get_register(REG4_CMD);
-
+    usleep(30);
     if (RF_out == RF_A)
         MAX2870_write_register((reg4 & ~0x20) | (uint32_t) status << 5);
     else if (RF_out == RF_B)
         MAX2870_write_register((reg4 & ~0x100) | (uint32_t) status << 8);
+    usleep(30);
 }
 
 void set_PLLmode(uint8_t mode){
@@ -142,18 +144,24 @@ void configure_MAX2870_20MHz(void){
     
     // Registro 5: Configuración básica
     MAX2870_write_register(0x01400005); // Reset por seguridad
+    usleep(30);
     // Registro 4 
-    MAX2870_write_register(0x61F801FC); // DIVA = 128, RFOUTA habilitado
+    MAX2870_write_register(0x61F800DC); // DIVA = 128, RFOUTA habilitado
+    usleep(30);
     // Registro 3: Configuración del VCO y autoselección
     MAX2870_write_register(0x0100000B); // Configuración básica del VCO
+    usleep(30);
     // Registro 2: Configuración del divisor de referencia (R) y otros parámetros
     // R = 1, DBR = 0, RDIV2 = 0, MUXOUT = R divider output
     MAX2870_write_register(0x10004FD2); // R = 1, MUXOUT = R divider output
+    usleep(30);
     // Registro 1: Configuración del valor de M (modulus)
     MAX2870_write_register(0x80008011);
+    usleep(30);
     // Registro 0: Configuración del valor de N y F
     // N = 157, F = 0 (para 23 MHz)
     MAX2870_write_register(0x804E8000); // N = 157, F = 0
+    usleep(30);
     //set_Rdiv(1);
 
 

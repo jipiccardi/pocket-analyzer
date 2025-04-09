@@ -106,14 +106,14 @@ void get_measure(uint16_t* data){
     uint32_t mag_value = 0, pha_value = 0;
 
     //Muestreo durante 10 mS que es el ciclo de ruido que mido en el osciloscopio
-    for (int i = 0; i < 64; i++){
+    for (int i = 0; i < 256; i++){
         mag_value += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-        usleep(10);
+        usleep(195);
         pha_value += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
-        usleep(10);
+        usleep(195);
     }
-    mag_value >>=  6;
-    pha_value >>=  6;
+    mag_value >>=  7;
+    pha_value >>=  7;
 
     *(data) = mag_value;
     *(data+1) = pha_value;
@@ -148,23 +148,29 @@ void start_2p_meas(uint16_t f_low, uint16_t f_high){
 
     f_out = f_low;
     while (f_out < f_high){
-        //XRA1403_set_gpio_level(CE_PIN, LOW); 
-        //XRA1403_set_gpio_level(CE_PIN, HIGH);
-        
+        vTaskDelay(10/portTICK_PERIOD_MS); 
+        XRA1403_set_gpio_level(CE_PIN, LOW);
+        XRA1403_set_gpio_level(RF_EN_PIN, LOW);
+        usleep(1000);
         configure_MAX2870_20MHz();
-        vTaskDelay(10/portTICK_PERIOD_MS);
         set_FRQ(f_out);
+        en_output(RF_A,HIGH);
+        en_output(RF_B,HIGH);
+        usleep(1000);
+        XRA1403_set_gpio_level(CE_PIN, HIGH); 
+        XRA1403_set_gpio_level(RF_EN_PIN, HIGH);    
+        usleep(1000);   
         set_VNA_path(S11_PATH);
-        usleep(2000);
+        usleep(1000);
         get_measure(&data[0]);
         set_VNA_path(S21_PATH);
-        usleep(2000);
+        usleep(1000);
         get_measure(&data[2]);
         set_VNA_path(S22_PATH);
-        usleep(2000);
+        usleep(1000);
         get_measure(&data[4]);
         set_VNA_path(S12_PATH);
-        usleep(2000);
+        usleep(1000);
         get_measure(&data[6]);
         data[8] = get_FRQ();
         send_data(TWOPORT, data);
@@ -182,11 +188,15 @@ void start_1p_meas(uint16_t f_low, uint16_t f_high, uint8_t port){
 
     f_out = f_low;
     while (f_out < f_high){   
-        XRA1403_set_gpio_level(CE_PIN, LOW); 
-        XRA1403_set_gpio_level(CE_PIN, HIGH);
-        vTaskDelay(10/portTICK_PERIOD_MS);
+        vTaskDelay(10/portTICK_PERIOD_MS); 
+        XRA1403_set_gpio_level(CE_PIN, LOW);
+        XRA1403_set_gpio_level(RF_EN_PIN, LOW);
+        usleep(1000);
         configure_MAX2870_20MHz();
         set_FRQ(f_out);
+        usleep(1000);
+        XRA1403_set_gpio_level(CE_PIN, HIGH); 
+        XRA1403_set_gpio_level(RF_EN_PIN, HIGH);    
         if (port == ONE) set_VNA_path(S11_PATH);
         else set_VNA_path(S22_PATH);
         get_measure(&data[0]);
@@ -205,16 +215,36 @@ void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
     uint16_t data[3];
 
     f_out = get_FRQ();
-    for (int i=0; i<1000; i++){  
-        configure_MAX2870_20MHz();
-        XRA1403_set_gpio_level(CE_PIN, HIGH); 
-        set_FRQ(f_out);
-        usleep(500000);
-        if (port == ONE) set_VNA_path(S11_PATH);
+    if (port == ONE) set_VNA_path(S11_PATH);
         else set_VNA_path(S22_PATH);
+    for (int i=0; i<1000; i++){  
+        
+       // XRA1403_set_gpio_level(CE_PIN, LOW);
+       // XRA1403_set_gpio_level(RF_EN_PIN, LOW);
+        
+        MAX2870_init();
+        configure_MAX2870_20MHz();
+        set_FRQ(f_out);
+        vTaskDelay(10/portTICK_PERIOD_MS); 
+        en_output(RF_A,HIGH);
+        en_output(RF_B,HIGH);
+/*      vTaskDelay(10/portTICK_PERIOD_MS); 
+        MAX2870_init();
+        configure_MAX2870_20MHz();
+        
+        usleep(1000);
+        XRA1403_set_gpio_level(CE_PIN, HIGH); 
+        XRA1403_set_gpio_level(RF_EN_PIN, HIGH);    
+        usleep(1000);
+*/     // XRA1403_set_gpio_level(CE_PIN, HIGH); 
+       // XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+        vTaskDelay(10/portTICK_PERIOD_MS); 
         get_measure(&data[0]);
+        //vTaskDelay(10/portTICK_PERIOD_MS); 
         data[2] = get_FRQ();
         send_data(ONEPORT, data);
+        en_output(RF_A,LOW);
+        en_output(RF_B,LOW);
         //f_out += get_sweep_step_octave(f_out); 
     }
     send_data (END, NULL);
@@ -268,9 +298,9 @@ static void state_machine_process_data(void){
             f_low = 235;
             f_high = 25000;
             if (data_uart[2] == '1')
-                start_1p_meas(f_low, f_high, ONE);
+                start_1p_meas_1point(f_low, f_high, ONE);
             if (data_uart[2] == '2')
-                start_1p_meas(f_low, f_high, TWO);
+                start_1p_meas_1point(f_low, f_high, TWO);
             if (data_uart[2] == '3')
                 start_2p_meas(f_low, f_high);
             flag_main = 0; 
@@ -355,16 +385,20 @@ void app_main(void)
     //MAX2870_init();
     //configure_MAX2870_20MHz();
     //init_FRQ_gen();
-    MAX2870_init();
     XRA1403_set_gpio_level(LD_PIN, LOW);
-    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
-    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
+    XRA1403_set_gpio_level(CE_PIN, LOW); // Habilitar el Charge Pump
+    XRA1403_set_gpio_level(RF_EN_PIN, LOW);
+    MAX2870_init();
     vTaskDelay(20/portTICK_PERIOD_MS);
-    en_output(RF_B,HIGH);
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    en_output(RF_A,HIGH);
-    set_VNA_path(S11_PATH);
     configure_MAX2870_20MHz();
+    set_VNA_path(S11_PATH);
+    en_output(RF_A,HIGH);
+    en_output(RF_B,HIGH);
+    vTaskDelay(10/portTICK_PERIOD_MS);
+    XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
+    vTaskDelay(10/portTICK_PERIOD_MS);
+    XRA1403_set_gpio_level(RF_EN_PIN, HIGH);    
+    
     
 
     //vTaskDelay(1000/portTICK_PERIOD_MS);

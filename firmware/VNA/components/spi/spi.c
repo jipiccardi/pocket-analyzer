@@ -1,5 +1,7 @@
 #include "spi.h"
 
+#define SPI_FRQ     50000000
+
 spi_device_handle_t XRA1403_handle;
 spi_device_handle_t MAX2870_handle;
 
@@ -20,12 +22,12 @@ void spi_init(void)
         .command_bits = 1,
         .address_bits = 6,
         .dummy_bits = 1,
-        .clock_speed_hz = 60000000,
+        .clock_speed_hz = SPI_FRQ/4,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS3,
         .cs_ena_posttrans = 3,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
-        .queue_size = 3,
+        .queue_size = 1,
     };
 
      //Agregamos el dispositivo al bus SPI, en este caso el Generador
@@ -33,13 +35,13 @@ void spi_init(void)
         .command_bits = 0,
         .address_bits = 0,
         .dummy_bits = 0,
-        .clock_speed_hz = 60000000,
+        .clock_speed_hz = SPI_FRQ,
         .duty_cycle_pos = 128,      //50% duty cycle
         .mode = 0,
         .spics_io_num = GPIO_CS2,
         .cs_ena_pretrans = 1,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
         .cs_ena_posttrans = 1,      //Keep the CS low 3 cycles after transaction, to stop slave from missing the last bit when CS has less propagation delay than CLK
-        .queue_size = 3,
+        .queue_size = 1,
         .flags = SPI_DEVICE_HALFDUPLEX,
     };
 

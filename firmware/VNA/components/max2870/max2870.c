@@ -1,6 +1,6 @@
 
 #include "max2870.h"
-
+#include <unistd.h>
 static uint32_t reg_str[6] = {0,0,0,0,0,0}; 
 
 
@@ -41,30 +41,31 @@ void MAX2870_init(void){
     //Default values two times as datasheet indicates
     
     MAX2870_write_register(0x4000005); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
     MAX2870_write_register(0x6180B21C); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x0000000B);  
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x00004042); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x2000FFF9);  
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
+    MAX2870_write_register(0x0000000B);
+    usleep(30);  
+    MAX2870_write_register(0x00004042);
+    usleep(30); 
+    MAX2870_write_register(0x2000FFF9);
+    usleep(30);  
     MAX2870_write_register(0x007D0000); 
     
     vTaskDelay(20/portTICK_PERIOD_MS);
 
-    MAX2870_write_register(0x4000005); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    MAX2870_write_register(0x4000005);
+    usleep(30); 
     MAX2870_write_register(0x6180B21C); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
     MAX2870_write_register(0x0000000B); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
     MAX2870_write_register(0x04004042); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
     MAX2870_write_register(0x2000FFF9); 
-    vTaskDelay(20/portTICK_PERIOD_MS);
+    usleep(30);
     MAX2870_write_register(0x007D0000); 
+    usleep(30);
 }
 
 
