@@ -43,3 +43,30 @@ class ProgressDialog(QDialog):
         if self.worker_thread:
             self.worker_thread.requestInterruption()  # Gracefully stop the thread
         self.reject()  # Close dialog
+
+class MeasureDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.worker_thread = None
+        self.setWindowTitle("Processing")
+        self.setModal(True)
+        self.setFixedSize(300, 200)
+
+        self.layout = QVBoxLayout()
+        self.progress_bar = QProgressBar(self)
+        self.progress_bar.setRange(0, 0)
+        self.layout.addWidget(self.progress_bar)
+
+        self.cancel_button = QPushButton("Cancel", self)
+        self.cancel_button.clicked.connect(self.cancel_task)
+        self.layout.addWidget(self.cancel_button)
+
+        self.setLayout(self.layout)
+
+    def set_worker_thread(self, thread):
+        self.worker_thread = thread
+
+    def cancel_task(self):
+        if self.worker_thread:
+            self.worker_thread.requestInterruption()  # Gracefully stop the thread
+        self.reject()  # Close dialog

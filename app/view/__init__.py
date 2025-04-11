@@ -7,4 +7,4 @@ from .calibrate_window import CalibrateWindow
 from .settings_window import SettingsWindow
 from .debug_window import DebugWindow,GPIOCheckBox
 from .matplotlib_canvas import smith_chart_canvas
-from .dialogs import FileDialogManager,MessageBoxManager
+from .dialogs import FileDialogManager,MessageBoxManager,ProgressDialog,MeasureDialog
