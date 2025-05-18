@@ -246,8 +246,8 @@ static void state_machine_process_data(void){
             else {
                 XRA1403_set_gpio_level(CE_PIN, LOW); // Habilitar el Charge Pump
                 XRA1403_set_gpio_level(RF_EN_PIN, LOW);
-                MAX2870_init();
-                configure_MAX2870_20MHz();   
+                ADF4351_init();
+                //configure_MAX2870_20MHz();   
                 XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
                 XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
             }
@@ -260,7 +260,7 @@ static void state_machine_process_data(void){
             for(int i=0;i<6;i++)
                 aux[i] = data_uart[i+3];
             n = atoi(aux);
-            set_FRQ((uint32_t)n);
+            set_FRQ_ADF4351((uint32_t)n);
             flag_main = 0;
         }
         else if (data_uart[0] == 'S' && data_uart[1] == 'M'){
@@ -275,52 +275,6 @@ static void state_machine_process_data(void){
                 start_2p_meas(f_low, f_high);
             flag_main = 0; 
         }
-/*        else if (data_uart[0] == 'S' && data_uart[1] == 'M' && data_uart[2] == '1'){
-            int n = 1;
-            // Write data to UART.
-            uart_flush(UART_NUM);
-            set_VNA_path(S11_PATH);
-            for(int k=0;k<100;k++){
-                configure_MAX2870_FRAC();   
-                
-                set_FRQ(frq);
-                usleep(3000000);
-                frq += 300;
-                
-                frq_value = get_FRQ();
-                mag_value_S11 = 0;
-                pha_value_S11 = 0;
-                for (int i=0; i<128; i++){
-                    mag_value_S11 += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-                    usleep(21);
-                    pha_value_S11 += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
-                    usleep(21);
-                }
-                mag_value_S11 >>=  8;
-                pha_value_S11 >>=  8;
-                strcpy(test_str, "\x02VAL");
-                sprintf(mag_value_S11_str, "%04d", (uint16_t) mag_value_S11);
-                sprintf(pha_value_S11_str, "%04d", (uint16_t) pha_value_S11);
-                sprintf(frq_value_str, "%05d", frq_value);
-
-                strcat(test_str,frq_value_str);
-                strcat(test_str,mag_value_S11_str);
-                strcat(test_str,pha_value_S11_str);
-                strcat(test_str,"ccccdddd");
-                strcat(test_str,"\x03");
-            
-                uart_write_bytes(UART_NUM, test_str, strlen(test_str));
-        }
-            uart_write_bytes(UART_NUM, end_str, strlen(end_str));
-            //uart_flush(UART_NUM);
-            //uart_write_bytes(UART_NUM, test_str, strlen(test_str));
-            //ESP_ERROR_CHECK(uart_wait_tx_done(UART_NUM, 100)); // wait timeout is 100 RTOS ticks (TickType_t)
-            //n = atoi(data_uart[8]);
-            
-            //ESP_LOGI(TAG_MAIN, "Recibimos el Match: %d",n);
-            flag_main = 0;
-        }
-*/
         flag_main = 0;
     }
 }
@@ -341,38 +295,14 @@ void app_main(void)
     
     flag_main = 0;
     int adc_ch0 = 0;
-
-    //probamos primero el gpio
-    XRA1403_set_gpio_level(1,LOW);
-    //vTaskDelay(2000/portTICK_PERIOD_MS);
-    //XRA1403_set_gpio_level(0,LOW);
     
-    // Configure a temporary buffer for the incoming data
-    //uint8_t *data = (uint8_t *) malloc(BUFF_SIZE);
-     //probamos el adc
-
-     //Prueba del Generador a 23Mhz
-    //MAX2870_init();
-    //configure_MAX2870_20MHz();
-    //init_FRQ_gen();
-    //MAX2870_init();
-    
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    //en_output(RF_B,HIGH);
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    //en_output(RF_A,HIGH);
-    set_VNA_path(S11_PATH);
-    //configure_MAX2870_20MHz();
-    
-
-    //vTaskDelay(1000/portTICK_PERIOD_MS);
     gpio_reset_pin(LED_VERDE);
     gpio_set_direction(LED_VERDE,GPIO_MODE_OUTPUT);
     gpio_set_level(LED_VERDE,1);
     XRA1403_set_gpio_level(SWT_C_2, LOW);
     XRA1403_set_gpio_level(SWT_C_1, HIGH);
 
-    //configure_MAX2870_20MHz();
+
     uart_flush(UART_NUM);
 
     //Inicializacion del ADF 
@@ -381,27 +311,8 @@ void app_main(void)
     XRA1403_set_gpio_level(CE_PIN, HIGH); // Habilitar el Charge Pump
     XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
 
-    MAX2870_write_register(0x400005);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    MAX2870_write_register(0x8014DC);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    MAX2870_write_register(0x800003);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    MAX2870_write_register(0x400CE42);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    MAX2870_write_register(0x8011);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    MAX2870_write_register(0xB8000);
-
-    //N = 146 R = 2 FRAC = 0 MOD = 2 Activo las dos salidas Fvco = 2560MHz Fpfd = 17.5MHz Fo = 39.92MHz
-    MAX2870_write_register(0x8014DC | (64<<20) | (175<<12) | (1<<5) | (1<<8));
-    MAX2870_write_register(0x400CE42 | (2<<14));
-    MAX2870_write_register(0xB8000 | (146<<15));
-
-
-
-
-
+    ADF4351_init();
+    configure_ADF4351_40MHZ();
 
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
@@ -421,7 +332,9 @@ void app_main(void)
         
     
         //ESP_LOGI(TAG_MAIN, "ERROR Recv str");
-    
+        state_machine_uart();
+        //ESP_LOGI(TAG_MAIN, "Recv str: %s",data_uart);
+        state_machine_process_data();
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 

@@ -5,7 +5,7 @@
 
 #define RF_MAIN 0
 #define RF_AUX 1
-#define CRYSTAL_FRQ_ADF4351 350 //Son 35MHz
+#define CRYSTAL_FRQ_ADF4351 1000 //Son 35MHz
 
 static uint32_t reg_str_adf[6] = {0,0,0,0,0,0};
 
@@ -35,17 +35,17 @@ void ADF4351_init(void){
 
     //Default values two times as datasheet indicates
     
-    MAX2870_write_register(0x400005);  //reg5
+    ADF4351_write_register(0x400005);  //reg5
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x8014DC); //reg4
+    ADF4351_write_register(0x8014DC); //reg4
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x800003);  //reg3
+    ADF4351_write_register(0x800003);  //reg3
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x400CE42); //reg2
+    ADF4351_write_register(0x400CE42); //reg2
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0x8011);  //reg1
+    ADF4351_write_register(0x8011);  //reg1
     vTaskDelay(20/portTICK_PERIOD_MS);
-    MAX2870_write_register(0xB8000); //reg0
+    ADF4351_write_register(0xB8000); //reg0
     vTaskDelay(20/portTICK_PERIOD_MS);
 
 }
@@ -125,4 +125,11 @@ void en_output_ADF4351 (uint8_t RF_out, uint8_t status){
         ADF4351_write_register((reg4 & ~0x20) | (uint32_t) (status) << 5);
     else if (RF_out == RF_AUX)
         ADF4351_write_register((reg4 & ~0x100) | (uint32_t) (status) << 8);
+}
+
+void configure_ADF4351_40MHZ(void){
+//N = 146 R = 2 FRAC = 0 MOD = 2 Activo las dos salidas Fvco = 2560MHz Fpfd = 17.5MHz Fo = 39.92MHz
+ADF4351_write_register(0x8014DC | (2<<20) | (175<<12) | (1<<5) | (1<<8));
+ADF4351_write_register(0x400CE42 | (2<<14));
+ADF4351_write_register (0xB8000 | (146<<15));
 }
