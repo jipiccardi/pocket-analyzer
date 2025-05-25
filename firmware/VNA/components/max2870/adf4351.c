@@ -31,31 +31,32 @@ void ADF4351_write_register(uint32_t data){
         reg_str_adf[(data & 0x7)] = data;
 }
 
-void ADF4351_init(void){
-
-    //Default values two times as datasheet indicates
-    
-    ADF4351_write_register(0x400005);  //reg5
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    ADF4351_write_register(0x8014DC); //reg4
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    ADF4351_write_register(0x800003);  //reg3
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    ADF4351_write_register(0x400CE42); //reg2
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    ADF4351_write_register(0x8011);  //reg1
-    vTaskDelay(20/portTICK_PERIOD_MS);
-    ADF4351_write_register(0xB8000); //reg0
-    vTaskDelay(20/portTICK_PERIOD_MS);
-
-}
-
 uint32_t ADF4351_get_register(uint8_t reg){
     if (reg < 6)
         return reg_str_adf[reg];
     else 
         return 0xFFFFFFFF;
 }
+
+void ADF4351_init(void){
+
+    //Default values two times as datasheet indicates
+    
+    ADF4351_write_register(0x00400005);  //reg5
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    ADF4351_write_register(0x008014DC); //reg4
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    ADF4351_write_register(0x00800003);  //reg3
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    ADF4351_write_register(0x0400CE42); //reg2
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    ADF4351_write_register(0x00008011);  //reg1
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    ADF4351_write_register(0x000B8000); //reg0
+    vTaskDelay(20/portTICK_PERIOD_MS);
+
+}
+
 
 void set_FRQ_ADF4351(uint32_t freq){
     uint8_t out_div = 0,diva = 0;
@@ -128,8 +129,25 @@ void en_output_ADF4351 (uint8_t RF_out, uint8_t status){
 }
 
 void configure_ADF4351_40MHZ(void){
-//N = 146 R = 2 FRAC = 0 MOD = 2 Activo las dos salidas Fvco = 2560MHz Fpfd = 17.5MHz Fo = 39.92MHz
-ADF4351_write_register(0x8014DC | (2<<20) | (175<<12) | (1<<5) | (1<<8));
-ADF4351_write_register(0x400CE42 | (2<<14));
-ADF4351_write_register (0xB8000 | (146<<15));
+    int32_t aux_reg;
+//N = 256 | FRAC = 1 | MOD = 2 | F_REF = 100M | R = 10 | F_pfd = 10M | D_out = 64 | F_out = 40.078M
+//Registro 4
+//Feedback Fundamental | Out Div = 64 | Band CLK Div = 80 | Outs enabled, divided, and full power 
+ADF4351_write_register(0x00E501FC);
+
+//Registro 3
+//Band CLK Fast | Pulsewidth = FRAC-N | Charge Dissable | Cycle Slip dis | CLK Div OFF | CLK Div Val = 1 
+ADF4351_write_register(0x0080000B);
+
+//Registro 2
+//LowNoise Mode | MUX = VDD | R-Div2 & RDoub dis | R-counter = 10 | Doubler Buff Dis | CP current = 2.5 | LDF y LDP = Frac | PD Pol = Pos | Pow down - CP 3state - Counter Res = dis
+ADF4351_write_register (0x04028E82);
+
+//Registro 1
+//P adj = off | Prescaler = 8/9 | P value = 1 | MOD = 2 
+ADF4351_write_register (0x08008011);
+
+//Registro 0
+//I = 256 | F = 1 (Frac Mode)
+ADF4351_write_register (0x00800008);
 }
