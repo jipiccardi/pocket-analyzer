@@ -204,16 +204,17 @@ void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
     uint16_t f_out = 0;
     uint16_t data[3];
 
-    f_out = get_FRQ();
+    //f_out = get_FRQ();
     for (int i=0; i<1000; i++){  
-        configure_MAX2870_20MHz();
+        //configure_MAX2870_20MHz();
         XRA1403_set_gpio_level(CE_PIN, HIGH); 
-        set_FRQ(f_out);
-        usleep(500000);
+        //set_FRQ_ADF4351(f_out);
+       // usleep(500000);
         if (port == ONE) set_VNA_path(S11_PATH);
         else set_VNA_path(S22_PATH);
         get_measure(&data[0]);
-        data[2] = get_FRQ();
+        data[2] = 12345;
+        ///data[2] = get_FRQ();
         send_data(ONEPORT, data);
         //f_out += get_sweep_step_octave(f_out); 
     }
@@ -268,7 +269,8 @@ static void state_machine_process_data(void){
             f_low = 235;
             f_high = 25000;
             if (data_uart[2] == '1')
-                start_1p_meas(f_low, f_high, ONE);
+
+                //start_1p_meas(f_low, f_high, ONE);
             if (data_uart[2] == '2')
                 start_1p_meas(f_low, f_high, TWO);
             if (data_uart[2] == '3')
@@ -313,6 +315,7 @@ void app_main(void)
 
     ADF4351_init();
     configure_ADF4351_40MHZ();
+ //   ADF4351_write_register(0xD028E82);
 
     while(1){
         //adc_ch0 = adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
