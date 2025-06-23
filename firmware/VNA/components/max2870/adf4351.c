@@ -57,11 +57,10 @@ void ADF4351_init(void){
 
 }
 
-
 void set_FRQ_ADF4351(uint32_t f_out){
     uint8_t D_out_n = 0, D_out;
     uint16_t r_div2 = 0, r_doubler = 0, band_select = 0, r_counter = 0;
-    uint16_t N = 0, FRAC = 0, MOD = 0;
+    uint16_t n_divider = 0, f_divider = 0, mod = 0;
     uint16_t res = 0; 
     uint32_t f_VCO = 0, f_PFD = 0;
     uint32_t reg0 = 0 , reg2 = 0,reg4 = 0, reg_mod = 0, reg1 = 0;
@@ -71,13 +70,13 @@ void set_FRQ_ADF4351(uint32_t f_out){
     reg1 =  ADF4351_get_register(REG1_CMD);
     reg0 =  ADF4351_get_register(REG0_CMD);
 
-    D_out = (uint16_t) ((ADF4351_get_register(REG4_CMD) & 0x700000) >> 20); //Output Divider value
+    D_out = (uint16_t) ((reg4 & 0x700000) >> 20); //Output Divider value
     r_doubler = (uint16_t) ((reg2 & 0x2000000) >> 25);  //Ref doubler selection
     r_div2 = (uint16_t) ((reg2 & 0x1000000) >> 24);     //Ref divider selection 
     r_counter = (uint16_t) ((reg2 & 0xFFC000) >> 14);   //Ref counter Selection
     band_select = 1; //Lo mantengo fijo
 
-    MOD = (uint16_t) ((reg1 & 0x7FF8) >> 3);    //Modulus value selection
+    mod = (uint16_t) ((reg1 & 0x7FF8) >> 3);    //Modulus value selection
 
     f_PFD = CRYSTAL_FRQ_ADF4351 / r_counter;
     f_PFD <<= r_doubler;
@@ -94,9 +93,9 @@ void set_FRQ_ADF4351(uint32_t f_out){
 
     //N and F selection
     f_VCO = f_out * (1 << D_out_n);
-    N = (uint16_t) (f_VCO / f_PFD);
+    n_divider = (uint16_t) (f_VCO / f_PFD);
     res = (uint16_t) ((f_VCO % f_PFD)<<4)/f_PFD;
-    FRAC = (res * MOD) >> 4;
+    f_divider = (res * mod) >> 4;
 
 
     if (D_out_n != D_out){
@@ -113,14 +112,46 @@ void set_FRQ_ADF4351(uint32_t f_out){
     */
 
 
-    reg_mod = ((reg0 & 0X80000007) | ((uint32_t) (N) << 15) | ((uint32_t) (FRAC) << 3));
+    reg_mod = ((reg0 & 0X80000007) | ((uint32_t) (n_divider) << 15) | ((uint32_t) (f_divider) << 3));
     ADF4351_write_register(reg_mod); //N-Divider F-divider
     
     en_output_ADF4351(RF_MAIN, 1); //Enable RF output A
     en_output_ADF4351(RF_AUX, 1); //Enable RF output B
 }
 
+uint16_t get_FRQ_ADF4351(void){
+    uint8_t r_doubler, r_div2;
+    uint16_t r_counter, n_divider,f_divider, mod, D_out, f_OUT, f_VCO, f_PFD;
+    uint32_t reg0 = 0 , reg2 = 0,reg4 = 0, reg_mod = 0, reg1 = 0;
 
+    reg4 =  ADF4351_get_register(REG4_CMD);
+    reg2 =  ADF4351_get_register(REG2_CMD);
+    reg1 =  ADF4351_get_register(REG1_CMD);
+    reg0 =  ADF4351_get_register(REG0_CMD);
+
+    D_out = (uint16_t) ((ADF4351_get_register(REG4_CMD) & 0x700000) >> 20); //Output Divider value
+    r_doubler = (uint16_t) ((reg2 & 0x2000000) >> 25);  //Ref doubler selection
+    r_div2 = (uint16_t) ((reg2 & 0x1000000) >> 24);     //Ref divider selection 
+    r_counter = (uint16_t) ((reg2 & 0xFFC000) >> 14);   //Ref counter Selection
+    n_divider = (uint16_t) ((reg0 & 0x7FFF8000) >> 15); //N-Divider
+    f_divider = (uint16_t) ((reg0 & 0x7FF8) >> 3);      //F-Divider
+    mod = (uint16_t) ((reg1 & 0x7FF8) >> 3);            //MOD value            
+
+    f_PFD = CRYSTAL_FRQ_ADF4351 / r_counter;
+    f_PFD <<= r_doubler;
+    f_PFD >>= r_div2;
+
+    f_VCO = n_divider*f_PFD + (f_divider*f_PFD)/mod; 
+    
+    
+    f_OUT = f_VCO / (1 << D_out);   
+    
+    //Resuelve el problema de la perdida de los decimales.
+    if ((f_VCO & (1<<(D_out-1))) != 0) 
+        f_OUT ++;
+
+    return f_OUT;
+}
 
 void en_output_ADF4351 (uint8_t RF_out, uint8_t status){
     uint32_t reg4;
@@ -134,8 +165,8 @@ void en_output_ADF4351 (uint8_t RF_out, uint8_t status){
 }
 
 void configure_ADF4351_40MHZ(void){ 
-    int32_t aux_reg;
-    //N = 256 | FRAC = 1 | MOD = 2 | F_REF = 100M | R = 10 | F_pfd = 10M | D_out = 64 | F_out = 40.078M
+    
+    //N = 512 | FRAC = 1 | MOD = 2 | F_REF = 100M | R = 10 | R_2Div enabled | F_pfd = 5M | D_out = 64 | F_out = 40.04M
     //Registro 4
     //Feedback Fundamental | Out Div = 64 | Band CLK Div = 1 | Outs enabled, divided, and full power 
     ADF4351_write_register(0xE011FC);
@@ -149,15 +180,14 @@ void configure_ADF4351_40MHZ(void){
     ADF4351_write_register(0x0080000B);
 
     //Registro 2
-    //LowNoise Mode | MUX = VDD | R-Div2 & RDoub dis | R-counter = 10 | Doubler Buff Dis | CP current = 2.5 | LDF y LDP = Frac | PD Pol = Pos | Pow down - CP 3state - Counter Res = dis
+    //LowNoise Mode | MUX = VDD | R-Div2 en & RDoub dis | R-counter = 10 | Doubler Buff Dis | CP current = 2.5 | LDF y LDP = Frac | PD Pol = Pos | Pow down - CP 3state - Counter Res = dis
     ADF4351_write_register(0x11028E42);
-    ADF4351_write_register(0xFA0008);
+
     //Registro 1
-    //P adj = off | Prescaler = 8/9 | P value = 1 | MOD = 2 
+    //P adj = off | Prescaler = 3/4 | P value = 1 | MOD = 2 
     ADF4351_write_register(0x8011);
 
-    ADF4351_write_register(0x1FC0000);
     //Registro 0
-    //I = 256 | F = 1 (Frac Mode)
-    ADF4351_write_register(0xE00008);   
+    //I = 512 | F = 1 (Frac Mode)
+    ADF4351_write_register(0x01000008);   
 }

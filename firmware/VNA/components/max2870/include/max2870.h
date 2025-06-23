@@ -66,5 +66,6 @@ uint32_t ADF4351_get_register(uint8_t);
 void set_FRQ_ADF4351(uint32_t);
 void en_output_ADF4351 (uint8_t, uint8_t);
 void configure_ADF4351_40MHZ(void);
+uint16_t get_FRQ_ADF4351(void);
 
 #endif
