@@ -8,11 +8,11 @@
 #include "adc.h"
 #include "serial.h"
 #include "PR_max2870.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "driver/gpio.h"
+#include "vna_sys_res.h"
+
 #define portTICK_PERIOD_MS              ((TickType_t) (1000 / configTICK_RATE_HZ))
-#define LED_VERDE 23
+
 
 
 static const char *TAG_MAIN = "MAIN";
@@ -514,11 +514,13 @@ void app_main(void)
     
     gpio_reset_pin(LED_VERDE);
     gpio_set_direction(LED_VERDE,GPIO_MODE_OUTPUT);
-    gpio_set_level(LED_VERDE,1);
+    //gpio_set_level(LED_VERDE,1);
 
     uart_flush(UART_NUM);
-
+    rtos_init();
+    
     while(1){
+        
         state_machine_uart();
         //ESP_LOGI(TAG_MAIN, "Recv str: %s",data_uart);
         state_machine_process_data();

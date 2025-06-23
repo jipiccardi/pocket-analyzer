@@ -2,6 +2,8 @@
 #define GPIO_H
 #include "../../spi/include/spi.h"
 
+#define LED_VERDE 23
+
 // Commands par la expansion GPIO
 #define GSR1_CMD    0x00
 #define GSR2_CMD    0x01
