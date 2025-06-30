@@ -37,6 +37,19 @@
 #define INPUT 1
 #define OUTPUT 0
 
+#define SWT_A_1     3
+#define SWT_A_2     4
+#define SWT_B_1     5
+#define SWT_B_2     6
+#define SWT_C_1     7
+#define SWT_C_2     8
+
+#define S11_PATH    0
+#define S21_PATH    1
+#define S22_PATH    2
+#define S12_PATH    3
+
+
 void XRA1403_init(void);
 void XRA1403_set_gpio_level(uint8_t,uint8_t);
 void XRA1403_set_gpio_mode(uint8_t,uint8_t);

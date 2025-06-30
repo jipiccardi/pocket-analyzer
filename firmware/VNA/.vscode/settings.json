@@ -22,6 +22,7 @@
         "adc.h": "c",
         "adc_oneshot.h": "c",
         "gpio.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "serial.h": "c"
     },
 }

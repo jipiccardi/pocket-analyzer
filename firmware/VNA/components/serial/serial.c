@@ -1,6 +1,6 @@
 #include "serial.h"
 
-void uart_init(void)
+void VNA_uart_init(void)
 {
     uart_config_t uart_config = {
         .baud_rate = 921600,
@@ -20,6 +20,52 @@ void uart_init(void)
     
     ESP_LOGI(TAG_UART, "UART inicializada correctamente");
 
+}
+
+void VNA_send_data(uint8_t mode, uint16_t* data){
+    char data_str[60];
+    char data_header[4] = {'\x02','V','A','L'};
+    char data_footer = '\x03';
+    uart_flush(UART_NUM);     
+
+    /*UART CHART SEND MODE*/
+    if (UART_MODE){
+        switch (mode){
+            case TWOPORT:
+                sprintf(data_str, 
+                    "\x02VAL%05d%04d%04d%04d%04d%04d%04d%04d%04d\x03",
+                    data[8], data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                uart_write_bytes(UART_NUM, data_str, strlen(data_str));
+                break;
+            case ONEPORT:
+                sprintf(data_str, 
+                    "\x02VAL%05d%04d%04d\x03",
+                    data[2], data[0], data[1]);
+                uart_write_bytes(UART_NUM, data_str, strlen(data_str));
+                break;
+            case END:
+                uart_write_bytes(UART_NUM, "END", 3);
+                break;
+    }}
+    /*UART BYTE SEND MODE*/
+    else {
+        switch (mode){
+            case TWOPORT:
+                sprintf(data_str, 
+                    "\x02VAL%05d%04d%04d%04d%04d%04d%04d%04d%04d\x03",
+                    data[8], data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                uart_write_bytes(UART_NUM, data_str, strlen(data_str));
+                break;
+            case ONEPORT:
+                uart_write_bytes(UART_NUM,data_header, 4);
+                uart_write_bytes(UART_NUM,&data[2],3);
+                uart_write_bytes(UART_NUM,data,4);
+                uart_write_bytes(UART_NUM,&data_footer,1);
+                break;
+            case END:
+                uart_write_bytes(UART_NUM, "END", 3);
+                break;
+    }}
 }
 
 void state_machine_uart(void){
@@ -75,9 +121,6 @@ void state_machine_uart(void){
                 break;
             }
         }
-        
-    
-    
 }
 
 

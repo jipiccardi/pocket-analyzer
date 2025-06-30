@@ -17,7 +17,7 @@
 
 static const char *TAG_MAIN = "MAIN";
 uint8_t flag_main = 0;
-uint8_t data_uart[10];
+
 bool cali_ch0;
 bool cali_ch1;
 
@@ -25,25 +25,12 @@ bool cali_ch1;
 /* INICIO (Pasar esta seccion a otro archivo)*/
 void VNA_path(uint8_t path);
 
-#define SWT_A_1     3
-#define SWT_A_2     4
-#define SWT_B_1     5
-#define SWT_B_2     6
-#define SWT_C_1     7
-#define SWT_C_2     8
 
-#define S11_PATH    0
-#define S21_PATH    1
-#define S22_PATH    2
-#define S12_PATH    3
+
 
 #define STEPMODE    1       //1 = LINEAR       2 = OCTAVE
 
-#define END         0
-#define ONEPORT     1
-#define TWOPORT     2
 
-#define UART_MODE   0  // 0 = BYTE mode UART      1 = CHAR mode UART
 
 #define ONE         1
 #define TWO         2
@@ -486,7 +473,7 @@ void app_main(void)
     spi_init();
     XRA1403_init();
     adc_init();
-    uart_init();
+    VNA_uart_init();
     
     cali_ch0 = adc_calibration_init(ADC_CHANNEL_0);
     cali_ch1 = adc_calibration_init(ADC_CHANNEL_1);

@@ -15,6 +15,9 @@
 #define REG5_CMD 0x05
 #define REG6_CMD 0x06
 
+#define F_MIN_LOW 350
+#define F_MAX_HIGH 40000
+
 extern spi_device_handle_t MAX2870_handle;
 extern spi_device_handle_t ADF4351_handle;
 
