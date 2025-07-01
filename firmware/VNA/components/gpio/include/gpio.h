@@ -44,10 +44,7 @@
 #define SWT_C_1     7
 #define SWT_C_2     8
 
-#define S11_PATH    0
-#define S21_PATH    1
-#define S22_PATH    2
-#define S12_PATH    3
+
 
 
 void XRA1403_init(void);

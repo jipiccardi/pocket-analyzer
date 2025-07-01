@@ -10,6 +10,7 @@
 #include "PR_max2870.h"
 #include "driver/gpio.h"
 #include "vna_sys_res.h"
+#include "vna_hw_interface.h"
 
 #define portTICK_PERIOD_MS              ((TickType_t) (1000 / configTICK_RATE_HZ))
 
@@ -18,11 +19,10 @@
 static const char *TAG_MAIN = "MAIN";
 uint8_t flag_main = 0;
 
-bool cali_ch0;
-bool cali_ch1;
 
 
-/* INICIO (Pasar esta seccion a otro archivo)*/
+/*
+ INICIO (Pasar esta seccion a otro archivo)
 void VNA_path(uint8_t path);
 
 
@@ -40,37 +40,6 @@ void VNA_path(uint8_t path);
 
 
 
-static void set_VNA_path(uint8_t path){
-    switch (path){
-        case S11_PATH:
-            XRA1403_set_gpio_level(SWT_A_2, LOW);
-            XRA1403_set_gpio_level(SWT_A_1, HIGH);
-            XRA1403_set_gpio_level(SWT_B_2, LOW);
-            XRA1403_set_gpio_level(SWT_B_1, HIGH);
-            break;
-
-        case S21_PATH:
-            XRA1403_set_gpio_level(SWT_A_2, LOW);
-            XRA1403_set_gpio_level(SWT_A_1, HIGH);
-            XRA1403_set_gpio_level(SWT_B_1, LOW);
-            XRA1403_set_gpio_level(SWT_B_2, HIGH);
-            break;
-        
-        case S22_PATH:
-            XRA1403_set_gpio_level(SWT_A_1, LOW);
-            XRA1403_set_gpio_level(SWT_A_2, HIGH);
-            XRA1403_set_gpio_level(SWT_B_1, LOW);
-            XRA1403_set_gpio_level(SWT_B_2, HIGH);
-            break;
-
-        case S12_PATH:
-            XRA1403_set_gpio_level(SWT_A_1, LOW);  
-            XRA1403_set_gpio_level(SWT_A_2, HIGH);
-            XRA1403_set_gpio_level(SWT_B_2, LOW);
-            XRA1403_set_gpio_level(SWT_B_1, HIGH);
-            break;
-    }
-}
 
 uint16_t get_sweep_step_lin(uint16_t f_low, uint16_t f_high, uint16_t npoints){
     uint16_t f_range = 0, f_step = 0;
@@ -94,20 +63,6 @@ uint16_t get_sweep_step_octave(uint16_t f_out){
     return step;
 }
 
-void get_measure(uint16_t* data){
-    uint32_t mag_value = 0, pha_value = 0;
-
-    //Muestreo durante 10 mS que es el ciclo de ruido que mido en el osciloscopio
-    for (int i = 0; i < 16; i++){
-        mag_value += adc_read_channel_cali(ADC_CHANNEL_0,cali_ch0);
-        pha_value += adc_read_channel_cali(ADC_CHANNEL_1,cali_ch1);
-    }
-    mag_value >>=  4;
-    pha_value >>=  4;
-
-    *(data) = mag_value;
-    *(data+1) = pha_value;
-}
 
 void get_measure_debug(uint16_t* data,uint8_t mode){
     uint32_t mag_value = 0, pha_value = 0;
@@ -177,7 +132,7 @@ void send_data(uint8_t mode, uint16_t* data){
     char data_footer = '\x03';
     uart_flush(UART_NUM);     
 
-    /*UART CHART SEND MODE*/
+    /*UART CHART SEND MODE
     if (UART_MODE){
         switch (mode){
             case TWOPORT:
@@ -196,7 +151,7 @@ void send_data(uint8_t mode, uint16_t* data){
                 uart_write_bytes(UART_NUM, "END", 3);
                 break;
     }}
-    /*UART BYTE SEND MODE*/
+    /*UART BYTE SEND MODE
     else {
         switch (mode){
             case TWOPORT:
@@ -294,7 +249,7 @@ void start_1p_meas(uint16_t f_low, uint16_t f_high, uint8_t port){
             f_out += get_sweep_step_lin(f_low,f_high,npoints); 
         else if (STEPMODE == 2)
             f_out += get_sweep_step_octave(f_out);
-        */
+        
     }
     send_data (END, NULL);
 }
@@ -331,16 +286,16 @@ void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
         XRA1403_set_gpio_level(CE_PIN, HIGH); 
         XRA1403_set_gpio_level(RF_EN_PIN, HIGH);    
         usleep(1000);
-*/     // XRA1403_set_gpio_level(CE_PIN, HIGH); 
+    // XRA1403_set_gpio_level(CE_PIN, HIGH); 
        // XRA1403_set_gpio_level(RF_EN_PIN, HIGH);
        //vTaskDelay(10/portTICK_PERIOD_MS); 
         get_measure_debug(&data[0],1);
         //vTaskDelay(10/portTICK_PERIOD_MS); 
         data[2] = get_FRQ_ADF4351();
-       /* set_FRQ_ADF4351(400);
+        set_FRQ_ADF4351(400);
         vTaskDelay(6/portTICK_PERIOD_MS); 
         set_FRQ_ADF4351(f_out);
-         */send_data(ONEPORT, data);
+         send_data(ONEPORT, data);
        //vTaskDelay(6/portTICK_PERIOD_MS); 
         //en_output(RF_A,LOW);
         //en_output(RF_B,LOW);
@@ -350,7 +305,7 @@ void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
         usleep(5000);
         set_FRQ_ADF4351(f_out);
         usleep(2700);
-        }*/
+        }
     }
     send_data (END, NULL);
 }
@@ -359,7 +314,7 @@ void start_1p_meas_1point(uint16_t f_low, uint16_t f_high, uint8_t port){
 /*FIN*/
 
 
-
+/*
 static void state_machine_process_data(void){
     uint16_t f_low, f_high;
     uint8_t gpio_pin;
@@ -412,7 +367,7 @@ static void state_machine_process_data(void){
             if (data_uart[2] == '3')
                 start_2p_meas(f_low, f_high);
             flag_main = 0; 
-        }
+        }*/
 /*        else if (data_uart[0] == 'S' && data_uart[1] == 'M' && data_uart[2] == '1'){
             int n = 1;
             // Write data to UART.
@@ -458,12 +413,12 @@ static void state_machine_process_data(void){
             //ESP_LOGI(TAG_MAIN, "Recibimos el Match: %d",n);
             flag_main = 0;
         }
-*/
+*//*
         flag_main = 0;
     }
 }
 
-
+*/
 
 
 void app_main(void)

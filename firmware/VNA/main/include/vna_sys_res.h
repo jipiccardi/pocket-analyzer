@@ -22,7 +22,7 @@ void green_led_task (void *);
 void SM_serial_rx_task (void *);
 void mode_sel_task (void *);
 void rtos_init (void);
-void meas_1p_task (void);
-void meas_2p_task (void);
+void meas_1p_task (void *);
+void meas_2p_task (void *);
 
 #endif

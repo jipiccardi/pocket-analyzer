@@ -65,34 +65,3 @@ void XRA1403_set_gpio_mode(uint8_t pin,uint8_t mode){
     }
 }
 
-void set_VNA_path(uint8_t path){
-    switch (path){
-        case S11_PATH:
-            XRA1403_set_gpio_level(SWT_A_2, LOW);
-            XRA1403_set_gpio_level(SWT_A_1, HIGH);
-            XRA1403_set_gpio_level(SWT_B_2, LOW);
-            XRA1403_set_gpio_level(SWT_B_1, HIGH);
-            break;
-
-        case S21_PATH:
-            XRA1403_set_gpio_level(SWT_A_2, LOW);
-            XRA1403_set_gpio_level(SWT_A_1, HIGH);
-            XRA1403_set_gpio_level(SWT_B_1, LOW);
-            XRA1403_set_gpio_level(SWT_B_2, HIGH);
-            break;
-        
-        case S22_PATH:
-            XRA1403_set_gpio_level(SWT_A_1, LOW);
-            XRA1403_set_gpio_level(SWT_A_2, HIGH);
-            XRA1403_set_gpio_level(SWT_B_1, LOW);
-            XRA1403_set_gpio_level(SWT_B_2, HIGH);
-            break;
-
-        case S12_PATH:
-            XRA1403_set_gpio_level(SWT_A_1, LOW);  
-            XRA1403_set_gpio_level(SWT_A_2, HIGH);
-            XRA1403_set_gpio_level(SWT_B_2, LOW);
-            XRA1403_set_gpio_level(SWT_B_1, HIGH);
-            break;
-    }
-}

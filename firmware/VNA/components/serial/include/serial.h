@@ -22,11 +22,7 @@
 #define DATA_CHECK 2
 #define ETX_CHECK 3
 
-#define END         0
-#define ONEPORT     1
-#define TWOPORT     2
 
-#define UART_MODE   0  // 0 = BYTE mode UART      1 = CHAR mode UART
 
 static const char *TAG_UART = "UART";
 
@@ -35,7 +31,6 @@ extern uint8_t data_uart[];
 extern uint8_t flag_main;
 
 void VNA_uart_init(void);
-void VNA_send_data(uint8_t , uint16_t*);
 void state_machine_uart(void);
 
 #endif

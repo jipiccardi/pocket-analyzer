@@ -6,6 +6,7 @@
 #include "serial.h"
 #include "vna_sys_res.h"
 #include "max2870.h"
+#include "vna_hw_interface.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -209,11 +210,11 @@ void meas_1p_task (void *pvParameter){
     f_out = f_low_local;
     set_FRQ_ADF4351(f_out);
     vTaskDelay(1/portTICK_PERIOD_MS); 
-    while (f_out < f_high){  
-        get_measure(&data[0]);
+    while (f_out < f_high_local){  
+        VNA_get_measure(&data[0]);
         data[2] = get_FRQ_ADF4351();
         //if (STEPMODE == 1)
-        f_out += get_sweep_step_lin(f_low,f_high,npoints); 
+        f_out += get_sweep_step_lin(f_low_local,f_high_local,npoints); 
         set_FRQ_ADF4351(f_out);
         VNA_send_data(P_ONE, data);
         vTaskDelay(1/portTICK_PERIOD_MS); 
@@ -221,3 +222,35 @@ void meas_1p_task (void *pvParameter){
     VNA_send_data (END, NULL);
 }
 
+void meas_2p_task (void *pvParameter){
+    uint16_t f_low_local, f_high_local, f_out = 0, npoints = 1000;
+    uint16_t data[9];
+
+    xSemaphoreTake(xMeasParamMutex,portMAX_DELAY) ;
+    f_low_local = f_low;
+    f_high_local = f_high;
+    xSemaphoreGive(xMeasParamMutex);
+
+    f_out = f_low_local;
+    set_FRQ_ADF4351(f_out);
+    vTaskDelay(1/portTICK_PERIOD_MS); 
+    while (f_out < f_high_local){
+
+        set_VNA_path(S11_PATH);
+        VNA_get_measure(&data[0]);
+        set_VNA_path(S21_PATH);
+        VNA_get_measure(&data[2]);
+        set_VNA_path(S22_PATH);
+        VNA_get_measure(&data[4]);
+        set_VNA_path(S12_PATH);
+        VNA_get_measure(&data[6]);  
+        data[8] = get_FRQ_ADF4351();
+
+        //if (STEPMODE == 1)
+        f_out += get_sweep_step_lin(f_low_local,f_high_local,npoints); 
+        set_FRQ_ADF4351(f_out);
+        VNA_send_data(P_ONE, data);
+        vTaskDelay(1/portTICK_PERIOD_MS); 
+    }
+    VNA_send_data (END, NULL);
+}
